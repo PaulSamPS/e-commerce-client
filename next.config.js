@@ -2,6 +2,14 @@
 const nextConfig = {
   reactStrictMode: false,
   swcMinify: true,
+  rewrites() {
+    return [
+      {
+        source: "/api/:path*",
+        destination: "http://localhost:5500/:path*"
+      }
+    ]
+  },
   images: {
     domains: ["localhost"],
   },

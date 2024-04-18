@@ -1,9 +1,8 @@
 "use client";
 
-import { AllHTMLAttributes, useEffect } from "react";
-import { useDispatch, useStore } from "react-redux";
-import { ReduxStoreWithManager } from "../../providers/store-provider";
-import { StateSchemaKey } from "@/shared/providers/store-provider/config/state-schema";
+import { AllHTMLAttributes, useCallback, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Reducer } from "@reduxjs/toolkit";
 
 export type ReducerList = {
   [name in StateSchemaKey]?: Reducer;
@@ -15,30 +14,43 @@ export interface DynamicModuleProps
 }
 
 export const DynamicModule = ({
-  children,
-  className,
-  reducers,
-}: DynamicModuleProps) => {
-  const store = useStore() as ReduxStoreWithManager;
+                                children,
+                                className,
+                                reducers,
+                              }: DynamicModuleProps) => {
+  const store = useSelector((state: any) => state) as ReduxStoreWithManager;
   const dispatch = useDispatch();
 
-  // Функция для добавления и удаления редюсеров
-  const updateReducers = (actionTypePrefix: string) => {
+  const addReducer = useCallback(
+    (name: string, reducer: Reducer, actionTypePrefix: string) => {
+      const typedName = name as StateSchemaKey;
+      const actionType = `${actionTypePrefix} ${typedName} reducer`;
+      store.reducerManager.add(typedName, reducer);
+      dispatch({ type: actionType });
+    },
+    [dispatch, store.reducerManager]
+  );
+
+  const updateReducers = useCallback(
+    (actionTypePrefix: string) => {
+      return () => {
+        Object.entries(reducers).forEach(([name, reducer]) => {
+          addReducer(name, reducer, actionTypePrefix);
+        });
+      };
+    },
+    [addReducer, reducers]
+  );
+
+  useEffect(() => {
+    const initReducers = updateReducers("@INIT");
+    initReducers();
+
     return () => {
-      Object.entries(reducers).forEach(([name, reducer]) => {
-        const typedName = name as StateSchemaKey;
-        const actionType = `${actionTypePrefix} ${typedName} reducer`;
-        store.reducerManager.add(typedName, reducer);
-        dispatch({ type: actionType });
-      });
+      const destroyReducers = updateReducers("@DESTROY");
+      destroyReducers();
     };
-  };
-
-  // Добавление редюсеров при монтировании компонента
-  useEffect(updateReducers("@INIT"), []);
-
-  // Удаление редюсеров при размонтировании компонента
-  useEffect(updateReducers("@DESTROY"), []);
+  }, [updateReducers]);
 
   return <div className={className}>{children}</div>;
 };

@@ -1,1 +1,1 @@
-export * as api from "./generate";
+export * as apiAuth from "./auth";

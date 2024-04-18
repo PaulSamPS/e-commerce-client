@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { User } from '@/entities/User';
+import { UserData } from '@/entities/User';
 
 export type AuthProps = {
     isOpen: boolean | undefined
@@ -55,8 +55,7 @@ export type SignInFormProps = {
 }
 
 export interface SignInResult {
-    user: User;
-    message: string;
+    user: UserData;
 }
 
 export type SignUpSchema = {
@@ -80,5 +79,5 @@ export type SignUpResult = {
 }
 
 export type CheckAuthResult = {
-    user: User | undefined;
+    user: UserData | undefined;
 }

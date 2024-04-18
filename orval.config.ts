@@ -2,7 +2,7 @@ module.exports = {
   main: {
     input: "./src/shared/api/schema.yaml",
     output: {
-      target: "./src/shared/api/generate.ts",
+      target: "./src/shared/api/auth.ts",
       prettier: true,
       override: {
         mutator: {

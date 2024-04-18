@@ -5,54 +5,24 @@ import { UiButtonGroup } from "@/features/auth/button-group";
 import { ButtonProps } from "@/shared/ui/ui-button";
 import { emailOptions, usernameOptions } from "@/features/auth/constants";
 import { SignInFormProps } from "@/features/auth/sign-in";
+import { useAppDispatch } from "@/shared/hooks/use-app-dispatch";
+import { userState } from "@/entities/User";
+import { signInApi } from "@/features/auth/sign-in/api-sign-in";
+import { useSelector } from "react-redux";
 
-/**
- * Свойства компонента SignIn.
- */
 interface SignInProps {
-  /**
-   * Функция для перехода к странице регистрации.
-   */
   onSignUp: () => void;
-
-  /**
-   * Функция для перехода к странице сброса пароля.
-   */
   onResetPassword: () => void;
 }
 
-/**
- * Интерфейс поля ввода.
- */
-interface InputField {
-  /**
-   * Название поля ввода, соответствующее ключу в объекте данных формы.
-   */
-  name: keyof SignInFormProps;
-
-  /**
-   * Тип поля ввода (например, 'text', 'password').
-   */
-  type: string;
-
-  /**
-   * Текст заполнителя для поля ввода.
-   */
-  placeholder: string;
-
-  /**
-   * Дополнительные параметры для поля ввода.
-   */
-  options: Record<string, any>;
-}
-
-/**
- * Компонент SignIn.
- */
 export const SignIn: FC<SignInProps> = memo(({ onSignUp, onResetPassword }) => {
-  /**
-   * Конфигурация кнопок формы.
-   */
+  const dispatch = useAppDispatch();
+  const { error, loading } = useSelector(userState);
+
+  const onSubmit = async (formData: SignInFormProps) => {
+    dispatch(signInApi(formData));
+  };
+
   const buttons: ButtonProps[] = [
     {
       size: "s",
@@ -68,10 +38,7 @@ export const SignIn: FC<SignInProps> = memo(({ onSignUp, onResetPassword }) => {
     },
   ];
 
-  /**
-   * Конфигурация полей ввода формы.
-   */
-  const inputFields: InputField[] = [
+  const inputFields = [
     {
       name: "email",
       type: "text",
@@ -86,26 +53,17 @@ export const SignIn: FC<SignInProps> = memo(({ onSignUp, onResetPassword }) => {
     },
   ];
 
-  /**
-   * Обработчик отправки формы.
-   * @param {SignInFormProps} formData - Данные формы входа.
-   */
-  const onSubmit = async (formData: SignInFormProps) => {
-    console.log(formData);
-  };
-
   return (
     <div className={styles.wrapper}>
-      {/* Рендер компонента формы входа */}
       <FormWithInputs
-        isLoading={false}
+        isLoading={loading}
         inputs={inputFields}
         onSubmit={onSubmit}
         className={styles.form}
         actionText={"Войти"}
         errorClass={styles.error}
+        error={error}
       />
-      {/* Рендер компонента группы кнопок */}
       <UiButtonGroup buttons={buttons} className={styles.footer} />
     </div>
   );

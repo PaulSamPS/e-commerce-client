@@ -1,6 +1,5 @@
 "use client";
 
-import { useScreenWidth } from "@/shared/hooks/use-screen-width";
 import { Header } from "@/widgets/header/header";
 import { useContext } from "react";
 import { AuthModalAppContext } from "@/shared/context/appContext";
@@ -23,11 +22,7 @@ export default function Home() {
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
       >
-        <SignIn
-          onClose={() => {}}
-          goToSignUp={() => {}}
-          goToResetPassword={() => {}}
-        />
+        <SignIn onSignUp={() => {}} onResetPassword={() => {}} />
       </UiModalWithHeader>
       <Social />
     </div>
