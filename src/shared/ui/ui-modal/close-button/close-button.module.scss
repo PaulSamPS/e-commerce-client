@@ -1,0 +1,27 @@
+.wrapper {
+  padding: 10px;
+
+  & .close-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    color: var(--white);
+    background: var(--black-alpha-35);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+
+    & .icon {
+      transition: transform 0.2s cubic-bezier(0.8, 0.5, 0.2, 1.4);
+      transition-duration: 500ms;
+
+      &:hover {
+        transform: rotate(90deg);
+      }
+    }
+  }
+}
+

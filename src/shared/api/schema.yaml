@@ -1,0 +1,166 @@
+openapi: 3.0.0
+paths:
+  /users/register:
+    post:
+      operationId: register
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUserDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegistrationResponseType'
+      tags:
+        - Users
+  /users/activate:
+    post:
+      operationId: activate
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ActivateUserDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActivateResponseType'
+      tags:
+        - Users
+  /users/login:
+    post:
+      operationId: login
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginUserDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponseType'
+      tags:
+        - Users
+  /users/refresh-token:
+    get:
+      operationId: refreshToken
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - Users
+      security:
+        - bearer: []
+info:
+  title: e-commerce
+  description: API Documentation
+  version: '1.0'
+  contact: {}
+tags: []
+servers: []
+components:
+  schemas:
+    CreateUserDto:
+      type: object
+      properties:
+        email:
+          type: string
+          example: example@mail.com
+          description: Адрес электронной почты пользователя
+        username:
+          type: string
+          example: user
+          description: Имя пользователя
+        password:
+          type: string
+          example: '12345'
+          description: Пароль пользователя
+      required:
+        - email
+        - username
+        - password
+    RegistrationResponseType:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Регистрация прошла успешно.
+          description: Сообщение о результате регистрации
+      required:
+        - message
+    ActivateUserDto:
+      type: object
+      properties:
+        email:
+          type: string
+          example: example@mail.com
+          description: Email пользователя
+        code:
+          type: string
+          example: '1234'
+          minimum: 4
+          maximum: 4
+          description: Код активации (четыре цифры)
+      required:
+        - email
+        - code
+    ActivateResponseType:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Код принят
+          description: Сообщение об успешной активации
+      required:
+        - message
+    LoginUserDto:
+      type: object
+      properties:
+        email:
+          type: string
+          example: example@mail.com
+          description: Адрес электронной почты пользователя
+        password:
+          type: string
+          example: password123
+          minimum: 5
+          description: Пароль пользователя
+      required:
+        - email
+        - password
+    LoginResponseType:
+      type: object
+      properties:
+        user:
+          type: object
+          example:
+            id: 1
+            username: user
+            email: example@mail.com
+            createdAt: '2024-04-05T18:19:27.772Z'
+            updatedAt: '2024-04-05T18:19:27.772Z'
+          description: Информация о пользователе
+        message:
+          type: string
+          example: Успешный вход в систему
+          description: Сообщение о результате входа
+      required:
+        - user
+        - message

@@ -1,0 +1,42 @@
+.btn {
+  position: absolute;
+  width: 60px;
+  height: 50px;
+  border: 0;
+  cursor: pointer;
+  transition: all ease-in-out .5s;
+
+  &:hover {
+    svg {
+      opacity: 1;
+      fill: var(--blue-hover) !important;
+    }
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
+    margin-right: 21px;
+    transition: all ease-in-out .2s;
+  }
+}
+
+.backgroundWhite {
+  background: var(--white-alpha-72);
+  border-radius: 40px;
+}
+
+.backgroundNone {
+  background: none;
+}
+
+.arrowLeft {
+  top: calc(50% - 25px);
+  left: -30px;
+  transform: rotate(180deg);
+}
+
+.arrowRight {
+  top: calc(50% - 25px);
+  right: -30px;
+}

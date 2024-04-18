@@ -1,0 +1,25 @@
+.logo {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  cursor: pointer;
+  text-align: center;
+
+  &.text {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    h1 {
+      font-size: 20px;
+    }
+  }
+
+  & .company-name {
+    display: flex;
+  }
+
+  & .title-color {
+    color: var(--blue-themed) !important;
+  }
+}
