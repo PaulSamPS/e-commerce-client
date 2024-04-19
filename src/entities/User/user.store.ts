@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { UserData, UserSchema } from "@/entities/User/user.types";
 import { signInApi } from "@/features/auth/sign-in/api-sign-in";
 import { refreshTokenApi } from "@/features/auth/refresh-token";
+import { signUpApi } from "@/features/auth/sign-up/api-sign-up";
 
 const initialState: UserSchema = {
   userData: undefined,
@@ -32,6 +33,19 @@ export const userStore = createSlice({
         state.userData = action.payload.user;
       })
       .addCase(signInApi.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(signUpApi.pending, (state) => {
+        state.error = undefined;
+        state.loading = true;
+      })
+      .addCase(signUpApi.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = undefined;
+        state.userData = action.payload.user;
+      })
+      .addCase(signUpApi.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       })

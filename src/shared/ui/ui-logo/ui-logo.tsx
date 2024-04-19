@@ -6,7 +6,7 @@ import { UiSubhead } from "../ui-subhead";
 import clsx from "clsx";
 
 interface UiLogoProps extends HTMLAttributes<HTMLDivElement> {
-  logoSrc: string;
+  logoSrc?: string;
   companyName: string;
   slogan: string;
 }
@@ -19,7 +19,7 @@ export const UiLogo: FC<UiLogoProps> = ({
   ...restProps
 }) => (
   <div className={clsx(styles.logo, className)} {...restProps}>
-    <Image src={logoSrc} alt={"logo"} width={40} height={40} />
+    {logoSrc && <Image src={logoSrc} alt={"logo"} width={40} height={40} />}
     <div className={styles["logo-text"]}>
       <div className={styles["company-name"]}>
         <UiTitle size="h1" weight="regular">

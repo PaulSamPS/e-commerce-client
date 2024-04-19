@@ -5,11 +5,7 @@ export const Header = () => {
   return (
     <div className={styles.header}>
       <div className={styles["header-content"]}>
-        <UiLogo
-          companyName="Какая-то мебель"
-          logoSrc={"/logo.svg"}
-          slogan="Мебель со вкусом"
-        />
+        <UiLogo companyName="Какая-то мебель" slogan="Мебель со вкусом" />
       </div>
     </div>
   );

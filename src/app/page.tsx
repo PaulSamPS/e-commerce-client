@@ -7,6 +7,7 @@ import { UiModalWithHeader } from "@/shared/ui/ui-modal";
 import { UiButton } from "@/shared/ui/ui-button";
 import { SignIn } from "@/features/auth/sign-in/sign-in";
 import { Social } from "@/widgets/social/social";
+import { Auth } from "@/widgets/auth/auth";
 
 export default function Home() {
   const { isOpen, setIsOpen } = useContext(AuthModalAppContext);
@@ -17,13 +18,7 @@ export default function Home() {
       <UiButton appearance={"primary"} onClick={() => setIsOpen(true)}>
         Открыть
       </UiButton>
-      <UiModalWithHeader
-        title={"Регистрация"}
-        isOpen={isOpen}
-        onClose={() => setIsOpen(false)}
-      >
-        <SignIn onSignUp={() => {}} onResetPassword={() => {}} />
-      </UiModalWithHeader>
+      <Auth />
       <Social />
     </div>
   );

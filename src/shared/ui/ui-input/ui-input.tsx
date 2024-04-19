@@ -1,7 +1,6 @@
 import React, { memo, forwardRef, AllHTMLAttributes } from "react";
 import styles from "./ui-input.module.scss";
 import clsx from "clsx";
-import { FieldError, FieldErrorsImpl, Merge } from "react-hook-form";
 
 interface InputProps extends AllHTMLAttributes<HTMLInputElement> {
   className?: string;
@@ -25,13 +24,13 @@ export const UiInput = memo(
           {error && <ErrorMessage text={error} />}
         </div>
       );
-    }
-  )
+    },
+  ),
 );
 
 const getWrapperClassName = (
   className: string | undefined,
-  label: string | undefined
+  label: string | undefined,
 ) => clsx(className, styles.wrapper, label && styles["with-label"]);
 const getInputClassName = (error: string | undefined) =>
   clsx(styles.input, { error });

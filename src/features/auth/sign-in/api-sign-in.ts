@@ -1,8 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { apiAuth } from "@/shared/api";
 import { ThunkConfig } from "@/shared/providers/store-provider";
-import { SignInFormProps, SignInResult } from "@/features/auth/sign-in";
-import { axiosErrorMessage } from "@/shared/lib/error-messages";
+import { axiosErrorMessage } from "@/shared/lib/axios-error-message";
+import { SignInFormProps, SignInResult } from "@/features/auth/sign-in/type";
 
 export const signInApi = createAsyncThunk<
   SignInResult,

@@ -2,17 +2,15 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { apiAuth } from "@/shared/api";
 import { ThunkConfig } from "@/shared/providers/store-provider";
 import { axiosErrorMessage } from "@/shared/lib/axios-error-message";
-import { UserData } from "@/entities/User";
+import { ResetPasswordFormProps } from "@/features/auth/reset-password/types";
 
-type RefreshTokenResult = {
-  user: UserData;
-};
-export const refreshTokenApi = createAsyncThunk<
-  RefreshTokenResult,
+export const resetPasswordApi = createAsyncThunk<
+  { message: string },
+  ResetPasswordFormProps,
   ThunkConfig<string>
->("refreshToken", async (_, { dispatch, rejectWithValue }) => {
+>("resetPassword", async ({ email }, { dispatch, rejectWithValue }) => {
   try {
-    return await apiAuth.refreshToken();
+    return { message: "Ok" };
   } catch (error) {
     return rejectWithValue(axiosErrorMessage(error));
   }
