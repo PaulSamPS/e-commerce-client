@@ -1,15 +1,15 @@
-import React, { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
 import clsx from "clsx";
-import styles from "./ui-arrow.module.scss";
-import { ArrowIcon } from "../../assets/icons";
+import styles from "./ui-arrow-button.module.scss";
+import { ArrowIcon } from "@/shared/assets/icons";
+import { ButtonHTMLAttributes, FC } from "react";
 
-interface ArrowProps {
+export interface UiArrowButtonProps {
   appearance: "left" | "right";
   background: "white" | "none";
 }
 
-const UiArrow: React.FC<
-  ArrowProps & React.ButtonHTMLAttributes<HTMLButtonElement>
+export const UiArrowButton: FC<
+  UiArrowButtonProps & ButtonHTMLAttributes<HTMLButtonElement>
 > = ({ appearance, background, ...props }) => {
   const arrowClassName = clsx(
     styles.btn,
@@ -20,7 +20,7 @@ const UiArrow: React.FC<
     {
       white: styles.backgroundWhite,
       none: styles.backgroundNone,
-    }[background]
+    }[background],
   );
 
   return (

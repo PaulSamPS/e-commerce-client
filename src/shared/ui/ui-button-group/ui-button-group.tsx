@@ -1,7 +1,7 @@
 import { ButtonProps, UiButton } from "@/shared/ui/ui-button";
 import { FC } from "react";
 
-interface UiButtonGroupProps {
+export interface UiButtonGroupProps {
   buttons: ButtonProps[];
   className?: string;
 }

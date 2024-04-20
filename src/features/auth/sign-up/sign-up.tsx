@@ -3,7 +3,7 @@ import styles from "./sign-up.module.scss";
 import { useAppDispatch } from "@/shared/hooks/use-app-dispatch";
 import { userState } from "@/entities/User";
 import { UiButtonGroup } from "@/shared/ui/ui-button-group/ui-button-group";
-import { FormWithInputs } from "@/shared/ui/ui-form-with-inputs/ui-from-with-inputs";
+import { UiFormWithInputs } from "@/shared/ui/ui-form-with-inputs/ui-from-with-inputs";
 import { ButtonProps } from "@/shared/ui/ui-button";
 import { emailOptions, usernameOptions } from "@/features/auth/constants";
 import { signUpApi } from "@/features/auth/sign-up/api-sign-up";
@@ -54,13 +54,11 @@ export const SignUp = memo(({ onSignIn }: SignUpProps) => {
 
   return (
     <div className={styles.wrapper}>
-      <FormWithInputs
+      <UiFormWithInputs
         isLoading={loading}
         inputs={inputFields}
         onSubmit={onSubmit}
         actionText={"Регистрация"}
-        className={styles["sign-up"]}
-        errorClass={styles.error}
         error={error}
       />
       <UiButtonGroup buttons={buttons} className={styles.footer} />

@@ -2,7 +2,7 @@ import React, { memo, forwardRef, AllHTMLAttributes } from "react";
 import styles from "./ui-input.module.scss";
 import clsx from "clsx";
 
-interface InputProps extends AllHTMLAttributes<HTMLInputElement> {
+export interface InputProps extends AllHTMLAttributes<HTMLInputElement> {
   className?: string;
   error?: string;
 

@@ -5,7 +5,7 @@ import { UiTitle } from "../ui-title";
 import { UiSubhead } from "../ui-subhead";
 import clsx from "clsx";
 
-interface UiLogoProps extends HTMLAttributes<HTMLDivElement> {
+export interface UiLogoProps extends HTMLAttributes<HTMLDivElement> {
   logoSrc?: string;
   companyName: string;
   slogan: string;

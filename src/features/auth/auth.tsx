@@ -1,7 +1,8 @@
-import { useAuth } from "@/widgets/auth/useAuth";
+import { useAuth } from "@/features/auth/useAuth";
 import { useContext } from "react";
 import { AuthModalAppContext } from "@/shared/context/appContext";
 import { UiModalWithHeader } from "@/shared/ui/ui-modal";
+import { UiAuthButton } from "@/shared/ui/ui-auth-button/ui-auth-button";
 
 export const Auth = () => {
   const { isOpen, setIsOpen } = useContext(AuthModalAppContext);
@@ -12,12 +13,15 @@ export const Auth = () => {
   };
 
   return (
-    <UiModalWithHeader
-      title={authAction}
-      isOpen={isOpen}
-      onClose={handleCloseModal}
-    >
-      {currentAction}
-    </UiModalWithHeader>
+    <>
+      <UiAuthButton onOpen={() => setIsOpen(true)} />
+      <UiModalWithHeader
+        title={authAction}
+        isOpen={isOpen}
+        onClose={handleCloseModal}
+      >
+        {currentAction}
+      </UiModalWithHeader>
+    </>
   );
 };

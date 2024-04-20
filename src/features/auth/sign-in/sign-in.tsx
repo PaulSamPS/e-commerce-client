@@ -1,6 +1,6 @@
 import { FC, memo } from "react";
 import styles from "./sign-in.module.scss";
-import { FormWithInputs } from "@/shared/ui/ui-form-with-inputs/ui-from-with-inputs";
+import { UiFormWithInputs } from "@/shared/ui/ui-form-with-inputs/ui-from-with-inputs";
 import { UiButtonGroup } from "@/shared/ui/ui-button-group/ui-button-group";
 import { ButtonProps } from "@/shared/ui/ui-button";
 import { emailOptions, usernameOptions } from "@/features/auth/constants";
@@ -55,13 +55,11 @@ export const SignIn: FC<SignInProps> = memo(({ onSignUp, onResetPassword }) => {
 
   return (
     <div className={styles.wrapper}>
-      <FormWithInputs
+      <UiFormWithInputs
         isLoading={loading}
         inputs={inputFields}
         onSubmit={onSubmit}
-        className={styles.form}
         actionText={"Войти"}
-        errorClass={styles.error}
         error={error}
       />
       <UiButtonGroup buttons={buttons} className={styles.footer} />

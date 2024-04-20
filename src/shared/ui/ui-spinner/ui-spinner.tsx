@@ -1,16 +1,16 @@
-import React from "react";
+import React, { FC } from "react";
 import cx from "clsx";
 import { IconSpinner } from "./assets";
 import styles from "./ui-spinner.module.scss";
 
-interface SpinnerProps {
+export interface SpinnerProps {
   position?: "absolute" | "relative" | "fixed";
   color?: string;
   bg?: "transparent" | "black";
   ariaLabel?: string;
 }
 
-export const UiSpinner: React.FC<SpinnerProps> = ({
+export const UiSpinner: FC<SpinnerProps> = ({
   position = "absolute",
   color,
   bg = "black",
@@ -24,7 +24,7 @@ export const UiSpinner: React.FC<SpinnerProps> = ({
       fixed: styles.fixed,
       absolute: styles.absolute,
       relative: styles.relative,
-    }[position]
+    }[position],
   );
 
   return (

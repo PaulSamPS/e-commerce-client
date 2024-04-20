@@ -7,7 +7,7 @@ import { Portal } from "./portal";
 import { Container } from "./container";
 import { UiSpinner } from "@/shared/ui/ui-spinner";
 
-type ModalWithHeaderProps = {
+export type ModalWithHeaderProps = {
   children: ReactNode;
   title: string;
   isOpen: boolean;

@@ -1,10 +1,8 @@
 import clsx from "clsx";
 import styles from "./ui-button.module.scss";
-import { IconSpinner } from "./assets";
-import React from "react";
+import React, { ButtonHTMLAttributes, FC, ReactNode } from "react";
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   appearance?:
     | "primary"
     | "secondary"
@@ -13,13 +11,13 @@ export interface ButtonProps
     | "commerce"
     | "clear";
   size?: "s" | "m" | "l";
-  before?: React.ReactNode;
-  after?: React.ReactNode;
+  before?: ReactNode;
+  after?: ReactNode;
   isLoading?: boolean;
   stretched?: boolean;
 }
 
-export const UiButton: React.FC<ButtonProps> = ({
+export const UiButton: FC<ButtonProps> = ({
   className,
   children,
   appearance = "primary",
@@ -35,21 +33,19 @@ export const UiButton: React.FC<ButtonProps> = ({
     stretched && styles.stretched,
     styles[appearance],
     styles[size],
-    className
+    className,
   );
 
   return (
     <button className={classes} type="button" {...otherProps}>
-      {isLoading && (
-        <span className={styles["spinner-wrapper"]}>
-          <IconSpinner className={styles.spinner} />
+      {isLoading && <span className={styles.loader}></span>}
+      {before && !isLoading && before}
+      {!isLoading && (
+        <span className={clsx(styles.content, isLoading && styles.hidden)}>
+          {children}
         </span>
       )}
-      {before && !isLoading && <span className={styles.icon}>{before}</span>}
-      <span className={clsx(styles.content, isLoading && styles.hidden)}>
-        {children}
-      </span>
-      {after && !isLoading && <span className={styles.icon}>{after}</span>}
+      {after && !isLoading && after}
     </button>
   );
 };

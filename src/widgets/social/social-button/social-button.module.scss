@@ -1,0 +1,24 @@
+.contact {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  color: var(--white);
+  background: var(--blue-themed);
+  border: 1px solid transparent;
+  border-radius: 50%;
+  cursor: pointer;
+
+  svg {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.open {
+  color: var( --blue-themed);
+  background: transparent;
+  border: 1px solid var(--blue-themed);
+}

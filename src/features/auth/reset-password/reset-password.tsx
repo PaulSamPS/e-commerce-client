@@ -1,5 +1,5 @@
 import { useAppDispatch } from "@/shared/hooks/use-app-dispatch";
-import { FormWithInputs } from "@/shared/ui/ui-form-with-inputs/ui-from-with-inputs";
+import { UiFormWithInputs } from "@/shared/ui/ui-form-with-inputs/ui-from-with-inputs";
 import { UiButtonGroup } from "@/shared/ui/ui-button-group/ui-button-group";
 import { ButtonProps } from "@/shared/ui/ui-button";
 import {
@@ -55,13 +55,11 @@ export const ResetPassword = ({ onSignIn }: ResetPasswordProps) => {
           {state.message}
         </UiSubhead>
       )}
-      <FormWithInputs
+      <UiFormWithInputs
         isLoading={state?.loading!}
         inputs={inputFields}
         onSubmit={onSubmit}
         actionText={"Сбросить"}
-        className={styles.wrapper}
-        errorClass={styles.error}
         error={state?.error!}
       />
       <UiButtonGroup buttons={buttons} className={styles.footer} />

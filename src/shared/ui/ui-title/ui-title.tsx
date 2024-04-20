@@ -2,7 +2,7 @@ import clsx from "clsx";
 import React, { ElementType } from "react";
 import styles from "./ui-title.module.scss";
 
-interface UiTitleProps
+export interface UiTitleProps
   extends Omit<React.AllHTMLAttributes<HTMLElement>, "size"> {
   weight: "regular" | "medium" | "bold";
   size: "h1" | "h2";
@@ -24,7 +24,7 @@ export const UiTitle = ({
     styles.title,
     styles[weight],
     uppercase && styles.uppercase,
-    className
+    className,
   );
 
   return (

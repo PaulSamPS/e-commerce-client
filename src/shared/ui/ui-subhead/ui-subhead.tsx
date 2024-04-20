@@ -1,12 +1,12 @@
 import clsx from "clsx";
-import { FC, HTMLAttributes } from "react";
+import { AllHTMLAttributes, FC } from "react";
 import styles from "./ui-subhead.module.scss";
 
-interface SubheadProps extends HTMLAttributes<HTMLSpanElement> {
+export interface UiSubheadProps extends AllHTMLAttributes<HTMLSpanElement> {
   weight?: "regular" | "medium" | "bold";
 }
 
-export const UiSubhead: FC<SubheadProps> = ({
+export const UiSubhead: FC<UiSubheadProps> = ({
   children,
   weight = "regular",
   className,

@@ -1,7 +1,9 @@
-import { useForm, Path, FieldValues } from "react-hook-form";
+import { useForm, Path, FieldValues, SubmitHandler } from "react-hook-form";
 import { UiInput } from "@/shared/ui/ui-input";
 import { UiButton } from "@/shared/ui/ui-button";
 import { UiSubhead } from "@/shared/ui/ui-subhead";
+import styles from "./ui-form-with-inputs.module.scss";
+import clsx from "clsx";
 
 interface FormInput<K> {
   name: keyof K; // Название поля в объекте данных формы.
@@ -10,16 +12,15 @@ interface FormInput<K> {
   options: Record<string, any>; // Дополнительные параметры для поля ввода.
 }
 
-interface FormWithInputsProps<T, K> {
+export interface FormWithInputsProps<T extends FieldValues, K> {
   isLoading: boolean; // Указывает, находится ли форма в состоянии загрузки.
   error?: string; // Сообщение об ошибке для отображения над формой.
   inputs: FormInput<K>[]; // Конфигурация полей ввода в форме.
-  onSubmit: (formData: T) => Promise<void>; // Функция для обработки отправки формы.
+  onSubmit: SubmitHandler<T>; // Функция для обработки отправки формы.
   className?: string; // CSS класс для стилизации формы.
   actionText: string; // Текст кнопки действия формы.
-  errorClass?: string;
 }
-export const FormWithInputs = <
+export const UiFormWithInputs = <
   T extends FieldValues,
   K extends Record<string, unknown>,
 >({
@@ -29,7 +30,6 @@ export const FormWithInputs = <
   onSubmit,
   className,
   actionText,
-  errorClass,
 }: FormWithInputsProps<T, K>) => {
   const { register, handleSubmit, formState } = useForm<T>({
     mode: "onChange",
@@ -38,9 +38,12 @@ export const FormWithInputs = <
   const { errors, isValid } = formState;
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={className}>
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className={clsx(styles.wrapper, className)}
+    >
       {error && (
-        <UiSubhead weight="regular" className={errorClass}>
+        <UiSubhead weight="regular" className={styles.error}>
           {error}
         </UiSubhead>
       )}

@@ -7,7 +7,8 @@ import { UiModalWithHeader } from "@/shared/ui/ui-modal";
 import { UiButton } from "@/shared/ui/ui-button";
 import { SignIn } from "@/features/auth/sign-in/sign-in";
 import { Social } from "@/widgets/social/social";
-import { Auth } from "@/widgets/auth/auth";
+import { Auth } from "@/features/auth/auth";
+import { UiSpinner } from "@/shared/ui/ui-spinner";
 
 export default function Home() {
   const { isOpen, setIsOpen } = useContext(AuthModalAppContext);

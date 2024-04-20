@@ -4,27 +4,7 @@ import React, { FC } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { UiButton } from "@/shared/ui/ui-button";
-
-const SOCIAL_LINKS = [
-  {
-    id: 0,
-    img: "/whatsapp.png",
-    name: "Whatsapp",
-    href: "yandex.ru",
-  },
-  {
-    id: 1,
-    img: "/telegram.png",
-    name: "Telegram",
-    href: "yandex.ru",
-  },
-  {
-    id: 2,
-    img: "/vk-icon.svg",
-    name: "Вконтакте",
-    href: "yandex.ru",
-  },
-];
+import { SOCIAL_LINKS } from "../constants";
 
 const ANIMATION_CHILDREN = {
   variants: {
