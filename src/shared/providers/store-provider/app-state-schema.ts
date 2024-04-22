@@ -6,10 +6,12 @@ import {
 } from "@reduxjs/toolkit";
 import { UserSchema } from "@/entities/User";
 import { ResetPasswordSchema } from "@/entities/Password";
+import { ProductsSearchSchema } from "@/entities/Product/product.types";
 
 export interface AppState {
   user: UserSchema;
   resetPassword?: ResetPasswordSchema;
+  searchProduct?: ProductsSearchSchema
 }
 
 export type AppStateKey = keyof AppState;

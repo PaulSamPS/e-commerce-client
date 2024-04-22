@@ -3,10 +3,7 @@ import styles from "./ui-input.module.scss";
 import clsx from "clsx";
 
 export interface InputProps extends AllHTMLAttributes<HTMLInputElement> {
-  className?: string;
   error?: string;
-
-  label?: string;
 }
 
 export const UiInput = memo(

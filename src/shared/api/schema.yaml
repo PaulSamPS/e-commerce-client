@@ -2,7 +2,7 @@ openapi: 3.0.0
 paths:
   /users/register:
     post:
-      operationId: register
+      operationId: UsersController_register
       parameters: []
       requestBody:
         required: true
@@ -21,7 +21,7 @@ paths:
         - Users
   /users/activate:
     post:
-      operationId: activate
+      operationId: UsersController_activate
       parameters: []
       requestBody:
         required: true
@@ -40,7 +40,7 @@ paths:
         - Users
   /users/login:
     post:
-      operationId: login
+      operationId: UsersController_login
       parameters: []
       requestBody:
         required: true
@@ -57,9 +57,47 @@ paths:
                 $ref: '#/components/schemas/LoginResponseType'
       tags:
         - Users
+  /users/reset-password/send-code:
+    post:
+      operationId: UsersController_sendResetPasswordCode
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendCodeResetPasswordDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SendCodeResponseType'
+      tags:
+        - Users
+  /users/reset-password/enter-code:
+    post:
+      operationId: UsersController_enterResetPasswordCode
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnterCodeResetPasswordDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnterCodeResponseType'
+      tags:
+        - Users
   /users/refresh-token:
     get:
-      operationId: refreshToken
+      operationId: UsersController_refreshToken
       parameters: []
       responses:
         '200':
@@ -67,7 +105,231 @@ paths:
       tags:
         - Users
       security:
-        - bearer: []
+        - cookie: []
+  /reviews/create:
+    post:
+      operationId: ReviewController_createFeatures
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReviewsDtoCreate'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SingleReviewResponse'
+      tags:
+        - Reviews
+      security:
+        - auth_access: []
+  /reviews/{product}:
+    get:
+      operationId: ReviewController_getAll
+      parameters:
+        - name: product
+          required: true
+          in: path
+          schema:
+            type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MultipleReviewsResponse'
+      tags:
+        - Reviews
+  /products/create:
+    post:
+      operationId: ProductsController_createFurniture
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateProductDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductResponseType'
+      tags:
+        - Products
+      security:
+        - auth_access: []
+  /products/update/{productName}:
+    patch:
+      operationId: ProductsController_updateProduct
+      parameters:
+        - name: productName
+          required: true
+          in: path
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateProductDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductResponseType'
+      tags:
+        - Products
+      security:
+        - auth_access: []
+  /products/all:
+    get:
+      operationId: ProductsController_getAll
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductResponseTypePaginate'
+      tags:
+        - Products
+  /products/find/{name}:
+    get:
+      operationId: ProductsController_getOne
+      parameters:
+        - name: name
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductResponseType'
+      tags:
+        - Products
+  /products/new:
+    get:
+      operationId: ProductsController_getNew
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductResponseType'
+      tags:
+        - Products
+  /products/search:
+    post:
+      operationId: ProductsController_search
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductResponseType'
+      tags:
+        - Products
+  /products/name:
+    post:
+      operationId: ProductsController_getByName
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductResponseType'
+      tags:
+        - Products
+  /products/top-products:
+    get:
+      operationId: ProductsController_topProducts
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductResponseTypeArray'
+      tags:
+        - Products
+  /products/{category}:
+    get:
+      operationId: ProductsController_getProductsByCategory
+      parameters:
+        - name: category
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductResponseTypeArray'
+      tags:
+        - Products
+  /features/create:
+    post:
+      operationId: FeaturesController_createFeatures
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FeaturesDtoCreate'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeaturesResponseType'
+      tags:
+        - Features
+  /features/find/{productId}:
+    get:
+      operationId: FeaturesController_getOne
+      parameters:
+        - name: productId
+          required: true
+          in: path
+          schema:
+            type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeaturesResponseType'
+      tags:
+        - Features
 info:
   title: e-commerce
   description: API Documentation
@@ -164,3 +426,278 @@ components:
       required:
         - user
         - message
+    SendCodeResetPasswordDto:
+      type: object
+      properties:
+        email:
+          type: string
+          example: example@mail.com
+          description: Адрес электронной почты пользователя
+      required:
+        - email
+    SendCodeResponseType:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Код принят
+          description: Сообщение об успешной отправки кода
+      required:
+        - message
+    EnterCodeResetPasswordDto:
+      type: object
+      properties:
+        email:
+          type: string
+          example: example@mail.com
+          description: Адрес электронной почты пользователя
+        code:
+          type: string
+          example: '2209'
+          description: Код подтверждения
+      required:
+        - email
+        - code
+    EnterCodeResponseType:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Код принят
+          description: Сообщение об успешной успешном вводе кода для смены пароля
+      required:
+        - message
+    ReviewsDtoCreate:
+      type: object
+      properties: {}
+    ReviewModel:
+      type: object
+      properties: {}
+    SingleReviewResponse:
+      type: object
+      properties:
+        review:
+          example:
+            id: 1
+            user: 1
+            product: 1
+            firstName: Кто-то
+            lastName: Кто-то еще
+            rating: 5
+            review: Текст отзыва
+            approved: false
+            updatedAt: '2024-04-21T05:12:06.643Z'
+            createdAt: '2024-04-21T05:12:06.643Z'
+          description: Информация об одном отзыве
+          allOf:
+            - $ref: '#/components/schemas/ReviewModel'
+      required:
+        - review
+    MultipleReviewsResponse:
+      type: object
+      properties:
+        sortedReviews:
+          example:
+            - id: 1
+              user: 1
+              product: 1
+              firstName: Кто-то
+              lastName: Кто-то еще
+              rating: 5
+              review: Текст отзыва
+              approved: false
+              updatedAt: '2024-04-21T05:12:06.643Z'
+              createdAt: '2024-04-21T05:12:06.643Z'
+          description: Массив отзывов
+          type: array
+          items:
+            type: string
+        count:
+          type: number
+          example: 1
+          description: Количество отзывов
+        averageRating:
+          type: number
+          example: 5
+          description: Средний рейтинг отзывов
+      required:
+        - sortedReviews
+        - count
+        - averageRating
+    CreateProductDto:
+      type: object
+      properties: {}
+    ProductResponseType:
+      type: object
+      properties: {}
+    UpdateProductDto:
+      type: object
+      properties: {}
+    ProductResponseTypePaginate:
+      type: object
+      properties:
+        products:
+          example:
+            rows:
+              - id: 1
+                price: 25000
+                oldPrice: 0
+                name: Dean
+                description: >-
+                  У нас не всегда получаеться написать красивое описания к
+                  каждому стулу, но мы выкладываем живые фото готовых изделий на
+                  которых Вы можете рассмотреть качество сделанной работы и
+                  почувствовать добрые чувства с которыми сделаны стулья на
+                  основе каркасов Konyshev. Мы единственная в России группа
+                  инженеров занимающаяся проектированием и производством
+                  каркасов для мягкой мебели.
+                images:
+                  - url: >-
+                      /static/products/Dean/4a5f940a-f340-408d-b3d8-2d67df0569cd.webp
+                    name: 4a5f940a-f340-408d-b3d8-2d67df0569cd.webp
+                  - url: >-
+                      /static/products/Dean/4d858428-13ef-40c5-8656-8a25ce23b9cc.webp
+                    name: 4d858428-13ef-40c5-8656-8a25ce23b9cc.webp
+                  - url: >-
+                      /static/products/Dean/ab8782a0-a3a0-4420-bd82-583c4000317a.webp
+                    name: ab8782a0-a3a0-4420-bd82-583c4000317a.webp
+                  - url: >-
+                      /static/products/Dean/2f923aef-fdc1-4a33-9373-87cab1f2d017.webp
+                    name: 2f923aef-fdc1-4a33-9373-87cab1f2d017.webp
+                inStock: 10
+                bestseller: false
+                isNew: true
+                soldCount: 0
+                rating: 4.5
+                discount: 0
+                category: styl
+                createdAt: '2024-04-21T04:54:20.760Z'
+                updatedAt: '2024-04-21T19:36:18.822Z'
+                features:
+                  id: 1
+                  productName: null
+                  features:
+                    - name: Каркас
+                      value: Фанера
+                    - name: Материал ножек
+                      value: Бук
+                    - name: Материал обивки
+                      value: Велюр
+                    - name: Страна производства
+                      value: Россия
+                    - name: Гарантия
+                      value: 1 год
+                  createdAt: '2024-04-21T12:46:26.360Z'
+                  updatedAt: '2024-04-21T12:46:26.360Z'
+                  product: 1
+                reviewCount: 2
+          description: Пагинированный список товаров
+          type: array
+          items:
+            type: string
+        count:
+          type: number
+          example:
+            count: 1
+          description: Общее количество товаров
+      required:
+        - products
+        - count
+    ProductResponseTypeArray:
+      type: object
+      properties:
+        count:
+          type: number
+          example: 1
+          description: Информация о товаре
+        products:
+          example:
+            id: 1
+            price: 25000
+            oldPrice: 0
+            name: Dean
+            description: >-
+              У нас не всегда получаеться написать красивое описания к каждому
+              стулу, но мы выкладываем живые фото готовых изделий на которых Вы
+              можете рассмотреть качество сделанной работы и почувствовать
+              добрые чувства с которыми сделаны стулья на основе каркасов
+              Konyshev. Мы единственная в России группа инженеров занимающаяся
+              проектированием и производством каркасов для мягкой мебели.
+            images:
+              - url: >-
+                  /static/products/Dean/4a5f940a-f340-408d-b3d8-2d67df0569cd.webp
+                name: 4a5f940a-f340-408d-b3d8-2d67df0569cd.webp
+              - url: >-
+                  /static/products/Dean/4d858428-13ef-40c5-8656-8a25ce23b9cc.webp
+                name: 4d858428-13ef-40c5-8656-8a25ce23b9cc.webp
+              - url: >-
+                  /static/products/Dean/ab8782a0-a3a0-4420-bd82-583c4000317a.webp
+                name: ab8782a0-a3a0-4420-bd82-583c4000317a.webp
+              - url: >-
+                  /static/products/Dean/2f923aef-fdc1-4a33-9373-87cab1f2d017.webp
+                name: 2f923aef-fdc1-4a33-9373-87cab1f2d017.webp
+            inStock: 10
+            bestseller: false
+            isNew: true
+            soldCount: 0
+            rating: 4.5
+            discount: 0
+            category: styl
+            createdAt: '2024-04-21T04:54:20.760Z'
+            updatedAt: '2024-04-21T19:36:18.822Z'
+            features:
+              id: 1
+              productName: null
+              features:
+                - name: Каркас
+                  value: Фанера
+                - name: Материал ножек
+                  value: Бук
+                - name: Материал обивки
+                  value: Велюр
+                - name: Страна производства
+                  value: Россия
+                - name: Гарантия
+                  value: 1 год
+              createdAt: '2024-04-21T12:46:26.360Z'
+              updatedAt: '2024-04-21T12:46:26.360Z'
+              product: 1
+            reviewCount: 2
+          description: Массив товаров
+          type: array
+          items:
+            type: string
+      required:
+        - count
+        - products
+    FeaturesDtoCreate:
+      type: object
+      properties: {}
+    FeaturesModel:
+      type: object
+      properties: {}
+    FeaturesResponseType:
+      type: object
+      properties:
+        features:
+          example:
+            id: 1
+            features:
+              - name: Каркас
+                value: Фанера
+              - name: Материал ножек
+                value: Бук
+              - name: Материал обивки
+                value: Велюр
+              - name: Страна производства
+                value: Россия
+              - name: Гарантия
+                value: 1 год
+            product: 1
+            updatedAt: '2024-04-21T12:46:26.360Z'
+            createdAt: '2024-04-21T12:46:26.360Z'
+          description: Характеристики товара
+          allOf:
+            - $ref: '#/components/schemas/FeaturesModel'
+      required:
+        - features

@@ -44,6 +44,7 @@
     "orval": "^6.27.1",
     "prettier": "^3.2.5",
     "react-hook-form": "^7.51.3",
+    "react-toastify": "^10.0.5",
     "sass": "^1.75.0",
     "storybook": "^8.0.8",
     "typescript": "^5"

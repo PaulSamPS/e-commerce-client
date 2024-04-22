@@ -14,7 +14,7 @@ export type ReducerMap = {
 };
 
 type DynamicModuleProps = {
-  className: string;
+  className?: string;
   children: ReactNode;
   reducers: ReducerMap;
 };

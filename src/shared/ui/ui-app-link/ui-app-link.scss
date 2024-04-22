@@ -1,0 +1,25 @@
+.app-link {
+	//height: fit-content !important;
+	font-weight: 400;
+	text-decoration: none;
+	background: transparent;
+	transition: color ease-in-out 0.2s;
+	color: currentColor;
+	font-size: 15px;
+
+	&:hover {
+		color: var(--blue-hover);
+		opacity: .8;
+	}
+
+	&:active {
+		color: var(--blue-hover);
+		opacity: .8;
+	}
+}
+
+@include laptop {
+	.app-link {
+		font-size: 13px;
+	}
+}

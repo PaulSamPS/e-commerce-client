@@ -1,0 +1,1 @@
+import styles from './earch-modal.module.scss'

@@ -1,3 +1,5 @@
+"use client";
+
 import { FC, useState } from "react";
 import { SocialButton } from "@/widgets/social/social-button/social-button";
 import SocialPanel from "@/widgets/social/social-panel/social-panel";

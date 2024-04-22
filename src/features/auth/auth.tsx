@@ -1,3 +1,5 @@
+"use client";
+
 import { useAuth } from "@/features/auth/useAuth";
 import { useContext } from "react";
 import { AuthModalAppContext } from "@/shared/context/appContext";
