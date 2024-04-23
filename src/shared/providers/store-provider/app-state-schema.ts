@@ -5,13 +5,13 @@ import {
   Reducer,
 } from "@reduxjs/toolkit";
 import { UserSchema } from "@/entities/User";
-import { ResetPasswordSchema } from "@/entities/Password";
 import { ProductsSearchSchema } from "@/entities/Product/product.types";
+import { ResetPasswordSchema } from "@/entities/User/password.types";
 
 export interface AppState {
   user: UserSchema;
   resetPassword?: ResetPasswordSchema;
-  searchProduct?: ProductsSearchSchema
+  searchProduct?: ProductsSearchSchema;
 }
 
 export type AppStateKey = keyof AppState;

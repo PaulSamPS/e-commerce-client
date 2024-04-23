@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ToastContainer theme="colored" />
+        <ToastContainer theme="colored" hideProgressBar autoClose={3000} />
         <StoreProvider>
           <AuthModalAppContextProvider>{children}</AuthModalAppContextProvider>
         </StoreProvider>

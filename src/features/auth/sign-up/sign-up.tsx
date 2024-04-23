@@ -6,7 +6,7 @@ import { UiButtonGroup } from "@/shared/ui/ui-button-group/ui-button-group";
 import { UiFormWithInputs } from "@/shared/ui/ui-form-with-inputs/ui-from-with-inputs";
 import { ButtonProps } from "@/shared/ui/ui-button";
 import { emailOptions, usernameOptions } from "@/features/auth/constants";
-import { signUpApi } from "@/features/auth/sign-up/api-sign-up";
+import { signUpApi } from "@/entities/User/api-sign-up";
 import { SignInFormProps } from "@/features/auth/sign-in/type";
 import { memo } from "react";
 

@@ -1,7 +1,6 @@
 import { ReactElement, useEffect, useState } from "react";
 import { SignIn } from "@/features/auth/sign-in/sign-in";
 import { SignUp } from "@/features/auth/sign-up/sign-up";
-import { SendResetCode } from "@/features/auth/reset-password/send-reset-code";
 import { ResetPassword } from "@/features/auth/reset-password/reset-password";
 
 type AuthProps = {

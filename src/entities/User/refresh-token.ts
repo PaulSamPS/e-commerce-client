@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { apiAuth } from "@/shared/api";
 import { ThunkConfig } from "@/shared/providers/store-provider";
 import { axiosErrorMessage } from "@/shared/lib/axios-error-message";
-import { UserData } from "@/entities/User";
+import { UserData } from "@/entities/User/index";
 
 type RefreshTokenResult = {
   user: UserData;

@@ -1,15 +1,35 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { ThunkConfig } from "@/shared/providers/store-provider";
 import { axiosErrorMessage } from "@/shared/lib/axios-error-message";
-import { apiAuth } from "@/shared/api";
-import { resetPasswordActions } from "@/entities/Password/reset-password.store";
 import {
   EnterResetCodeResponse,
   EnterResetPasswordCodeProps,
+  NewPasswordProps,
+  NewPasswordResponse,
   SendResetCodeResponse,
   SendResetPasswordCodeProps,
 } from "@/shared/api/auth";
 import { toast } from "react-toastify";
+import { resetPasswordActions } from "@/entities/User/reset-password.store";
+import { apiAuth } from "@/shared/api";
+
+export const enterResetPasswordCode = createAsyncThunk<
+  EnterResetCodeResponse,
+  EnterResetPasswordCodeProps,
+  ThunkConfig<string>
+>(
+  "enterResetPasswordCode",
+  async ({ email, code }, { dispatch, rejectWithValue }) => {
+    try {
+      const data = await apiAuth.enterResetPasswordCode({ email, code });
+      dispatch(resetPasswordActions.setCode(code));
+      toast.success(data.message);
+      return data;
+    } catch (error) {
+      return rejectWithValue(axiosErrorMessage(error));
+    }
+  },
+);
 
 export const sendResetPasswordCode = createAsyncThunk<
   SendResetCodeResponse,
@@ -28,16 +48,18 @@ export const sendResetPasswordCode = createAsyncThunk<
   }
 });
 
-export const enterResetPasswordCode = createAsyncThunk<
-  EnterResetCodeResponse,
-  EnterResetPasswordCodeProps,
+export const newPasswordSet = createAsyncThunk<
+  NewPasswordResponse,
+  NewPasswordProps,
   ThunkConfig<string>
 >(
-  "enterResetPasswordCode",
-  async ({ email, code }, { dispatch, rejectWithValue }) => {
+  "newPasswordSet",
+  async ({ email, password }, { dispatch, rejectWithValue }) => {
     try {
-      const data = await apiAuth.enterResetPasswordCode({ email, code });
+      const data = await apiAuth.newPassword({ email, password });
+
       toast.success(data.message);
+
       return data;
     } catch (error) {
       return rejectWithValue(axiosErrorMessage(error));

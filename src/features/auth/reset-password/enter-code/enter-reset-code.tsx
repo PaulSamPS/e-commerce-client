@@ -1,42 +1,40 @@
 "use client";
 
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useCallback, useMemo, useState } from "react";
 import clsx from "clsx";
 import styles from "./enter-reset-code.module.scss";
 import { UiButton } from "@/shared/ui/ui-button";
 import { UiText } from "@/shared/ui/ui-text";
-import { UiTitle } from "@/shared/ui/ui-title";
 import { useAppDispatch } from "@/shared/hooks/use-app-dispatch";
-import { enterResetPasswordCode } from "@/features/auth/reset-password/reset-password-api";
+import { enterResetPasswordCode } from "@/entities/User/reset-password-api";
 import { useSelector } from "react-redux";
-import { resetPasswordState } from "@/entities/Password";
+import { resetPasswordState } from "@/entities/User";
 
 export const EnterResetCode = () => {
-  const [codes, setCodes] = useState<string[]>(["", "", "", ""]);
-  const [error, setError] = useState<string | null>(null);
+  const [codes, setCodes] = useState<string[]>(Array(4).fill(""));
   const dispatch = useAppDispatch();
   const state = useSelector(resetPasswordState);
 
-  const handleInputCode = async (event: ChangeEvent<HTMLInputElement>) => {
-    const index = Number(event.target.getAttribute("id"));
-    const { value } = event.target;
-    setError(null);
-    setCodes((prev) => {
-      const newArr = [...prev];
-      newArr[index] = value;
-      return newArr;
-    });
+  const handleInputCode = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      const { id, value } = event.target;
+      const index = Number(id);
+      const sanitizedValue = value.replace(/\D/g, "");
 
-    if (value.trim() !== "") {
-      if (event.target.nextSibling) {
-        (event.target.nextSibling as HTMLInputElement).focus();
-      }
-    } else {
-      if (event.target.previousSibling) {
-        (event.target.previousSibling as HTMLInputElement).focus();
-      }
-    }
-  };
+      setCodes((prevCodes) => {
+        const newCodes = [...prevCodes];
+        newCodes[index] = sanitizedValue;
+        return newCodes;
+      });
+
+      const sibling =
+        value.length === 1
+          ? event.target.nextSibling
+          : event.target.previousSibling;
+      sibling && (sibling as HTMLInputElement).focus();
+    },
+    [],
+  );
 
   const onSubmit = async () => {
     dispatch(
@@ -44,14 +42,19 @@ export const EnterResetCode = () => {
     );
   };
 
+  const isFormValid = useMemo(
+    () => codes.every((code) => code.length === 1),
+    [codes],
+  );
+
   return (
     <div className={styles["enter-code"]}>
-      {error && (
+      {state?.error && (
         <UiText weight={"regular"} className={styles["error-message"]}>
-          {error}
+          {state?.error}
         </UiText>
       )}
-      <div className={clsx(styles.code, error && styles["error-code"])}>
+      <div className={clsx(styles.code, state?.error && styles["error-code"])}>
         {codes.map((code, index) => (
           <input
             className={styles["input-code"]}
@@ -69,7 +72,8 @@ export const EnterResetCode = () => {
         appearance="primary"
         onClick={onSubmit}
         isLoading={state?.loading}
-        disabled={codes.join("").length < 4 || state?.loading}
+        disabled={!isFormValid || state?.loading}
+        type={"submit"}
       >
         Отправить
       </UiButton>

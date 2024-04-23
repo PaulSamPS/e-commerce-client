@@ -27,6 +27,10 @@ export interface EnterResetCodeResponse {
   message: string;
 }
 
+export interface NewPasswordResponse {
+  message: string;
+}
+
 // Интерфейсы для параметров запросов API
 export interface SignUpProps {
   email: string;
@@ -51,6 +55,11 @@ export interface SendResetPasswordCodeProps {
 export interface EnterResetPasswordCodeProps {
   code: string;
   email: string;
+}
+
+export interface NewPasswordProps {
+  email: string;
+  password: string;
 }
 
 // Общий тип для параметра options
@@ -98,7 +107,10 @@ export const login = (loginUserDto: SignInProps, options?: RequestOptions) => {
   );
 };
 
-export const sendResetPasswordCode = (sendResetPasswordCodeProps: SendResetPasswordCodeProps, options?: RequestOptions) => {
+export const sendResetPasswordCode = (
+  sendResetPasswordCodeProps: SendResetPasswordCodeProps,
+  options?: RequestOptions,
+) => {
   return createInstance<SendResetCodeResponse>(
     {
       url: `/users/reset-password/send-code`,
@@ -110,7 +122,10 @@ export const sendResetPasswordCode = (sendResetPasswordCodeProps: SendResetPassw
   );
 };
 
-export const enterResetPasswordCode = (enterResetPasswordCodeProps: EnterResetPasswordCodeProps, options?: RequestOptions) => {
+export const enterResetPasswordCode = (
+  enterResetPasswordCodeProps: EnterResetPasswordCodeProps,
+  options?: RequestOptions,
+) => {
   return createInstance<EnterResetCodeResponse>(
     {
       url: `/users/reset-password/enter-code`,
@@ -122,10 +137,24 @@ export const enterResetPasswordCode = (enterResetPasswordCodeProps: EnterResetPa
   );
 };
 
+export const newPassword = (
+  newPasswordProps: NewPasswordProps,
+  options?: RequestOptions,
+) => {
+  return createInstance<NewPasswordResponse>(
+    {
+      url: `/users/new-password`,
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      data: newPasswordProps,
+    },
+    options,
+  );
+};
+
 export const refreshToken = (options?: RequestOptions) => {
   return createInstance<LoginResponse>(
     { url: `/users/refresh-token`, method: "GET" },
     options,
   );
 };
-

@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { UserData, UserSchema } from "@/entities/User/user.types";
-import { signInApi } from "@/features/auth/sign-in/api-sign-in";
-import { refreshTokenApi } from "@/features/auth/refresh-token";
-import { signUpApi } from "@/features/auth/sign-up/api-sign-up";
+import { signInApi } from "@/entities/User/api-sign-in";
+import { refreshTokenApi } from "@/entities/User/refresh-token";
+import { signUpApi } from "@/entities/User/api-sign-up";
 
 const initialState: UserSchema = {
   userData: undefined,

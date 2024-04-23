@@ -1,9 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { ResetPasswordSchema } from "@/entities/User/password.types";
 import {
   enterResetPasswordCode,
+  newPasswordSet,
   sendResetPasswordCode,
-} from "@/features/auth/reset-password/reset-password-api";
-import { ResetPasswordSchema } from "@/entities/Password/password.types";
+} from "./reset-password-api";
 
 const initialState: ResetPasswordSchema = {
   loading: false,
@@ -51,6 +52,20 @@ export const resetPassword = createSlice({
         state.message = action.payload.message;
       })
       .addCase(enterResetPasswordCode.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(newPasswordSet.pending, (state) => {
+        state.error = undefined;
+        state.loading = true;
+        state.message = undefined;
+      })
+      .addCase(newPasswordSet.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = undefined;
+        state.message = action.payload.message;
+      })
+      .addCase(newPasswordSet.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });

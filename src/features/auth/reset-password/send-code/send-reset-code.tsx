@@ -6,12 +6,12 @@ import {
   ResetPasswordFormProps,
   ResetPasswordProps,
 } from "@/features/auth/reset-password/types";
-import styles from "./reset-password.module.scss";
+import styles from "../reset-password.module.scss";
 import { emailOptions } from "@/features/auth/constants";
 import { useSelector } from "react-redux";
-import { resetPasswordState } from "@/entities/Password/state";
+import { resetPasswordState } from "@/entities/User/state";
 import { UiSubhead } from "@/shared/ui/ui-subhead";
-import { sendResetPasswordCode } from "@/features/auth/reset-password/reset-password-api";
+import { sendResetPasswordCode } from "@/entities/User/reset-password-api";
 
 export const SendResetCode = ({ onSignIn }: ResetPasswordProps) => {
   const dispatch = useAppDispatch();
