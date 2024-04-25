@@ -1,0 +1,25 @@
+.dots {
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+}
+
+.dot {
+  display: block;
+  padding: 2px;
+  background: var(--steel-gray-100);
+  border-radius: 50%;
+}
+
+.active {
+  padding: 3px;
+  background: var(--blue-active);
+}

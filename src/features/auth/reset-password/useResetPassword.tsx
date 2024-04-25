@@ -1,4 +1,4 @@
-import { ReactElement, useCallback, useEffect, useState } from "react";
+import { ReactElement, useCallback, useEffect, useMemo, useState } from "react";
 import { SendResetCode } from "@/features/auth/reset-password/send-code/send-reset-code";
 import { EnterResetCode } from "@/features/auth/reset-password/enter-code/enter-reset-code";
 import { ResetPasswordProps } from "@/features/auth/reset-password/types";
@@ -21,17 +21,13 @@ export const useResetPassword = ({
   isNewPassword,
   isEnterCode,
 }: UseResetPasswordProps) => {
-  const [resetAction, setResetAction] = useState<ResetActions>(
-    ResetActions.sendCode,
-  );
-
-  useEffect(() => {
-    if (isEnterCode && !isNewPassword) {
-      setResetAction(ResetActions.enterCode);
-    }
+  const resetAction = useMemo(() => {
     if (isEnterCode && isNewPassword) {
-      setResetAction(ResetActions.newPassword);
+      return ResetActions.newPassword;
+    } else if (isEnterCode) {
+      return ResetActions.enterCode;
     }
+    return ResetActions.sendCode;
   }, [isEnterCode, isNewPassword]);
 
   const currentActionMapper: Record<ResetActions, () => ReactElement> = {

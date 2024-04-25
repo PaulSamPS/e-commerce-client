@@ -3,10 +3,6 @@ import { UiButton } from "@/shared/ui/ui-button";
 import styles from "./new-password.module.scss";
 import { useNewPasswordForm } from "@/features/auth/reset-password/new-password/useNewPasswordForm";
 
-type NewPasswordFormProps = {
-  newPassword: string;
-  repeatPassword: string;
-};
 export const NewPassword = () => {
   const { register, handleSubmit, errors, isValid, newPassword, onSubmit } =
     useNewPasswordForm();

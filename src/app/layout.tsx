@@ -6,6 +6,8 @@ import { StoreProvider } from "@/shared/providers/store-provider";
 import { ReactNode } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Header } from "@/widgets/header/header";
+import styles from "./layout.module.scss";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,7 +26,10 @@ export default function RootLayout({
       <body className={inter.className}>
         <ToastContainer theme="colored" hideProgressBar autoClose={3000} />
         <StoreProvider>
-          <AuthModalAppContextProvider>{children}</AuthModalAppContextProvider>
+          <AuthModalAppContextProvider>
+            <Header />
+            <div className={styles.main}>{children}</div>
+          </AuthModalAppContextProvider>
         </StoreProvider>
       </body>
     </html>

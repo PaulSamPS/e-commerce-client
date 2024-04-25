@@ -12,13 +12,13 @@ interface NewPasswordFormValues {
 export const useNewPasswordForm = () => {
   const dispatch = useAppDispatch();
   const state = useSelector(resetPasswordState);
+
   const {
     register,
     handleSubmit,
     formState: { errors, isValid },
     watch,
   } = useForm<NewPasswordFormValues>({ mode: "onChange" });
-  const newPassword = watch("newPassword", "");
 
   const onSubmit = async (formData: NewPasswordFormValues) => {
     const { newPassword } = formData;
@@ -30,7 +30,7 @@ export const useNewPasswordForm = () => {
     handleSubmit,
     errors,
     isValid,
-    newPassword,
+    newPassword: watch("newPassword", ""),
     onSubmit,
   };
 };

@@ -128,16 +128,3 @@
   box-shadow: 0 0 0 6px rgb(255 255 255 / 50%);
 }
 
-@include tablet {
-  .wrapper {
-    margin-left: 0;
-  }
-
-  .input {
-    transform: unset!important;
-
-    input {
-      transform: unset!important;
-    }
-  }
-}

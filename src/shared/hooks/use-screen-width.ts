@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-export const useScreenWidth = (): [number] => {
+export const useScreenWidth = (): number => {
   const [screenWidth, setScreenWidth] = useState<number>(0);
 
   useEffect(() => {
@@ -12,7 +12,6 @@ export const useScreenWidth = (): [number] => {
 
     let timer: NodeJS.Timeout | null = null;
 
-    // Функция debounce
     const debounce = (func: () => void, delay: number) => {
       if (timer) {
         clearTimeout(timer);
@@ -20,18 +19,14 @@ export const useScreenWidth = (): [number] => {
       timer = setTimeout(func, delay);
     };
 
-    // Обработчик изменения размера окна с debounce
     const handleResize = () => {
       debounce(updateScreenWidth, 150);
     };
 
-    // Добавляем обработчик события только после монтирования компонента
     window.addEventListener("resize", handleResize);
 
-    // Устанавливаем ширину экрана при загрузке
     updateScreenWidth();
 
-    // Очищаем обработчик события при размонтировании компонента
     return () => {
       window.removeEventListener("resize", handleResize);
       if (timer) {
@@ -41,6 +36,5 @@ export const useScreenWidth = (): [number] => {
     };
   }, []);
 
-  // Возвращаем текущую ширину экрана и функцию для ее обновления
-  return [screenWidth];
+  return screenWidth;
 };

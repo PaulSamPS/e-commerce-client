@@ -36,16 +36,13 @@ export const EnterResetCode = () => {
     [],
   );
 
-  const onSubmit = async () => {
+  const onSubmit = () => {
     dispatch(
       enterResetPasswordCode({ email: state?.email!, code: codes.join("") }),
     );
   };
 
-  const isFormValid = useMemo(
-    () => codes.every((code) => code.length === 1),
-    [codes],
-  );
+  const isFormValid = () => codes.every((code) => code.length === 1);
 
   return (
     <div className={styles["enter-code"]}>

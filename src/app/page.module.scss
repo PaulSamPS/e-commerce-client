@@ -1,0 +1,33 @@
+.wrapper-top {
+  display: grid;
+  grid-template-areas:
+		"sidebar sliderTop dayProduct";
+  grid-template-columns: 200px minmax(320px, 600px) auto;
+
+  .sidebar {
+    grid-area: sidebar;
+    margin-right: 10px;
+  }
+
+  .slider-top {
+    grid-area: sliderTop;
+  }
+
+  .day-product {
+    grid-area: dayProduct;
+    margin-left: 60px;
+  }
+
+  .topProduct {
+    grid-area: topProduct;
+  }
+
+  .sliderBot {
+    grid-area: sliderBot;
+  }
+
+  .footer {
+    grid-area: footer;
+  }
+
+}

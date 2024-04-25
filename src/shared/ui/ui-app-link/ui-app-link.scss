@@ -1,5 +1,4 @@
 .app-link {
-	//height: fit-content !important;
 	font-weight: 400;
 	text-decoration: none;
 	background: transparent;
@@ -18,8 +17,3 @@
 	}
 }
 
-@include laptop {
-	.app-link {
-		font-size: 13px;
-	}
-}

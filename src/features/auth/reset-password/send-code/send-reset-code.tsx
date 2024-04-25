@@ -2,18 +2,20 @@ import { useAppDispatch } from "@/shared/hooks/use-app-dispatch";
 import { UiFormWithInputs } from "@/shared/ui/ui-form-with-inputs/ui-from-with-inputs";
 import { UiButtonGroup } from "@/shared/ui/ui-button-group/ui-button-group";
 import { ButtonProps } from "@/shared/ui/ui-button";
-import {
-  ResetPasswordFormProps,
-  ResetPasswordProps,
-} from "@/features/auth/reset-password/types";
+import { ResetPasswordFormProps } from "@/features/auth/reset-password/types";
 import styles from "../reset-password.module.scss";
 import { emailOptions } from "@/features/auth/constants";
 import { useSelector } from "react-redux";
 import { resetPasswordState } from "@/entities/User/state";
 import { UiSubhead } from "@/shared/ui/ui-subhead";
 import { sendResetPasswordCode } from "@/entities/User/reset-password-api";
+import { FC } from "react";
 
-export const SendResetCode = ({ onSignIn }: ResetPasswordProps) => {
+interface ResetPasswordProps {
+  onSignIn: () => void;
+}
+
+export const SendResetCode: FC<ResetPasswordProps> = ({ onSignIn }) => {
   const dispatch = useAppDispatch();
   const state = useSelector(resetPasswordState);
 
@@ -39,13 +41,16 @@ export const SendResetCode = ({ onSignIn }: ResetPasswordProps) => {
     },
   ];
 
+  const renderSuccessMessage = () =>
+    state?.message && (
+      <UiSubhead weight="regular" className={styles.success}>
+        {state.message}
+      </UiSubhead>
+    );
+
   return (
     <div className={styles.wrapper}>
-      {state?.message && (
-        <UiSubhead weight="regular" className={styles.success}>
-          {state.message}
-        </UiSubhead>
-      )}
+      {renderSuccessMessage()}
       <UiFormWithInputs
         isLoading={state?.loading!}
         inputs={inputFields}
