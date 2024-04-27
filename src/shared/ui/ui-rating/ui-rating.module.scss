@@ -1,0 +1,22 @@
+.star {
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+  color: var(--blue-themed);
+}
+
+.rating-block {
+  display: flex;
+  align-items: center;
+
+  .rating-number {
+    display: flex;
+    color: var(--gray-800);
+    font-weight: 400;
+    font-size: 13px;
+  }
+}
+
+.editable {
+  cursor: pointer;
+}

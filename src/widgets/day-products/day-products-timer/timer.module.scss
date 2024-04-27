@@ -1,0 +1,11 @@
+.wrapper {
+    text-align: right;
+  .timer {
+    display: flex;
+    color: var(--steel-gray-500);
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 1;
+    column-gap: 3px;
+  }
+}

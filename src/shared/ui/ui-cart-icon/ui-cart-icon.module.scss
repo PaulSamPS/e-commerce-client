@@ -1,0 +1,67 @@
+.added {
+  span {
+    &::before {
+      width: 5px !important;
+      transform: rotate(-135deg) translate(5%,-10%) !important;
+    }
+
+    &::after {
+      width: 10px !important;
+      transform: rotate(-45deg) translate(20%,10%) !important;
+    }
+  }
+}
+
+.added-white {
+  span {
+    &::before {
+      background-color: var(--white) !important;
+    }
+
+    &::after {
+      background-color: var(--white) !important;
+    }
+  }
+
+  svg {
+    fill: var(--white) !important;
+  }
+}
+
+.icon-cart {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+
+  span {
+    &::before {
+      position: absolute;
+      top: 7px;
+      left: 8px;
+      display: block;
+      width: 9px;
+      height: 2px;
+      background-color: var(--white);
+      border-radius: 2px;
+      transform: rotate(90deg);
+      transition: all ease-in-out .2s;
+      content: "";
+    }
+
+    &::after {
+      position: absolute;
+      top: 7px;
+      left: 8px;
+      display: block;
+      width: 9px;
+      height: 2px;
+      background-color: var(--white);
+      border-radius: 2px;
+      transition: all ease-in-out .2s;
+      content: "";
+    }
+  }
+}

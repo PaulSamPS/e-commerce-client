@@ -36,12 +36,11 @@ export const Slider = ({ width, height, shares, title }: SliderProps) => {
   return (
     <div className={styles.promotions}>
       {title && (
-        <UiTitle weight={"regular"} size={"h2"}>
+        <UiTitle weight={"medium"} size={"h2"} className={styles.title}>
           {title}
         </UiTitle>
       )}
       <WrapperSlider
-        width={600}
         screenWidth={screenWidth}
         height={height}
         setAuto={setAutoPlay}
@@ -57,7 +56,6 @@ export const Slider = ({ width, height, shares, title }: SliderProps) => {
           <UiDots
             className={styles.dots}
             slideIndex={activePageIndex}
-            arr={shares}
             activeDot={goTo}
             dotsCount={shares.length}
           />

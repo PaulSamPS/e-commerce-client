@@ -6,11 +6,12 @@ import { ButtonHTMLAttributes, FC } from "react";
 export interface UiArrowButtonProps {
   appearance: "left" | "right";
   background: "white" | "none";
+  onClick: () => void;
 }
 
 export const UiArrowButton: FC<
-  UiArrowButtonProps & ButtonHTMLAttributes<HTMLButtonElement>
-> = ({ appearance, background, ...props }) => {
+  UiArrowButtonProps & Pick<ButtonHTMLAttributes<HTMLButtonElement>, "onClick">
+> = ({ appearance, background, onClick, ...props }) => {
   const arrowClassName = clsx(
     styles.btn,
     {
@@ -24,7 +25,12 @@ export const UiArrowButton: FC<
   );
 
   return (
-    <button type="button" className={arrowClassName} {...props}>
+    <button
+      type="button"
+      className={arrowClassName}
+      onClick={onClick}
+      {...props}
+    >
       <ArrowIcon />
     </button>
   );

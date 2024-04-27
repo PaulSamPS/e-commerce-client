@@ -1,0 +1,48 @@
+.in-the-cart {
+  background-color: var(--steel-gray-500);
+
+  &:hover {
+    background-color: var(--steel-gray-500);
+    filter: brightness(1.1);
+  }
+}
+
+.btn {
+  height: 39px !important;
+  margin-right: 16px;
+  padding: 0;
+}
+
+.added {
+  background-color: var(--steel-gray-500);
+
+  &:hover {
+    span {
+      &::before {
+        background-color: var(--white);
+      }
+
+      &::after {
+        background-color: var(--white);
+      }
+    }
+
+    svg {
+      color: var(--white);
+    }
+  }
+
+  svg {
+    color: var(--white);
+  }
+
+  span {
+    &::before {
+      background-color: var(--white);
+    }
+
+    &::after {
+      background-color: var(--white);
+    }
+  }
+}

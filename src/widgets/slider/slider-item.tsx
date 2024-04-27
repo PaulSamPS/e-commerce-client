@@ -21,6 +21,7 @@ export const SliderItem = memo(({ width, height, share }: SliderItemProps) => {
         // @ts-ignore
         width={width >= 1000 ? "-webkit-fill-available" : width}
         height={width > 1000 ? height : width / 2}
+        priority
       />
     </Link>
   );

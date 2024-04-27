@@ -2,7 +2,7 @@
   display: grid;
   grid-template-areas:
 		"sidebar sliderTop dayProduct";
-  grid-template-columns: 200px minmax(320px, 600px) auto;
+  grid-template-columns: 200px minmax(320px, 700px) auto;
 
   .sidebar {
     grid-area: sidebar;
