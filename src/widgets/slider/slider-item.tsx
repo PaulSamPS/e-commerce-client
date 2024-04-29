@@ -18,9 +18,8 @@ export const SliderItem = memo(({ width, height, share }: SliderItemProps) => {
       <Image
         src={`http://localhost:5500${images.url}`}
         alt="slide"
-        // @ts-ignore
-        width={width >= 1000 ? "-webkit-fill-available" : width}
-        height={width > 1000 ? height : width / 2}
+        width={width}
+        height={height}
         priority
       />
     </Link>

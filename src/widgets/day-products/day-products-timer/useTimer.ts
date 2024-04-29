@@ -13,8 +13,9 @@ export const useTimer = () => {
   }, []);
 
   const updateProducts = async () => {
-    await apiDayProducts.yesterdayProductsSet();
-    await apiDayProducts.dayProductsSet();
+    await apiDayProducts
+      .yesterdayProductsSet()
+      .then(async () => await apiDayProducts.dayProductsSet());
   };
 
   React.useEffect(() => {

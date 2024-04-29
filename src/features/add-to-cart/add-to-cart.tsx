@@ -48,7 +48,7 @@ export const AddToCart = ({ productId, variant }: AddToBasketProps) => {
           appearance={isInBasket ? "commerce" : "primary"}
           className={styles.btn}
           onClick={addToBasket}
-          size="s"
+          size="l"
           stretched
         >
           {isInBasket ? "В корзине" : "В корзину"}

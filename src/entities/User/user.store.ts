@@ -3,10 +3,11 @@ import { UserData, UserSchema } from "@/entities/User/user.types";
 import { signInApi } from "@/entities/User/api-sign-in";
 import { refreshTokenApi } from "@/entities/User/refresh-token";
 import { signUpApi } from "@/entities/User/api-sign-up";
+import { checkAuthApi } from "@/entities/User/api-check-auth";
 
 const initialState: UserSchema = {
   userData: undefined,
-  loading: false,
+  loading: true,
   error: undefined,
 };
 
@@ -61,6 +62,18 @@ export const userStore = createSlice({
       .addCase(refreshTokenApi.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload as string;
+      })
+      .addCase(checkAuthApi.pending, (state) => {
+        state.error = undefined;
+        state.loading = true;
+      })
+      .addCase(checkAuthApi.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = undefined;
+        state.userData = action.payload.user;
+      })
+      .addCase(checkAuthApi.rejected, (state, action) => {
+        state.loading = false;
       });
   },
 });

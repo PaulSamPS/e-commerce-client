@@ -19,6 +19,7 @@
     scroll-behavior: smooth;
     overflow: scroll;
     border-radius: 10px;
+    overflow-y: hidden;
 
     &::-webkit-scrollbar {
       display: none;
@@ -35,16 +36,20 @@
 }
 
 .title {
-  margin-bottom: 20px;
+  margin-bottom: 20px !important;
 }
 
 .slider {
   transition: all ease-in-out .5s;
   scroll-snap-align: start;
+  &::-webkit-scrollbar {
+    display: none;
+    width: 0;
+  }
 
   img {
-    display: block;
     height: 100%;
+    object-fit: cover;
   }
 }
 

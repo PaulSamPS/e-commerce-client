@@ -5,17 +5,23 @@ import { UiButton } from "@/shared/ui/ui-button";
 
 export interface UiAuthButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement> {
-  onOpen?: () => void;
+  username?: string;
+  loading?: boolean;
 }
-export const UiAuthButton = ({ onOpen }: UiAuthButtonProps) => {
+export const UiAuthButton = ({
+  username,
+  loading,
+  ...props
+}: UiAuthButtonProps) => {
   return (
     <UiButton
+      isLoading={loading}
       appearance={"clear"}
       className={styles.login}
-      onClick={onOpen}
       before={<ProfileIcon />}
+      {...props}
     >
-      Вход или регистрация
+      {username || "Вход или регистрация"}
     </UiButton>
   );
 };

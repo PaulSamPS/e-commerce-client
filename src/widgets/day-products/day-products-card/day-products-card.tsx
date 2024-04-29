@@ -8,6 +8,7 @@ import { IProduct } from "@/shared/types/product";
 import clsx from "clsx";
 import { UiRating } from "@/shared/ui/ui-rating/ui-rating";
 import { UiReview } from "@/shared/ui/ui-review/ui-review";
+import Image from "next/image";
 
 interface DayProductsCardProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
@@ -23,10 +24,12 @@ export const DayProductsCard = ({
   <div className={clsx(styles.wrapper, className)}>
     <div className={styles.img}>
       <Link href={`http://localhost:5500/today/${product.name}`}>
-        <img
+        <Image
           src={`http://localhost:5500${product.images[0].url}`}
           alt={product.name}
           title={product.name}
+          width={120}
+          height={120}
         />
       </Link>
     </div>
@@ -39,13 +42,7 @@ export const DayProductsCard = ({
     </div>
     <div className={styles.rating}>
       {product.rating > 0 && <UiRating rating={product.rating} />}
-      <UiReview
-        reviews={
-          product.review && product.review.length > 0
-            ? product.review.length
-            : 0
-        }
-      />
+      <UiReview reviews={product.reviewCount > 0 ? product.reviewCount : 0} />
     </div>
     <Link
       className={styles.name}

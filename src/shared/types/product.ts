@@ -1,27 +1,28 @@
-import { IReviews } from '@/shared/types/reviews';
-import { Features } from '@/shared/types/features';
+import { IReviews } from "@/shared/types/reviews";
+import { Features, FeaturesItem } from "@/shared/types/features";
 
 interface Img {
-    url: string,
-    name: string
-
+  url: string;
+  name: string;
 }
 export interface IProduct {
-    id: number
-    price: number;
-    oldPrice: number;
-    name: string;
-    description: string;
-    images: Img[]
-    in_stock: number;
-    bestseller: boolean;
-    new: boolean;
-    soldCount: number;
-    category: string;
-    rating: number
-    review: IReviews[]
-    features: Features
-    discount: number
+  id: number;
+  price: number;
+  oldPrice: number;
+  name: string;
+  description: string;
+  images: Img[];
+  inStock: number;
+  bestseller: boolean;
+  isNew: boolean;
+  soldCount: number;
+  rating: number;
+  discount: number;
+  category: string;
+  createdAt: string;
+  updatedAt: string;
+  features: FeaturesItem[] | null;
+  reviewCount: number;
 }
 
 export interface IDayProducts extends IProduct {}

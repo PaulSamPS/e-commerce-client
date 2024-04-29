@@ -2,9 +2,10 @@ import { Slider } from "@/widgets/slider";
 import { Social } from "@/widgets/social/social";
 import { Shares } from "@/shared/api/shares";
 import styles from "./page.module.scss";
-import { IDayProducts } from "@/shared/types/product";
+import { IDayProducts, IProduct } from "@/shared/types/product";
 import { DayProducts } from "@/widgets/day-products/day-products";
 import { Sidebar } from "@/widgets/sidebar/Sidebar";
+import { TopProducts } from "@/widgets/top-products/TopProducts";
 
 async function getShares(): Promise<Shares[]> {
   const data = await fetch("http://localhost:5500/shares");
@@ -24,9 +25,29 @@ async function getDayProducts(): Promise<IDayProducts[]> {
   return data.json();
 }
 
+async function getTopProducts(): Promise<IProduct[]> {
+  const data = await fetch("http://localhost:5500/products/top-products");
+
+  if (!data) {
+    throw new Error("Failed to fetch data");
+  }
+  return data.json();
+}
+
+async function getNewProducts(): Promise<IProduct[]> {
+  const data = await fetch("http://localhost:5500/products/new");
+
+  if (!data) {
+    throw new Error("Failed to fetch data");
+  }
+  return data.json();
+}
+
 export default async function Home() {
   const shares = await getShares();
   const dayProducts = await getDayProducts();
+  const topProducts = await getTopProducts();
+  const newProducts = await getNewProducts();
 
   return (
     <>
@@ -41,7 +62,7 @@ export default async function Home() {
           <Sidebar />
         </div>
       </div>
-      TopProducts
+      <TopProducts topProducts={topProducts} newProducts={newProducts} />
       <Social />
     </>
   );

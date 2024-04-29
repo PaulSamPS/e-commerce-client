@@ -1,0 +1,18 @@
+.wrapper {
+  display: flex;
+
+  .btn {
+    margin-right: 13px;
+    white-space: nowrap;
+    border: none;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.small {
+  font-size: 13px !important;
+}
+

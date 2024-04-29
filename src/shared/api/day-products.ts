@@ -23,7 +23,7 @@ export const dayProductsSet = (options?: RequestOptions) => {
 export const yesterdayProductsSet = (options?: RequestOptions) => {
   return createInstance<IProduct[]>(
     {
-      url: `/yesterday/set`,
+      url: `/day-products/yesterday/set`,
       method: "GET",
       headers: { "Content-Type": "application/json" },
     },
@@ -34,7 +34,7 @@ export const yesterdayProductsSet = (options?: RequestOptions) => {
 export const yesterdayProductsGet = (options?: RequestOptions) => {
   return createInstance<IProduct[]>(
     {
-      url: `/yesterday/get`,
+      url: `/day-products/yesterday/get`,
       method: "GET",
       headers: { "Content-Type": "application/json" },
     },
@@ -59,7 +59,7 @@ export const dayProductsGetByName = (
 ) => {
   return createInstance<IProduct[]>(
     {
-      url: `/get/${dayProducts.productName}`,
+      url: `/day-products/get/${dayProducts.productName}`,
       method: "GET",
       headers: { "Content-Type": "application/json" },
     },

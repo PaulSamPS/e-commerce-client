@@ -140,6 +140,11 @@
 		animation: rotation 1s linear infinite;
 	}
 
+	.loader-clear {
+		border: 2px solid var(--blue-themed) !important;
+		border-bottom-color: transparent !important;
+	}
+
 	@keyframes rotation {
 		0% {
 			transform: rotate(0deg);

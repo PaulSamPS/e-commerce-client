@@ -38,7 +38,14 @@ export const UiButton: FC<ButtonProps> = ({
 
   return (
     <button className={classes} type="button" {...otherProps}>
-      {isLoading && <span className={styles.loader}></span>}
+      {isLoading && (
+        <span
+          className={clsx(
+            styles.loader,
+            appearance === "clear" && styles["loader-clear"],
+          )}
+        ></span>
+      )}
       {before && !isLoading && before}
       {!isLoading && (
         <span className={clsx(styles.content, isLoading && styles.hidden)}>

@@ -8,6 +8,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Header } from "@/widgets/header/header";
 import styles from "./layout.module.scss";
+import { Footer } from "@/widgets/footer/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,6 +30,7 @@ export default function RootLayout({
           <AuthModalAppContextProvider>
             <Header />
             <div className={styles.main}>{children}</div>
+            <Footer />
           </AuthModalAppContextProvider>
         </StoreProvider>
       </body>

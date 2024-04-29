@@ -8,7 +8,7 @@ export const Header = () => {
   return (
     <div className={styles.header}>
       <div className={styles["header-content"]}>
-        <UiLogo companyName="Какая-то мебель" slogan="Мебель со вкусом" />
+        <UiLogo companyName="Мебель-Стильно" slogan="Мебель со вкусом" />
         <Search />
         <Auth />
         <UiCartButton productsCount={5} isLoading={false} totalPrice={125000} />

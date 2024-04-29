@@ -158,3 +158,10 @@ export const refreshToken = (options?: RequestOptions) => {
     options,
   );
 };
+
+export const checkAuth = (options?: RequestOptions) => {
+  return createInstance<LoginResponse>(
+    { url: `/users/check-auth`, method: "GET" },
+    options,
+  );
+};

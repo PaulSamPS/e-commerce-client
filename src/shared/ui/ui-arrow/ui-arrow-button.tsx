@@ -10,9 +10,14 @@ export interface UiArrowButtonProps {
 }
 
 export const UiArrowButton: FC<
-  UiArrowButtonProps & Pick<ButtonHTMLAttributes<HTMLButtonElement>, "onClick">
-> = ({ appearance, background, onClick, ...props }) => {
+  UiArrowButtonProps &
+    Pick<
+      ButtonHTMLAttributes<HTMLButtonElement>,
+      "onClick" | "disabled" | "className"
+    >
+> = ({ appearance, background, onClick, className, ...props }) => {
   const arrowClassName = clsx(
+    className,
     styles.btn,
     {
       left: styles.arrowLeft,

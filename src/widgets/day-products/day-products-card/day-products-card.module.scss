@@ -12,8 +12,8 @@
 
 .img {
   img {
-    width: 120px;
-    height: 120px;
+    //width: 120px;
+    //height: 120px;
     object-fit: contain;
     cursor: pointer;
   }
@@ -53,6 +53,7 @@
   display: flex;
   gap: 20px;
   align-items: baseline;
+  margin-top: 9px;
 }
 
 .name {
