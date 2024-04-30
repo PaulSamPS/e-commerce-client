@@ -1,4 +1,4 @@
-import { ReactElement, useEffect, useState } from "react";
+import { ReactElement, useCallback, useEffect, useState } from "react";
 import { SignIn } from "@/features/auth/sign-in/sign-in";
 import { SignUp } from "@/features/auth/sign-up/sign-up";
 import { ResetPassword } from "@/features/auth/reset-password/reset-password";
@@ -25,9 +25,12 @@ export const useAuth = ({
 }: UseAuthActionProps): UseModalAuthActionReturn => {
   const [authAction, setAuthAction] = useState<AuthActions>(AuthActions.signIn);
 
-  const goToSignUp = () => setAuthAction(AuthActions.signUp);
-  const goToSignIn = () => setAuthAction(AuthActions.signIn);
-  const goToResetPassword = () => setAuthAction(AuthActions.resetPassword);
+  const goToSignUp = useCallback(() => setAuthAction(AuthActions.signUp), []);
+  const goToSignIn = useCallback(() => setAuthAction(AuthActions.signIn), []);
+  const goToResetPassword = useCallback(
+    () => setAuthAction(AuthActions.resetPassword),
+    [],
+  );
 
   useEffect(() => {
     if (!isOpen) {

@@ -70,43 +70,6 @@
   }
 }
 
-.sale {
-  display: flex;
-  align-items: center;
-}
-
-.old-price {
-  margin-right: 10px;
-  color: var(--steel-gray-a540);
-  font-weight: 500;
-  font-size: 16px;
-  line-height: .8;
-  text-decoration: line-through;
-}
-
-.discount {
-  padding: 1px 5px;
-  color: var(--white);
-  font-weight: 500;
-  font-size: 12px;
-  background: var(--blue-themed);
-  border-radius: 2px;
-}
-
-.bottom {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 10px;
-}
-
-.price {
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 1.2;
-}
-
 .icon {
   position: relative;
   cursor: pointer;

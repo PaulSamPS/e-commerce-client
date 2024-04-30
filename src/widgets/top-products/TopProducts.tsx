@@ -20,7 +20,7 @@ type TopProductsProps = {
   newProducts: IProduct[];
 };
 export const TopProducts = ({ newProducts, topProducts }: TopProductsProps) => {
-  const { setNew, setHit, currentAction, topProductAction } = useTopProducts({
+  const { setActive, currentAction, topProductAction } = useTopProducts({
     newProducts,
     topProducts,
   });
@@ -44,8 +44,7 @@ export const TopProducts = ({ newProducts, topProducts }: TopProductsProps) => {
         Рекомендуем вам
       </UiTitle>
       <TopProductsNav
-        setHit={setHit}
-        setNew={setNew}
+        setActive={setActive}
         topProductAction={topProductAction}
         screenWidth={screenWidth}
       />

@@ -1,20 +1,23 @@
 import { useEffect, useState } from "react";
 import { IProduct } from "@/shared/types/product";
-import { ITopProducts } from "@/shared/types/top-products";
 
 export type TopProductsActive = "hits" | "new";
 
+interface IUseTopProducts {
+  newProducts: IProduct[];
+  topProducts: IProduct[];
+}
 export interface IUseTopProductsReturn {
-  setHit: () => void;
-  setNew: () => void;
-  currentAction: ITopProducts[];
+  setActive: (action: TopProductsActive) => void;
+  currentAction: IProduct[];
   topProductAction: TopProductsActive;
 }
 
 interface IUseTopProducts {
-  newProducts: ITopProducts[];
-  topProducts: ITopProducts[];
+  newProducts: IProduct[];
+  topProducts: IProduct[];
 }
+
 export const useTopProducts = ({
   newProducts,
   topProducts,
@@ -22,24 +25,20 @@ export const useTopProducts = ({
   const [topProductAction, setTopProductAction] =
     useState<TopProductsActive>("hits");
 
-  const setHit = () => {
-    setTopProductAction("hits");
-  };
-
-  const setNew = () => {
-    setTopProductAction("new");
+  const setActive = (action: TopProductsActive) => {
+    setTopProductAction(action);
   };
 
   useEffect(() => {
-    setTopProductAction("hits");
+    setActive("hits");
   }, []);
 
-  const currentActionMapper: Record<TopProductsActive, ITopProducts[]> = {
+  const currentActionMapper: Record<TopProductsActive, IProduct[]> = {
     hits: topProducts,
     new: newProducts,
   };
 
   const currentAction = currentActionMapper[topProductAction];
 
-  return { setHit, setNew, currentAction, topProductAction };
+  return { setActive, currentAction, topProductAction };
 };

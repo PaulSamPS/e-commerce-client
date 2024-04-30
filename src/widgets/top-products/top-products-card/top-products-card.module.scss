@@ -57,39 +57,11 @@
     }
   }
 
-  .price {
-    color: var(--black);
-    font-weight: 600;
-    font-size: 22px;
-    line-height: 40px;
-  }
-
-  .sale {
-    display: flex;
-    align-items: center;
-
-    .oldPrice {
-      margin-right: 10px;
-      color: var(--steel-gray-a540);
-      font-weight: 500;
-      font-size: 16px;
-      line-height: .8;
-      text-decoration: line-through;
-    }
-
-    .discount {
-      padding: 1px 5px;
-      color: var(--white);
-      font-weight: 500;
-      font-size: 12px;
-      background: var(--blue-themed);
-      border-radius: 2px;
-    }
-  }
 
   .bottom {
     display: flex;
     align-items: center;
+    margin-top: 10px;
 
     .in-the-basket {
       background-color: var(--steel-gray-500);

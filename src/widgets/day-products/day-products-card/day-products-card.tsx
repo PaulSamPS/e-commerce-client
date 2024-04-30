@@ -9,6 +9,7 @@ import clsx from "clsx";
 import { UiRating } from "@/shared/ui/ui-rating/ui-rating";
 import { UiReview } from "@/shared/ui/ui-review/ui-review";
 import Image from "next/image";
+import { UiPriceDisplay } from "@/shared/ui/ui-price-display/ui-price-display";
 
 interface DayProductsCardProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
@@ -50,15 +51,11 @@ export const DayProductsCard = ({
     >
       {product.name}
     </Link>
-    <div className={styles.sale}>
-      <span className={styles["old-price"]}>{priceRu(product.oldPrice)}</span>
-      <span className={styles.discount}>
-        -{priceRu(product.oldPrice! - product.price)}
-      </span>
-    </div>
-    <div className={styles.bottom}>
-      <span className={styles.price}>{priceRu(product.price)}</span>
-      {addToCart}
-    </div>
+    <UiPriceDisplay
+      price={product.price}
+      oldPrice={product.oldPrice}
+      discount={product.discount}
+      addToCart={addToCart}
+    />
   </div>
 );

@@ -20,6 +20,26 @@ const socialLinks = [
     name: "Вконтакте",
   },
 ];
+
+type SocialLinkProps = {
+  href: string;
+  img: string;
+  name: string;
+};
+
+const SocialLink = ({ href, img, name }: SocialLinkProps) => (
+  <a href={href} className={styles.link}>
+    <Image src={img} alt={name} width={32} height={32} />
+  </a>
+);
+
+const SocialLinks = () => (
+  <div className={styles.links}>
+    {socialLinks.map((link) => (
+      <SocialLink href={""} key={link.id} {...link} />
+    ))}
+  </div>
+);
 export const Footer = () => (
   <footer className={styles.footer}>
     <div className={styles.container}>
@@ -32,17 +52,7 @@ export const Footer = () => (
         <UiText weight="regular" className={styles["social-text"]}>
           На связи 24/7 :
         </UiText>
-        <div className={styles.links}>
-          {socialLinks.map((s) => (
-            <a
-              key={s.id}
-              href={"http://localhost:5500"}
-              className={styles.link}
-            >
-              <Image src={s.img} alt={s.name} width={32} height={32} />
-            </a>
-          ))}
-        </div>
+        <SocialLinks />
       </div>
     </div>
     <div className={styles.bottom}>

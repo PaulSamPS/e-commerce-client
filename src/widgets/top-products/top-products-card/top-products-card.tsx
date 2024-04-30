@@ -1,29 +1,34 @@
-"use client";
-
 import clsx from "clsx";
 import Link from "next/link";
-import React, { DetailedHTMLProps, HTMLAttributes, ReactNode } from "react";
+import React, { ReactNode } from "react";
 import styles from "./top-products-card.module.scss";
-import { priceRu } from "@/shared/lib/priceRu";
 import { UiRating } from "@/shared/ui/ui-rating/ui-rating";
 import { UiReview } from "@/shared/ui/ui-review/ui-review";
 import { UiText } from "@/shared/ui/ui-text";
 import Image from "next/image";
 import { IProduct } from "@/shared/types/product";
+import { UiPriceDisplay } from "@/shared/ui/ui-price-display/ui-price-display";
 
-interface CardProps
-  extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+const config = {
+  baseUrl: "http://localhost:5500",
+};
+
+interface CardProps {
   product: IProduct;
   addToCart: ReactNode;
   addToFavourite: ReactNode;
+  className?: string;
 }
 
-export const TopProductsCard = ({
+// Компонент для отображения цены
+
+// Компонент для отображения карточки продукта
+export const TopProductsCard: React.FC<CardProps> = ({
   product,
   addToCart,
   addToFavourite,
   className,
-}: CardProps) => (
+}) => (
   <div className={clsx(styles.wrapper, className)}>
     {product.isNew && (
       <UiText weight="regular" className={styles["new-item"]}>
@@ -31,11 +36,11 @@ export const TopProductsCard = ({
       </UiText>
     )}
     <div className={styles.img}>
-      <Link href={`http://localhost:5500/product/${product.name}`}>
+      <Link href={`${config.baseUrl}/product/${product.name}`}>
         <Image
           width={150}
           height={150}
-          src={`http://localhost:5500${product.images[0].url}`}
+          src={`${config.baseUrl}${product.images[0].url}`}
           alt={product.name}
           title={product.name}
           priority
@@ -44,25 +49,19 @@ export const TopProductsCard = ({
     </div>
     <div className={styles.rating}>
       {product.rating > 0 && <UiRating rating={product.rating} />}
-      <UiReview reviews={product.reviewCount ? product.reviewCount : 0} />
+      <UiReview reviews={product.reviewCount || 0} />
     </div>
     <Link
-      href={`http://localhost:5500/product/${product.category}/${product.name}`}
+      href={`${config.baseUrl}/product/${product.category}/${product.name}`}
       className={styles.name}
     >
       <span>{product.name}</span>
     </Link>
-    {product.discount > 0 && (
-      <div className={styles.sale}>
-        <span className={styles.oldPrice}>{priceRu(product.oldPrice)}</span>
-        {product.oldPrice > 0 && (
-          <span className={styles.discount}>
-            -{priceRu(product.oldPrice - product.price)}
-          </span>
-        )}
-      </div>
-    )}
-    <span className={styles.price}>{priceRu(product.price)}</span>
+    <UiPriceDisplay
+      price={product.price}
+      oldPrice={product.oldPrice}
+      discount={product.discount}
+    />
     <div className={styles.bottom}>
       {addToCart}
       {addToFavourite}
