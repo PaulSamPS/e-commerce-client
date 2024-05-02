@@ -7,9 +7,8 @@ import { UiModalWithHeader } from "@/shared/ui/ui-modal";
 import { UiAuthButton } from "@/shared/ui/ui-auth-button/ui-auth-button";
 import { useAppDispatch } from "@/shared/hooks/use-app-dispatch";
 import { useSelector } from "react-redux";
-import { userState } from "@/entities/User";
-import { checkAuthApi } from "@/entities/User/api-check-auth";
-import { UiSpinner } from "@/shared/ui/ui-spinner";
+import { userState } from "@/entities/user";
+import { checkAuthApi } from "@/entities/user/api/api-check-auth";
 
 export const Auth = () => {
   const { isOpen, setIsOpen } = useContext(AuthModalAppContext);

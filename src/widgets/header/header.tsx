@@ -1,17 +1,35 @@
+"use client";
+
 import styles from "./header.module.scss";
 import { UiLogo } from "@/shared/ui/ui-logo/ui-logo";
 import { Auth } from "@/features/auth/auth";
-import { Search } from "@/features/search/Search";
+import { Search } from "@/features/search/search";
 import { UiCartButton } from "@/shared/ui/ui-cart-button/ui-cart-button";
+import { useSelector } from "react-redux";
+import { cartState } from "@/entities/cart/state/state";
+import { useAppDispatch } from "@/shared/hooks/use-app-dispatch";
+import { useEffect } from "react";
+import { getCartApi } from "@/entities/cart";
 
 export const Header = () => {
+  const { loading, cart } = useSelector(cartState);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getCartApi());
+  }, [dispatch]);
+
   return (
     <div className={styles.header}>
       <div className={styles["header-content"]}>
         <UiLogo companyName="Мебель-Стильно" slogan="Мебель со вкусом" />
         <Search />
         <Auth />
-        <UiCartButton productsCount={5} isLoading={false} totalPrice={125000} />
+        <UiCartButton
+          productsCount={cart?.products.length!}
+          isLoading={loading}
+          totalPrice={cart?.total_price!}
+        />
       </div>
     </div>
   );

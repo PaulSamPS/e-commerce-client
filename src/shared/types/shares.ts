@@ -1,9 +1,15 @@
+import { ImageType } from "@/shared/types/image";
+
 export interface IShares {
   id: number;
-  image: {
-    url: string;
-    name: string;
-  };
+  images: ImageType;
+  name: string;
+  path: string;
+}
+
+// Интерфейсы для параметров запросов API
+export interface SharesProps {
+  image: File;
   name: string;
   path: string;
 }

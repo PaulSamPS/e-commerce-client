@@ -1,7 +1,7 @@
 import { ReactElement, useCallback, useEffect, useState } from "react";
-import { SignIn } from "@/features/auth/sign-in/sign-in";
-import { SignUp } from "@/features/auth/sign-up/sign-up";
-import { ResetPassword } from "@/features/auth/reset-password/reset-password";
+import { SignIn } from "./sign-in/sign-in";
+import { SignUp } from "./sign-up/sign-up";
+import { ResetPassword } from "./reset-password/reset-password";
 
 type AuthProps = {
   isOpen: boolean;

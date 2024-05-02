@@ -1,0 +1,19 @@
+.wrapper {
+  flex-grow: 1;
+  margin-left: 29px;
+}
+
+.search {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+
+.search-group {
+  position: relative;
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  height: 40px;
+  font-weight: 500;
+}

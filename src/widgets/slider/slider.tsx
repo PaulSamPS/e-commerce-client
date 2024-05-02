@@ -2,23 +2,36 @@
 
 import React, { useState } from "react";
 import { SliderControls } from "./slider-controls";
-import { SliderItems } from "./slider-items";
 import { useScreenWidth } from "@/shared/hooks/use-screen-width";
-import { useAutoScroll } from "@/widgets/slider/useAutoPlay";
+import { useAutoScroll } from "./useAutoPlay";
 import { useSnapCarousel } from "react-snap-carousel";
 import styles from "./slider.module.scss";
-import { WrapperSlider } from "@/widgets/slider/wrapper-slider";
 import { UiDots } from "@/shared/ui/ui-dots";
-import { Shares } from "@/shared/api/shares";
 import { UiTitle } from "@/shared/ui/ui-title";
+import { IShares } from "@/shared/types/shares";
+import dynamic from "next/dynamic";
+import { UiSpinner } from "@/shared/ui/ui-spinner";
+import { SliderItems } from "@/widgets/slider/slider-items";
 
 interface SliderProps {
   width: number;
   height: number;
-  shares: Shares[];
+  shares: IShares[];
   title?: string;
 }
 
+const WrapperSlider = dynamic(() => import("./wrapper-slider"), {
+  loading: () => (
+    <div style={{ height: 300 }}>
+      <UiSpinner
+        color={"var(--blue-themed"}
+        position={"relative"}
+        bg={"transparent"}
+      />
+    </div>
+  ),
+  ssr: false,
+});
 export const Slider = ({ width, height, shares, title }: SliderProps) => {
   const { scrollRef, next, prev, activePageIndex, goTo, refresh } =
     useSnapCarousel();

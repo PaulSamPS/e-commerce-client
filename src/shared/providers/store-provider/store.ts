@@ -4,9 +4,11 @@ import {
   Reducer,
   ReducersMapObject,
 } from "@reduxjs/toolkit";
-import { AppState, ReducerManager } from "./app-state-schema";
+import { AppState } from "./app-state-schema";
 import { createReducerManager } from "./redux-manager";
-import { userReducer } from "@/entities/User";
+import { userReducer } from "@/entities/user";
+import { cartReducer } from "@/entities/cart/store/cart.store";
+import { productsSearchReducer } from "@/entities/product";
 
 export const createReduxStore = (
   initialState?: AppState,
@@ -15,6 +17,8 @@ export const createReduxStore = (
   const rootReducers: ReducersMapObject<AppState> = {
     ...asyncReducers,
     user: userReducer,
+    cart: cartReducer,
+    searchProduct: productsSearchReducer,
   };
 
   const reducerManager = createReducerManager(rootReducers);

@@ -1,0 +1,45 @@
+.products-block {
+  position: absolute;
+  padding: 15px;
+  top: 50px;
+  right: 5px;
+  width: 100%;
+  height: 150px;
+  background-color: var(--white);
+  border-radius: 4px;
+  box-shadow: 0 0 96px 0 rgb(0 0 0 / 16%), 0 0 2px 0 rgb(0 0 0 / 12%);
+}
+
+.product-list {
+  display: flex;
+  column-gap: 10px;
+}
+
+.product {
+  width: 100px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  row-gap: 5px;
+}
+
+.discount {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  color: var(--white);
+  font-weight: 500;
+  font-size: 13px;
+  text-transform: uppercase;
+  background: var(--blue-active);
+  border-radius: 50%;
+  box-shadow: 0 0 0 6px rgb(255 255 255 / 50%);
+}
+

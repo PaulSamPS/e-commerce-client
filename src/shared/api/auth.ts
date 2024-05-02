@@ -1,66 +1,18 @@
 import { createInstance } from "./api-instance";
-
-export interface User {
-  id: number;
-  email: string;
-  username: string;
-}
-
-export interface LoginResponse {
-  message: string;
-  user: User;
-}
-
-export interface ActivateResponse {
-  message: string;
-}
-
-export interface RegistrationResponse {
-  message: string;
-}
-
-export interface SendResetCodeResponse {
-  message: string;
-}
-
-export interface EnterResetCodeResponse {
-  message: string;
-}
-
-export interface NewPasswordResponse {
-  message: string;
-}
-
-// Интерфейсы для параметров запросов API
-export interface SignUpProps {
-  email: string;
-  password: string;
-  username: string;
-}
-
-export interface ActivateProps {
-  code: string;
-  email: string;
-}
-
-export interface SignInProps {
-  email: string;
-  password: string;
-}
-
-export interface SendResetPasswordCodeProps {
-  email: string;
-}
-
-export interface EnterResetPasswordCodeProps {
-  code: string;
-  email: string;
-}
-
-export interface NewPasswordProps {
-  email: string;
-  password: string;
-}
+import {
+  ActivateProps,
+  ActivateResponse,
+  EnterResetCodeResponse,
+  EnterResetPasswordCodeProps,
+  LoginResponse,
+  NewPasswordProps,
+  NewPasswordResponse,
+  RegistrationResponse,
+  SendResetCodeResponse,
+  SendResetPasswordCodeProps,
+  SignInProps,
+  SignUpProps,
+} from "@/shared/types/auth";
 
 // Общий тип для параметра options
 type RequestOptions = Parameters<typeof createInstance>[1];

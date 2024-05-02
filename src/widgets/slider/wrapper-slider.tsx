@@ -11,7 +11,7 @@ type WrapperSliderProps = {
   children: ReactNode;
 };
 
-export const WrapperSlider = ({
+const WrapperSlider = ({
   children,
   height,
   screenWidth,
@@ -31,3 +31,5 @@ export const WrapperSlider = ({
     </div>
   </div>
 );
+
+export default WrapperSlider;

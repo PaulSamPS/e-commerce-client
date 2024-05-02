@@ -1,14 +1,13 @@
 import { useSelector } from "react-redux";
 import styles from "./sign-up.module.scss";
 import { useAppDispatch } from "@/shared/hooks/use-app-dispatch";
-import { userState } from "@/entities/User";
+import { signUpApi, userState } from "@/entities/user";
 import { UiButtonGroup } from "@/shared/ui/ui-button-group/ui-button-group";
 import { UiFormWithInputs } from "@/shared/ui/ui-form-with-inputs/ui-from-with-inputs";
 import { ButtonProps } from "@/shared/ui/ui-button";
-import { emailOptions, usernameOptions } from "@/features/auth/constants";
-import { signUpApi } from "@/entities/User/api-sign-up";
-import { SignInFormProps } from "@/features/auth/sign-in/type";
+import { emailOptions, usernameOptions } from "../constants";
 import { memo } from "react";
+import { SignUpFormProps } from "@/shared/types/auth";
 
 type SignUpProps = {
   onSignIn: () => void;
@@ -48,7 +47,7 @@ export const SignUp = memo(({ onSignIn }: SignUpProps) => {
     },
   ];
 
-  const onSubmit = async (formData: SignInFormProps) => {
+  const onSubmit = async (formData: SignUpFormProps) => {
     dispatch(signUpApi(formData));
   };
 

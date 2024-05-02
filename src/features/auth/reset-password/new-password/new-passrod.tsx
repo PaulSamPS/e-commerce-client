@@ -1,7 +1,7 @@
 import { UiInput } from "@/shared/ui/ui-input";
 import { UiButton } from "@/shared/ui/ui-button";
 import styles from "./new-password.module.scss";
-import { useNewPasswordForm } from "@/features/auth/reset-password/new-password/useNewPasswordForm";
+import { useNewPasswordForm } from "./use-new-password-form";
 
 export const NewPassword = () => {
   const { register, handleSubmit, errors, isValid, newPassword, onSubmit } =

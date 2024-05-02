@@ -1,13 +1,10 @@
 import { createInstance } from "@/shared/api/api-instance";
-import { IProduct } from "@/shared/types/product";
+import { DayProductsProps, IProduct } from "@/shared/types/product";
 
 // Общий тип для параметра options
 type RequestOptions = Parameters<typeof createInstance>[1];
 
 // Интерфейсы для параметров запросов API
-export interface DayProductsProps {
-  productName: string;
-}
 
 export const dayProductsSet = (options?: RequestOptions) => {
   return createInstance<IProduct[]>(

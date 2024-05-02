@@ -1,13 +1,14 @@
 import { Slider } from "@/widgets/slider";
 import { Social } from "@/widgets/social/social";
-import { Shares } from "@/shared/api/shares";
 import styles from "./page.module.scss";
 import { IDayProducts, IProduct } from "@/shared/types/product";
 import { DayProducts } from "@/widgets/day-products/day-products";
 import { Sidebar } from "@/widgets/sidebar/Sidebar";
 import { TopProducts } from "@/widgets/top-products/TopProducts";
+import { IShares } from "@/shared/types/shares";
+import dynamic from "next/dynamic";
 
-async function getShares(): Promise<Shares[]> {
+async function getShares(): Promise<IShares[]> {
   const data = await fetch("http://localhost:5500/shares");
 
   if (!data) {

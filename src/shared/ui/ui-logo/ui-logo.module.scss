@@ -5,18 +5,17 @@
   cursor: pointer;
   text-align: center;
 
-  &.text {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-
-    h1 {
-      font-size: 20px;
-    }
+  h1 {
+    font-size: 20px !important;
   }
 
   & .company-name {
     display: flex;
+  }
+
+  .slogan {
+    display: flex;
+    flex-direction: column;
   }
 
   & .title-color {

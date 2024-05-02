@@ -1,7 +1,6 @@
-import { ReactElement, useCallback, useEffect, useMemo, useState } from "react";
+import { ReactElement, useMemo } from "react";
 import { SendResetCode } from "@/features/auth/reset-password/send-code/send-reset-code";
 import { EnterResetCode } from "@/features/auth/reset-password/enter-code/enter-reset-code";
-import { ResetPasswordProps } from "@/features/auth/reset-password/types";
 import { NewPassword } from "@/features/auth/reset-password/new-password/new-passrod";
 
 enum ResetActions {

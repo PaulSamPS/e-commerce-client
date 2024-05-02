@@ -22,7 +22,13 @@ export const UiCartButton = ({
 
   const renderBasketContent = () => {
     if (isLoading) {
-      return <UiSpinner position="relative" />;
+      return (
+        <UiSpinner
+          position="relative"
+          bg={"transparent"}
+          color={"var(--blue-themed)"}
+        />
+      );
     }
 
     if (hasProducts) {

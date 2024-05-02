@@ -1,13 +1,13 @@
-import { memo } from "react";
+import React, { memo } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Shares } from "@/shared/api/shares";
 import styles from "./slider.module.scss";
+import { IShares } from "@/shared/types/shares";
 
 interface SliderItemProps {
   width: number;
   height: number;
-  share: Shares;
+  share: IShares;
 }
 
 export const SliderItem = memo(({ width, height, share }: SliderItemProps) => {

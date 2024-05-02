@@ -28,3 +28,26 @@ export interface IProduct {
 export interface IDayProducts extends IProduct {}
 export interface IOneDayProducts extends IProduct {}
 export interface IYesterdayProducts extends IProduct {}
+
+export interface ProductCart {
+  name: string;
+  count: number;
+  image: string;
+  price: number;
+  inStock: number;
+  discount: number;
+  productId: number;
+}
+
+export interface DayProductsProps {
+  productName: string;
+}
+
+export interface IProductsSearchData {
+  count: number;
+  rows: IProduct[];
+}
+
+export interface ISearchProduct {
+  search: string;
+}

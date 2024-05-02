@@ -1,1 +1,0 @@
-export {productsSearchReducer} from './search-product.store'

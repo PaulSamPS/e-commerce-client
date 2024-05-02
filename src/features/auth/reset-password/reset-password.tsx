@@ -2,12 +2,11 @@ import {
   DynamicModule,
   ReducerMap,
 } from "@/shared/providers/store-provider/dynamic-module";
-import { resetPasswordReducer } from "@/entities/User/reset-password.store";
-import { ResetPasswordProps } from "@/features/auth/reset-password/types";
-import { useResetPassword } from "@/features/auth/reset-password/useResetPassword";
+import { resetPasswordReducer, resetPasswordState } from "@/entities/user";
+import { useResetPassword } from "./useResetPassword";
 import styles from "./reset-password.module.scss";
 import { useSelector } from "react-redux";
-import { resetPasswordState } from "@/entities/User";
+import { ResetPasswordProps } from "@/shared/types/auth";
 
 const INITIAL_REDUCERS: ReducerMap = {
   resetPassword: resetPasswordReducer,

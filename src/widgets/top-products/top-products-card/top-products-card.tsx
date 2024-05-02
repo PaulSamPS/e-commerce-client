@@ -4,10 +4,10 @@ import React, { ReactNode } from "react";
 import styles from "./top-products-card.module.scss";
 import { UiRating } from "@/shared/ui/ui-rating/ui-rating";
 import { UiReview } from "@/shared/ui/ui-review/ui-review";
-import { UiText } from "@/shared/ui/ui-text";
 import Image from "next/image";
 import { IProduct } from "@/shared/types/product";
 import { UiPriceDisplay } from "@/shared/ui/ui-price-display/ui-price-display";
+import { UiBadge } from "@/shared/ui/ui-badge/ui-badge";
 
 const config = {
   baseUrl: "http://localhost:5500",
@@ -30,11 +30,7 @@ export const TopProductsCard: React.FC<CardProps> = ({
   className,
 }) => (
   <div className={clsx(styles.wrapper, className)}>
-    {product.isNew && (
-      <UiText weight="regular" className={styles["new-item"]}>
-        Новинка
-      </UiText>
-    )}
+    {product.isNew && <UiBadge text={"новинка"} />}
     <div className={styles.img}>
       <Link href={`${config.baseUrl}/product/${product.name}`}>
         <Image

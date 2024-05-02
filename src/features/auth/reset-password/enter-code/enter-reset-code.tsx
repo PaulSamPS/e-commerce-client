@@ -6,9 +6,8 @@ import styles from "./enter-reset-code.module.scss";
 import { UiButton } from "@/shared/ui/ui-button";
 import { UiText } from "@/shared/ui/ui-text";
 import { useAppDispatch } from "@/shared/hooks/use-app-dispatch";
-import { enterResetPasswordCode } from "@/entities/User/reset-password-api";
 import { useSelector } from "react-redux";
-import { resetPasswordState } from "@/entities/User";
+import { enterResetPasswordCode, resetPasswordState } from "@/entities/user";
 
 export const EnterResetCode = () => {
   const [codes, setCodes] = useState<string[]>(Array(4).fill(""));
