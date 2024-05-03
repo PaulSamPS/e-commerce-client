@@ -2,7 +2,7 @@
 
 import { useAuth } from "@/features/auth/useAuth";
 import { useContext, useEffect } from "react";
-import { AuthModalAppContext } from "@/shared/context/appContext";
+import { AuthModalAppContext } from "@/shared/context/authModalAppContext";
 import { UiModalWithHeader } from "@/shared/ui/ui-modal";
 import { UiAuthButton } from "@/shared/ui/ui-auth-button/ui-auth-button";
 import { useAppDispatch } from "@/shared/hooks/use-app-dispatch";
@@ -17,7 +17,7 @@ export const Auth = () => {
   const { userData, loading } = useSelector(userState);
 
   useEffect(() => {
-    dispatch(checkAuthApi());
+    dispatch(checkAuthApi()).finally(() => dispatch(checkAuthApi()));
   }, [dispatch]);
 
   const handleCloseModal = () => {

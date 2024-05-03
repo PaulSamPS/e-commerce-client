@@ -1,8 +1,7 @@
 import React, { LegacyRef } from "react";
 import { IShares } from "@/shared/types/shares";
-import styles from "./slider.module.scss";
-import { SliderItem } from "./slider-item";
-import { UiSpinner } from "@/shared/ui/ui-spinner";
+import styles from "./ui-slider-items.module.scss";
+import { UiSliderItem } from "@/shared/ui/ui-slider/ui-slider-item/ui-slider-item";
 
 interface SliderItemsProps {
   width: number;
@@ -11,7 +10,7 @@ interface SliderItemsProps {
   scrollRef: LegacyRef<HTMLDivElement> | undefined;
 }
 
-export const SliderItems = ({
+export const UiSliderItems = ({
   width,
   height,
   shares,
@@ -20,7 +19,7 @@ export const SliderItems = ({
   return (
     <div className={styles["slider-wrapper"]} ref={scrollRef}>
       {shares.map((share, index) => (
-        <SliderItem key={index} width={width} height={height} share={share} />
+        <UiSliderItem key={index} width={width} height={height} share={share} />
       ))}
     </div>
   );

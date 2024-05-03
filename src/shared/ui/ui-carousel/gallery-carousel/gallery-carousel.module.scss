@@ -1,0 +1,30 @@
+.slider-wrapper {
+  position: relative;
+  display: flex;
+  margin: 33px auto 0;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  overflow: scroll;
+  overflow-y: hidden;
+
+  &::-webkit-scrollbar {
+    display: none;
+    width: 0;
+  }
+}
+
+.slider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto 0;
+  transition: all ease-in-out .5s;
+  scroll-snap-align: start;
+
+  img {
+    object-fit: contain;
+    cursor: pointer;
+    transition: transform .5s;
+  }
+}

@@ -7,7 +7,7 @@ import { emailOptions, usernameOptions } from "../constants";
 import { useAppDispatch } from "@/shared/hooks/use-app-dispatch";
 import { signInApi, userState } from "@/entities/user";
 import { useSelector } from "react-redux";
-import { AuthModalAppContext } from "@/shared/context/appContext";
+import { AuthModalAppContext } from "@/shared/context/authModalAppContext";
 import { SignInFormProps } from "@/shared/types/auth";
 
 interface SignInProps {

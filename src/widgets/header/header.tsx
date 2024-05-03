@@ -16,7 +16,7 @@ export const Header = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(getCartApi());
+    dispatch(getCartApi()).finally(() => dispatch(getCartApi()));
   }, [dispatch]);
 
   return (

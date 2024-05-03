@@ -1,42 +1,52 @@
 "use client";
 
 import React, { useState } from "react";
-import { SliderControls } from "./slider-controls";
+import { UiSliderControls } from "@/shared/ui/ui-slider/ui-slider-controls/ui-slider-controls";
 import { useScreenWidth } from "@/shared/hooks/use-screen-width";
 import { useAutoScroll } from "./useAutoPlay";
 import { useSnapCarousel } from "react-snap-carousel";
-import styles from "./slider.module.scss";
+import styles from "./ui-slider.module.scss";
 import { UiDots } from "@/shared/ui/ui-dots";
 import { UiTitle } from "@/shared/ui/ui-title";
 import { IShares } from "@/shared/types/shares";
 import dynamic from "next/dynamic";
 import { UiSpinner } from "@/shared/ui/ui-spinner";
-import { SliderItems } from "@/widgets/slider/slider-items";
+import { UiSliderItems } from "@/shared/ui/ui-slider/ui-slider-items/ui-slider-items";
 
 interface SliderProps {
   width: number;
   height: number;
   shares: IShares[];
   title?: string;
+  auto?: boolean;
 }
 
-const WrapperSlider = dynamic(() => import("./wrapper-slider"), {
-  loading: () => (
-    <div style={{ height: 300 }}>
-      <UiSpinner
-        color={"var(--blue-themed"}
-        position={"relative"}
-        bg={"transparent"}
-      />
-    </div>
-  ),
-  ssr: false,
-});
-export const Slider = ({ width, height, shares, title }: SliderProps) => {
+const WrapperSlider = dynamic(
+  () => import("@/shared/ui/ui-slider/ui-wrapper-slider/ui-wrapper-slider"),
+  {
+    loading: () => (
+      <div style={{ height: 300 }}>
+        <UiSpinner
+          color={"var(--blue-themed"}
+          position={"relative"}
+          bg={"transparent"}
+        />
+      </div>
+    ),
+    ssr: false,
+  },
+);
+export const UiSlider = ({
+  width,
+  height,
+  shares,
+  title,
+  auto = true,
+}: SliderProps) => {
   const { scrollRef, next, prev, activePageIndex, goTo, refresh } =
     useSnapCarousel();
   const screenWidth = useScreenWidth();
-  const [autoPlay, setAutoPlay] = useState<boolean>(true);
+  const [autoPlay, setAutoPlay] = useState<boolean>(auto);
 
   useAutoScroll({
     autoPlay,
@@ -58,13 +68,13 @@ export const Slider = ({ width, height, shares, title }: SliderProps) => {
         height={height}
         setAuto={setAutoPlay}
       >
-        <SliderItems
+        <UiSliderItems
           width={width}
           height={height}
           shares={shares}
           scrollRef={scrollRef}
         />
-        <SliderControls prev={prev} next={next} />
+        <UiSliderControls prev={prev} next={next} />
         {screenWidth > 1000 && (
           <UiDots
             className={styles.dots}

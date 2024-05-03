@@ -1,0 +1,13 @@
+.slider {
+  transition: all ease-in-out .5s;
+  scroll-snap-align: start;
+  &::-webkit-scrollbar {
+    display: none;
+    width: 0;
+  }
+
+  img {
+    height: 100%;
+    object-fit: cover;
+  }
+}

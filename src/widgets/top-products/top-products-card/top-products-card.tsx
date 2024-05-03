@@ -32,7 +32,7 @@ export const TopProductsCard: React.FC<CardProps> = ({
   <div className={clsx(styles.wrapper, className)}>
     {product.isNew && <UiBadge text={"новинка"} />}
     <div className={styles.img}>
-      <Link href={`${config.baseUrl}/product/${product.name}`}>
+      <Link href={`/product/${product.name}`}>
         <Image
           width={150}
           height={150}
@@ -48,7 +48,7 @@ export const TopProductsCard: React.FC<CardProps> = ({
       <UiReview reviews={product.reviewCount || 0} />
     </div>
     <Link
-      href={`${config.baseUrl}/product/${product.category}/${product.name}`}
+      href={`/product/${product.category}/${product.name}`}
       className={styles.name}
     >
       <span>{product.name}</span>

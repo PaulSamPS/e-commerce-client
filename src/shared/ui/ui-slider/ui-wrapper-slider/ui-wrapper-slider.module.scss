@@ -1,0 +1,11 @@
+.wrapper {
+  position: relative;
+
+  &:hover {
+    button {
+      svg {
+        fill: var(--black);
+      }
+    }
+  }
+}

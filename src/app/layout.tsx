@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.scss";
-import { AuthModalAppContextProvider } from "@/shared/context/appContext";
+import { AuthModalAppContextProvider } from "@/shared/context/authModalAppContext";
 import { StoreProvider } from "@/shared/providers/store-provider";
 import { ReactNode } from "react";
 import { ToastContainer } from "react-toastify";

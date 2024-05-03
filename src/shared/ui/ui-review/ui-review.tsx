@@ -1,9 +1,6 @@
-import React, {
-  DetailedHTMLProps,
-  HTMLAttributes,
-  useContext,
-  useRef,
-} from "react";
+"use client";
+
+import React, { DetailedHTMLProps, HTMLAttributes, useRef } from "react";
 
 import styles from "./ui-review.module.scss";
 import { ReviewIcon } from "@/shared/assets/icons";

@@ -5,7 +5,7 @@ type SliderControlsProps = {
   prev: () => void;
 };
 
-export const SliderControls = ({ next, prev }: SliderControlsProps) => (
+export const UiSliderControls = ({ next, prev }: SliderControlsProps) => (
   <>
     <UiArrowButton onClick={prev} appearance="left" background="white" />
     <UiArrowButton onClick={next} appearance="right" background="white" />

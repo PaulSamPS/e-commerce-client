@@ -1,0 +1,15 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.top {
+  display: grid;
+  grid-template-columns: 650px auto;
+}
+
+.rating {
+  display: flex;
+  margin-top: 10px;
+  column-gap: 10px;
+}

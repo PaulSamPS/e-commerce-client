@@ -24,7 +24,7 @@ export const DayProductsCard = ({
 }: DayProductsCardProps) => (
   <div className={clsx(styles.wrapper, className)}>
     <div className={styles.img}>
-      <Link href={`http://localhost:5500/today/${product.name}`}>
+      <Link href={`/today/${product.name}`}>
         <Image
           src={`http://localhost:5500${product.images[0].url}`}
           alt={product.name}
@@ -39,10 +39,7 @@ export const DayProductsCard = ({
       {product.rating > 0 && <UiRating rating={product.rating} />}
       <UiReview reviews={product.reviewCount > 0 ? product.reviewCount : 0} />
     </div>
-    <Link
-      className={styles.name}
-      href={`http://localhost:5500/today/${product.name}`}
-    >
+    <Link className={styles.name} href={`/today/${product.name}`}>
       {product.name}
     </Link>
     <UiPriceDisplay

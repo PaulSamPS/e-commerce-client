@@ -1,0 +1,41 @@
+.preview-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+
+  max-width: 218px;
+  margin: 33px auto;
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    display: none;
+    width: 0;
+  }
+}
+
+.preview-slider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 54.5px;
+  border: 1px solid var(--steel-gray-100);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all ease-in-out .2s;
+
+  &:last-child {
+    margin: 0;
+  }
+
+  img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+  }
+}
+
+
+.active {
+  border: 1px solid var(--blue-active);
+}
