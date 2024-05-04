@@ -1,11 +1,11 @@
 "use client";
 
-import React, { AllHTMLAttributes, useEffect } from "react";
+import React, { AllHTMLAttributes } from "react";
 import clsx from "clsx";
 import styles from "./favourite-button.module.scss";
 import { useAppDispatch } from "@/shared/hooks/use-app-dispatch";
 import { UiButton } from "@/shared/ui/ui-button";
-import { FavouriteFillIcon, FavouriteIcon } from "@/shared/assets/icons";
+import { FavoriteIcon, FavoriteFilledIcon } from "@/shared/assets/icons";
 
 interface IFavouriteProps extends AllHTMLAttributes<HTMLButtonElement> {
   productId: number;
@@ -59,7 +59,11 @@ export const FavouriteButton = ({ productId, className }: IFavouriteProps) => {
       onKeyDown={onPressEnter}
       className={clsx(styles.favourite, className)}
     >
-      {isFavourite ? <FavouriteFillIcon /> : <FavouriteIcon />}
+      {isFavourite ? (
+        <FavoriteFilledIcon className={styles["icon-filled"]} />
+      ) : (
+        <FavoriteIcon />
+      )}
     </UiButton>
   );
 };

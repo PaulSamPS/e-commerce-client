@@ -15,8 +15,7 @@
     scroll-behavior: smooth;
     -ms-overflow-style: none;
     scrollbar-width: none;
-    column-gap: 30px;
-    position: relative;
+    column-gap: 12px;
 
     &::-webkit-scrollbar {
       display: none;
@@ -28,5 +27,10 @@
 
 .card {
   scroll-snap-align: start;
+}
+
+.arrow {
+  transform: unset !important;
+  top: 45% !important;
 }
 

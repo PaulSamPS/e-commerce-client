@@ -8,8 +8,8 @@ import AddToCartIcon from "./addToCart.svg";
 import StarIcon from "./star.svg";
 import ReviewIcon from "./review.svg";
 import CartIcon from "./cart-icon.svg";
-import FavouriteIcon from "./favourite.svg";
-import FavouriteFillIcon from "./favouriteFill.svg";
+import FavoriteIcon from "./favorite.svg";
+import FavoriteFilledIcon from "./favorite-filled.svg";
 
 export {
   ChatIcon,
@@ -22,6 +22,6 @@ export {
   StarIcon,
   ReviewIcon,
   CartIcon,
-  FavouriteIcon,
-  FavouriteFillIcon,
+  FavoriteIcon,
+  FavoriteFilledIcon,
 };

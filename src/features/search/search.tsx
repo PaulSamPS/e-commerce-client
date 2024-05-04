@@ -20,9 +20,9 @@ import { SearchInput } from "./search-input/search-input";
 
 export const Search = () => {
   const [searchText, setSearchText] = useState<string>("");
-  const [isVisible, setIsVisible] = useState<boolean>(false);
   const ref = useRef<HTMLDivElement | null>(null);
   const state = useSelector(searchState);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
 
   const dispatch = useAppDispatch();
   const { push } = useRouter();

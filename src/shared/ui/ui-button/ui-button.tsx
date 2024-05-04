@@ -47,11 +47,7 @@ export const UiButton: FC<ButtonProps> = ({
         ></span>
       )}
       {before && !isLoading && before}
-      {!isLoading && (
-        <span className={clsx(styles.content, isLoading && styles.hidden)}>
-          {children}
-        </span>
-      )}
+      {!isLoading && children}
       {after && !isLoading && after}
     </button>
   );

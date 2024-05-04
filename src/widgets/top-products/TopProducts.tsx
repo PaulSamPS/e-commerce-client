@@ -12,7 +12,7 @@ import { UiArrowButton } from "@/shared/ui/ui-arrow";
 import { AddToCart } from "@/features/add-to-cart/add-to-cart";
 import { FavouriteButton } from "@/features/favourites-button/favourite-button";
 
-const IMAGE_WIDTH = 390;
+const IMAGE_WIDTH = 336;
 const CONTAINER_WIDTH = 1200;
 
 type TopProductsProps = {
@@ -65,7 +65,7 @@ export const TopProducts = ({ newProducts, topProducts }: TopProductsProps) => {
             appearance="left"
             background="white"
             onClick={prev}
-            className={styles.arrowLeft}
+            className={styles.arrow}
           />
         )}
         {canScrollRight && (
@@ -74,7 +74,7 @@ export const TopProducts = ({ newProducts, topProducts }: TopProductsProps) => {
             appearance="right"
             background="white"
             onClick={next}
-            className={styles.arrowRight}
+            className={styles.arrow}
           />
         )}
       </div>

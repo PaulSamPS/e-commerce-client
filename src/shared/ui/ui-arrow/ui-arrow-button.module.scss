@@ -18,21 +18,23 @@
   }
 }
 
-.backgroundWhite {
+.white {
   background: var(--white-alpha-72);
   border-radius: 40px;
 }
 
-.backgroundNone {
+.none {
   background: none;
 }
-.arrowLeft,
-.arrowRight {
+
+
+.left,
+.right {
   top: 50%;
   transform: translateY(-50%);
 }
 
-.arrowLeft {
+.left {
   left: -30px;
 
   svg {
@@ -40,7 +42,7 @@
   }
 }
 
-.arrowRight {
+.right {
   right: -30px;
   svg {
     margin-right: 21px;

@@ -20,12 +20,12 @@ export const UiArrowButton: FC<
     className,
     styles.btn,
     {
-      left: styles.arrowLeft,
-      right: styles.arrowRight,
+      left: styles.left,
+      right: styles.right,
     }[appearance],
     {
-      white: styles.backgroundWhite,
-      none: styles.backgroundNone,
+      white: styles.white,
+      none: styles.none,
     }[background],
   );
 
