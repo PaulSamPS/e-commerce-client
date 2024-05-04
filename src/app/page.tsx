@@ -4,8 +4,9 @@ import styles from "./page.module.scss";
 import { IDayProducts, IProduct } from "@/shared/types/product";
 import { DayProducts } from "@/widgets/day-products/day-products";
 import { Sidebar } from "@/widgets/sidebar/Sidebar";
-import { TopProducts } from "@/widgets/top-products/TopProducts";
+import { TopProducts } from "@/widgets/top-products/top-products";
 import { IShares } from "@/shared/types/shares";
+import { RecentlyViewed } from "@/widgets/recently-viewed/recently-viewed";
 
 async function getShares(): Promise<IShares[]> {
   const data = await fetch("http://localhost:5500/shares");
@@ -63,6 +64,7 @@ export default async function Home() {
         </div>
       </div>
       <TopProducts topProducts={topProducts} newProducts={newProducts} />
+      <RecentlyViewed />
       <Social />
     </>
   );

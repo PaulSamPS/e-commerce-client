@@ -9,21 +9,13 @@ type IUseTopProductCarousel = {
   container: number;
 };
 
-export const useTopProductCarousel = ({
+export const useCarousel = ({
   imgWidth,
   arrLength,
-  container,
 }: IUseTopProductCarousel) => {
-  const screenWidth = useScreenWidth();
   const [canScrollLeft, setCanScrollLeft] = useState<boolean>(false);
   const [canScrollRight, setCanScrollRight] = useState<boolean>(false);
   const scrollRef = useRef<HTMLDivElement | null>(null);
-
-  const currentContainer = useMemo(() => {
-    return (
-      imgWidth * arrLength > (screenWidth > container ? container : screenWidth)
-    );
-  }, [imgWidth, arrLength, screenWidth, container]);
 
   const scrollContainerBy = useCallback((distance: number) => {
     scrollRef.current?.scrollBy({ left: distance, behavior: "smooth" });
@@ -73,9 +65,7 @@ export const useTopProductCarousel = ({
     scrollRef,
     canScrollLeft,
     canScrollRight,
-    currentContainer,
     prev,
     next,
-    screenWidth,
   };
 };

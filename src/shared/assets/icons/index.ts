@@ -10,6 +10,7 @@ import ReviewIcon from "./review.svg";
 import CartIcon from "./cart-icon.svg";
 import FavoriteIcon from "./favorite.svg";
 import FavoriteFilledIcon from "./favorite-filled.svg";
+import CatalogIcon from "./catalog.svg";
 
 export {
   ChatIcon,
@@ -24,4 +25,5 @@ export {
   CartIcon,
   FavoriteIcon,
   FavoriteFilledIcon,
+  CatalogIcon,
 };

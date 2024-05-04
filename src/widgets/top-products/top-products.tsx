@@ -1,16 +1,16 @@
 "use client";
 
 import React from "react";
-import styles from "./TopProducts.module.scss";
+import styles from "./top-products.module.scss";
 import { UiTitle } from "@/shared/ui/ui-title";
 import { IProduct } from "@/shared/types/product";
-import { TopProductsCard } from "./top-products-card/top-products-card";
 import { TopProductsNav } from "./top-products-nav/top-products-nav";
-import { useTopProducts } from "@/widgets/top-products/useTopProducts";
-import { useTopProductCarousel } from "@/widgets/top-products/useTopProductCarousel";
+import { useTopProducts } from "@/widgets/top-products/use-top-products";
+import { useCarousel } from "@/shared/hooks/use-carousel";
 import { UiArrowButton } from "@/shared/ui/ui-arrow";
 import { AddToCart } from "@/features/add-to-cart/add-to-cart";
 import { FavouriteButton } from "@/features/favourites-button/favourite-button";
+import { UiCarouselProductCard } from "@/shared/ui/ui-carousel-product-card/ui-carousel-product-card";
 
 const IMAGE_WIDTH = 336;
 const CONTAINER_WIDTH = 1200;
@@ -24,15 +24,7 @@ export const TopProducts = ({ newProducts, topProducts }: TopProductsProps) => {
     newProducts,
     topProducts,
   });
-  const {
-    scrollRef,
-    screenWidth,
-    canScrollLeft,
-    canScrollRight,
-    prev,
-    next,
-    currentContainer,
-  } = useTopProductCarousel({
+  const { scrollRef, canScrollLeft, canScrollRight, prev, next } = useCarousel({
     imgWidth: IMAGE_WIDTH,
     arrLength: currentAction.length,
     container: CONTAINER_WIDTH,
@@ -46,12 +38,11 @@ export const TopProducts = ({ newProducts, topProducts }: TopProductsProps) => {
       <TopProductsNav
         setActive={setActive}
         topProductAction={topProductAction}
-        screenWidth={screenWidth}
       />
       <div className={styles["card-block"]} ref={scrollRef}>
         {currentAction &&
           currentAction.map((p) => (
-            <TopProductsCard
+            <UiCarouselProductCard
               key={p.id}
               product={p}
               className={styles.card}
