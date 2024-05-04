@@ -9,15 +9,14 @@
 
   .card-block {
     display: flex;
-    flex-shrink: 0;
     overflow-x: auto;
-    column-gap: 2px;
-    row-gap: 20px;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
     -ms-overflow-style: none;
     scrollbar-width: none;
+    column-gap: 30px;
+    position: relative;
 
     &::-webkit-scrollbar {
       display: none;

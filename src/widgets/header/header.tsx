@@ -10,10 +10,13 @@ import { cartState } from "@/entities/cart/state/state";
 import { useAppDispatch } from "@/shared/hooks/use-app-dispatch";
 import { useEffect } from "react";
 import { getCartApi } from "@/entities/cart";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export const Header = () => {
   const { loading, cart } = useSelector(cartState);
   const dispatch = useAppDispatch();
+  const { push } = useRouter();
 
   useEffect(() => {
     dispatch(getCartApi()).finally(() => dispatch(getCartApi()));
@@ -22,7 +25,9 @@ export const Header = () => {
   return (
     <div className={styles.header}>
       <div className={styles["header-content"]}>
-        <UiLogo companyName="Мебель-Стильно" slogan="Мебель со вкусом" />
+        <Link href={"/"}>
+          <UiLogo companyName="Мебель-Стильно" slogan="Мебель со вкусом" />
+        </Link>
         <Search />
         <Auth />
         <UiCartButton

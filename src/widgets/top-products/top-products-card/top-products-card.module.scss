@@ -1,13 +1,14 @@
 .wrapper {
   position: relative;
   display: flex;
-  flex: 0 0 234px;
+  width: 240px;
   flex-direction: column;
   flex-shrink: 0;
   min-height: 100%;
-  margin: 0 2px;
-  padding: 16px 20px;
+  padding: 0 20px 16px;
   transition: all ease-in-out .5s;
+  border-radius: var(--border-radius);
+  border: 1px solid rgb(0 0 0 / 15%);
 
   &:hover {
     box-shadow: 0 0 12px 1px rgb(0 0 0 / 15%);
@@ -21,7 +22,7 @@
     width: 100%;
     max-width: 150px;
     height: 150px;
-    margin: 0 auto 10px;
+    margin: 0 auto 5px;
     overflow: hidden;
     cursor: pointer;
 
@@ -36,13 +37,12 @@
     display: flex;
     gap: 20px;
     align-items: center;
-    margin-top: 10px;
   }
 
   .name {
+    margin-top: 10px;
     display: -webkit-box;
     flex-grow: 1;
-    margin-top: 10px;
     margin-bottom: 15px;
     overflow: hidden;
     color: var(--black);

@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import debounce from "lodash.debounce";
 import { useScreenWidth } from "@/shared/hooks/use-screen-width";
+import { useSnapCarousel } from "react-snap-carousel";
 
 type IUseTopProductCarousel = {
   imgWidth: number;
@@ -40,7 +41,7 @@ export const useTopProductCarousel = ({
     const { current } = scrollRef;
     if (current) {
       const { scrollLeft, scrollWidth, clientWidth } = current;
-      setCanScrollLeft(scrollLeft > 2);
+      setCanScrollLeft(scrollLeft > 0);
       setCanScrollRight(scrollLeft !== scrollWidth - clientWidth);
     }
   }, []);
@@ -64,7 +65,7 @@ export const useTopProductCarousel = ({
 
   useEffect(() => {
     if (arrLength > 1) {
-      scrollRef.current?.scrollTo(0, 0);
+      scrollRef.current?.scrollTo({ left: 0, top: 0 });
     }
   }, [arrLength]);
 

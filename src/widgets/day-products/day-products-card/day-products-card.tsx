@@ -34,7 +34,7 @@ export const DayProductsCard = ({
         />
       </Link>
     </div>
-    <UiBadge text={"скидка"} discount={product.discount} />
+    <UiBadge text={"скидка"} discount={product.discount} color={"red"} />
     <div className={styles.rating}>
       {product.rating > 0 && <UiRating rating={product.rating} />}
       <UiReview reviews={product.reviewCount > 0 ? product.reviewCount : 0} />

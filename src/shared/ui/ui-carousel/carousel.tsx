@@ -1,10 +1,9 @@
 "use client";
 
-import Reac from "react";
+import clsx from "clsx";
 import styles from "./carousel.module.scss";
 import { IProduct } from "@/shared/types/product";
 import { useScreenWidth } from "@/shared/hooks/use-screen-width";
-import clsx from "clsx";
 import { GalleryCarousel } from "@/shared/ui/ui-carousel/gallery-carousel/gallery-carousel";
 import { CarouselControls } from "./carousel-control/carousel-control";
 import { PreviewCarousel } from "./preview-carousel/preview-carousel";
@@ -39,7 +38,7 @@ const Carousel = ({ currentProduct, imageWidth, className }: CarouselProps) => {
       <PreviewCarousel
         images={currentProduct?.images!}
         goToIndex={goTo}
-        offsetPreview={54.5}
+        offsetPreview={59.5}
         currentSlideIndex={activePageIndex}
       />
     </div>

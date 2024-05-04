@@ -15,7 +15,7 @@ export const SearchButton = ({ onClick, disabled }: SearchButtonProps) => {
       size="l"
       className={styles["search-btn"]}
       onClick={onClick}
-      disabled={disabled}
+      // disabled={disabled}
       after={<SearchIcon className={styles["search-icon"]} />}
     >
       Поиск

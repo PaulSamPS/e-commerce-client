@@ -5,19 +5,16 @@
   border: 0;
   cursor: pointer;
   transition: all ease-in-out .5s;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  transition: all ease-in-out .2s;
 
   &:hover {
-    svg {
       opacity: 1;
       fill: var(--blue-hover) !important;
-    }
-  }
-
-  svg {
-    width: 24px;
-    height: 24px;
-    margin-right: 21px;
-    transition: all ease-in-out .2s;
   }
 }
 
@@ -29,14 +26,23 @@
 .backgroundNone {
   background: none;
 }
+.arrowLeft,
+.arrowRight {
+  top: 50%;
+  transform: translateY(-50%);
+}
 
 .arrowLeft {
-  top: calc(50% - 25px);
   left: -30px;
-  transform: rotate(180deg);
+
+  svg {
+    margin-left: 21px;
+  }
 }
 
 .arrowRight {
-  top: calc(50% - 25px);
   right: -30px;
+  svg {
+    margin-right: 21px;
+  }
 }

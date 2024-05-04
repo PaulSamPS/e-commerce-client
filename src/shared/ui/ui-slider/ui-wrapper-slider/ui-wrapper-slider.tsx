@@ -1,9 +1,6 @@
 import styles from "../ui-slider.module.scss";
-import { UiTitle } from "@/shared/ui/ui-title";
-import { UiArrowButton } from "@/shared/ui/ui-arrow";
 import { ReactNode } from "react";
 import { UiDots } from "@/shared/ui/ui-dots";
-
 type WrapperSliderProps = {
   height: number;
   screenWidth: number;

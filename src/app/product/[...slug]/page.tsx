@@ -4,6 +4,7 @@ import Carousel from "@/shared/ui/ui-carousel/carousel";
 import { UiTitle } from "@/shared/ui/ui-title";
 import { UiReview } from "@/shared/ui/ui-review/ui-review";
 import { UiRating } from "@/shared/ui/ui-rating/ui-rating";
+import { Buy } from "@/widgets/buy/buy";
 
 type Params = {
   params: {
@@ -24,8 +25,9 @@ async function getProduct(
 }
 
 const Product = async ({ params }: Params) => {
-  const { product, reviewCount } = await getProduct(decodeURI(params.slug));
-  console.log(product.name);
+  const { product, reviewCount } = await getProduct(
+    decodeURI(params.slug[params.slug.length - 1]),
+  );
 
   return (
     <div className={styles.wrapper}>
@@ -40,6 +42,7 @@ const Product = async ({ params }: Params) => {
           </div>
           <Carousel currentProduct={product} imageWidth={500} />
         </div>
+        <Buy product={product} />
       </div>
     </div>
   );

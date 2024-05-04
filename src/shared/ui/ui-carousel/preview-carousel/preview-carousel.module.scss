@@ -3,8 +3,9 @@
   display: flex;
   align-items: center;
   width: fit-content;
+  column-gap: 5px;
 
-  max-width: 218px;
+  max-width: 238px;
   margin: 33px auto;
   overflow-x: hidden;
 
@@ -20,7 +21,7 @@
   justify-content: center;
   min-width: 54.5px;
   border: 1px solid var(--steel-gray-100);
-  border-radius: 4px;
+  border-radius: var(--border-radius);
   cursor: pointer;
   transition: all ease-in-out .2s;
 
@@ -29,6 +30,7 @@
   }
 
   img {
+    border-radius: var(--border-radius);
     width: 50px;
     height: 50px;
     object-fit: contain;

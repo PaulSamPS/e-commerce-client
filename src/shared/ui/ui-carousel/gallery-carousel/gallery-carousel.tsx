@@ -28,7 +28,7 @@ const handleMove = (
   const posY = ((clientY - boundingRect.top) / boundingRect.height) * 100;
 
   img.style.transformOrigin = `${posX}% ${posY}%`;
-  img.style.transform = "scale(3)";
+  img.style.transform = "scale(2)";
 };
 
 const handleLeave = (

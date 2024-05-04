@@ -40,7 +40,7 @@
   font-weight: 500;
   column-gap: 20px;
   background-color: var(--gray-800);
-  border-radius: 4px;
+  border-radius: var(--border-radius);
   cursor: pointer;
   transition: all ease-in-out .2s;
 

@@ -30,7 +30,7 @@ export const TopProductsCard: React.FC<CardProps> = ({
   className,
 }) => (
   <div className={clsx(styles.wrapper, className)}>
-    {product.isNew && <UiBadge text={"новинка"} />}
+    {product.isNew && <UiBadge text={"новинка"} color={"orange"} />}
     <div className={styles.img}>
       <Link href={`/product/${product.name}`}>
         <Image
@@ -43,6 +43,9 @@ export const TopProductsCard: React.FC<CardProps> = ({
         />
       </Link>
     </div>
+    {product.discount > 0 && (
+      <UiBadge text={"скидка"} discount={product.discount} color={"red"} />
+    )}
     <div className={styles.rating}>
       {product.rating > 0 && <UiRating rating={product.rating} />}
       <UiReview reviews={product.reviewCount || 0} />

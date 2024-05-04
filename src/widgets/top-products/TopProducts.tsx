@@ -12,7 +12,7 @@ import { UiArrowButton } from "@/shared/ui/ui-arrow";
 import { AddToCart } from "@/features/add-to-cart/add-to-cart";
 import { FavouriteButton } from "@/features/favourites-button/favourite-button";
 
-const IMAGE_WIDTH = 234;
+const IMAGE_WIDTH = 390;
 const CONTAINER_WIDTH = 1200;
 
 type TopProductsProps = {
@@ -48,11 +48,7 @@ export const TopProducts = ({ newProducts, topProducts }: TopProductsProps) => {
         topProductAction={topProductAction}
         screenWidth={screenWidth}
       />
-      <div
-        className={styles["card-block"]}
-        style={{ width: "100%" }}
-        ref={scrollRef}
-      >
+      <div className={styles["card-block"]} ref={scrollRef}>
         {currentAction &&
           currentAction.map((p) => (
             <TopProductsCard
@@ -63,7 +59,7 @@ export const TopProducts = ({ newProducts, topProducts }: TopProductsProps) => {
               addToFavourite={<FavouriteButton productId={p.id} />}
             />
           ))}
-        {currentContainer && screenWidth > 960 && canScrollLeft && (
+        {canScrollLeft && (
           <UiArrowButton
             disabled={!canScrollLeft}
             appearance="left"
@@ -72,7 +68,7 @@ export const TopProducts = ({ newProducts, topProducts }: TopProductsProps) => {
             className={styles.arrowLeft}
           />
         )}
-        {currentContainer && screenWidth > 960 && canScrollRight && (
+        {canScrollRight && (
           <UiArrowButton
             disabled={!canScrollRight}
             appearance="right"

@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import styles from "./ui-arrow-button.module.scss";
-import { ArrowIcon } from "@/shared/assets/icons";
+import { ArrowLeftIcon, ArrowRightIcon } from "@/shared/assets/icons";
 import { ButtonHTMLAttributes, FC } from "react";
 
 export interface UiArrowButtonProps {
@@ -36,7 +36,11 @@ export const UiArrowButton: FC<
       onClick={onClick}
       {...props}
     >
-      <ArrowIcon />
+      {appearance === "left" ? (
+        <ArrowLeftIcon className={styles.icon} />
+      ) : (
+        <ArrowRightIcon className={styles.icon} />
+      )}
     </button>
   );
 };

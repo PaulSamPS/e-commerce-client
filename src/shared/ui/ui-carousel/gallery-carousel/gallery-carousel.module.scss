@@ -7,6 +7,7 @@
   scroll-behavior: smooth;
   overflow: scroll;
   overflow-y: hidden;
+  border-radius: var(--border-radius);
 
   &::-webkit-scrollbar {
     display: none;

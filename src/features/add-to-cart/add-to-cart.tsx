@@ -28,7 +28,6 @@ export const AddToCart = ({ productId, variant }: AddToBasketProps) => {
   );
 
   const addToBasket = () => {
-    setIsInCart(!isInCart);
     if (isInCart) {
       return push(`/cart`);
     }

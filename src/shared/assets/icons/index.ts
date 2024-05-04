@@ -1,6 +1,7 @@
 import ChatIcon from "./chat.svg";
 import CloseIcon from "./close.svg";
-import ArrowIcon from "./arrow.svg";
+import ArrowRightIcon from "./arrow-right.svg";
+import ArrowLeftIcon from "./arrow-left.svg";
 import ProfileIcon from "./profile.svg";
 import SearchIcon from "./search.svg";
 import AddToCartIcon from "./addToCart.svg";
@@ -13,7 +14,8 @@ import FavouriteFillIcon from "./favouriteFill.svg";
 export {
   ChatIcon,
   CloseIcon,
-  ArrowIcon,
+  ArrowRightIcon,
+  ArrowLeftIcon,
   ProfileIcon,
   SearchIcon,
   AddToCartIcon,

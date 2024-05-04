@@ -19,15 +19,15 @@ export const UiPriceDisplay: React.FC<UiPriceDisplayProps> = ({
   const discountedPrice = hasDiscount ? priceRu(oldPrice - price) : null;
 
   return (
-    <div className={styles.priceContainer}>
+    <div className={styles["price-container"]}>
       {hasDiscount && (
         <div className={styles.sale}>
-          <span className={styles.oldPrice}>{priceRu(oldPrice)}</span>
+          <span className={styles["old-price"]}>{priceRu(oldPrice)}</span>
           <span className={styles.discount}>-{discountedPrice}</span>
         </div>
       )}
       <span className={styles.price}>{priceRu(price)}</span>
-      {addToCart && <div className={styles.addToCart}>{addToCart}</div>}
+      {addToCart && <div className={styles["add-to-cart"]}>{addToCart}</div>}
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import { UiSlider } from "../shared/ui/ui-slider";
+import { UiSlider } from "@/shared/ui/ui-slider";
 import { Social } from "@/widgets/social/social";
 import styles from "./page.module.scss";
 import { IDayProducts, IProduct } from "@/shared/types/product";
@@ -6,9 +6,6 @@ import { DayProducts } from "@/widgets/day-products/day-products";
 import { Sidebar } from "@/widgets/sidebar/Sidebar";
 import { TopProducts } from "@/widgets/top-products/TopProducts";
 import { IShares } from "@/shared/types/shares";
-import dynamic from "next/dynamic";
-import Carousel from "@/shared/ui/ui-carousel/carousel";
-import { SlideIndexContextProvider } from "@/shared/context/slideIndexContext";
 
 async function getShares(): Promise<IShares[]> {
   const data = await fetch("http://localhost:5500/shares");
@@ -67,9 +64,6 @@ export default async function Home() {
       </div>
       <TopProducts topProducts={topProducts} newProducts={newProducts} />
       <Social />
-      <SlideIndexContextProvider>
-        <Carousel currentProduct={topProducts[2]} imageWidth={700} />
-      </SlideIndexContextProvider>
     </>
   );
 }
