@@ -21,6 +21,7 @@ interface RecentlyViewedCardProps {
   addToCart: ReactNode;
   addToFavourite: ReactNode;
   className?: string;
+  addToRecentlyViewed: (product: IProduct) => void;
 }
 
 export const UiCarouselProductCard: React.FC<RecentlyViewedCardProps> = ({
@@ -28,8 +29,11 @@ export const UiCarouselProductCard: React.FC<RecentlyViewedCardProps> = ({
   addToCart,
   addToFavourite,
   className,
+  addToRecentlyViewed,
 }) => {
-  const { addToRecentlyViewed } = useAddToRecentlyViewed();
+  const handleAddToRecentlyViewed = () => {
+    addToRecentlyViewed(product);
+  };
 
   return (
     <div className={clsx(styles.wrapper, className)}>
@@ -37,7 +41,7 @@ export const UiCarouselProductCard: React.FC<RecentlyViewedCardProps> = ({
       <div className={styles.img}>
         <Link
           href={`/product/${product.name}`}
-          onClick={() => addToRecentlyViewed(product)}
+          onClick={handleAddToRecentlyViewed}
         >
           <Image
             width={150}
@@ -59,6 +63,7 @@ export const UiCarouselProductCard: React.FC<RecentlyViewedCardProps> = ({
       <Link
         href={`/product/${product.category}/${product.name}`}
         className={styles.name}
+        onClick={handleAddToRecentlyViewed}
       >
         <span>{product.name}</span>
       </Link>

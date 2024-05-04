@@ -15,38 +15,53 @@ interface DayProductsCardProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   product: IProduct;
   addToCart: ReactNode;
+  addToRecentlyViewed: (product: IProduct) => void;
 }
 
 export const DayProductsCard = ({
   className,
   product,
   addToCart,
-}: DayProductsCardProps) => (
-  <div className={clsx(styles.wrapper, className)}>
-    <div className={styles.img}>
-      <Link href={`/today/${product.name}`}>
-        <Image
-          src={`http://localhost:5500${product.images[0].url}`}
-          alt={product.name}
-          title={product.name}
-          width={120}
-          height={120}
-        />
+  addToRecentlyViewed,
+}: DayProductsCardProps) => {
+  const handleAddToRecentlyViewed = () => {
+    addToRecentlyViewed(product);
+  };
+
+  return (
+    <div className={clsx(styles.wrapper, className)}>
+      <div className={styles.img}>
+        <Link
+          href={`/today/${product.name}`}
+          onClick={handleAddToRecentlyViewed}
+        >
+          <Image
+            src={`http://localhost:5500${product.images[0].url}`}
+            alt={product.name}
+            title={product.name}
+            width={120}
+            height={120}
+          />
+        </Link>
+      </div>
+      <UiBadge text={"скидка"} discount={product.discount} color={"red"} />
+      <div className={styles.rating}>
+        {product.rating > 0 && <UiRating rating={product.rating} />}
+        <UiReview reviews={product.reviewCount > 0 ? product.reviewCount : 0} />
+      </div>
+      <Link
+        className={styles.name}
+        href={`/today/${product.name}`}
+        onClick={handleAddToRecentlyViewed}
+      >
+        {product.name}
       </Link>
+      <UiPriceDisplay
+        price={product.price}
+        oldPrice={product.oldPrice}
+        discount={product.discount}
+        addToCart={addToCart}
+      />
     </div>
-    <UiBadge text={"скидка"} discount={product.discount} color={"red"} />
-    <div className={styles.rating}>
-      {product.rating > 0 && <UiRating rating={product.rating} />}
-      <UiReview reviews={product.reviewCount > 0 ? product.reviewCount : 0} />
-    </div>
-    <Link className={styles.name} href={`/today/${product.name}`}>
-      {product.name}
-    </Link>
-    <UiPriceDisplay
-      price={product.price}
-      oldPrice={product.oldPrice}
-      discount={product.discount}
-      addToCart={addToCart}
-    />
-  </div>
-);
+  );
+};

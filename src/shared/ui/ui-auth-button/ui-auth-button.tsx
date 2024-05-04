@@ -5,14 +5,9 @@ import { UiButton } from "@/shared/ui/ui-button";
 
 export interface UiAuthButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement> {
-  username?: string;
   loading?: boolean;
 }
-export const UiAuthButton = ({
-  username,
-  loading,
-  ...props
-}: UiAuthButtonProps) => {
+export const UiAuthButton = ({ loading, ...props }: UiAuthButtonProps) => {
   return (
     <UiButton
       isLoading={loading}
@@ -21,7 +16,7 @@ export const UiAuthButton = ({
       before={<ProfileIcon />}
       {...props}
     >
-      {username || "Вход или регистрация"}
+      Вход или регистрация
     </UiButton>
   );
 };

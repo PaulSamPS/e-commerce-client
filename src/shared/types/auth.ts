@@ -9,6 +9,9 @@ export interface LoginResponse {
   user: IUser;
 }
 
+export interface LogoutResponse {
+  message: string;
+}
 export interface ActivateResponse {
   message: string;
 }

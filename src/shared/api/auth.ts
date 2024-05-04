@@ -5,6 +5,7 @@ import {
   EnterResetCodeResponse,
   EnterResetPasswordCodeProps,
   LoginResponse,
+  LogoutResponse,
   NewPasswordProps,
   NewPasswordResponse,
   RegistrationResponse,
@@ -114,6 +115,13 @@ export const refreshToken = (options?: RequestOptions) => {
 export const checkAuth = (options?: RequestOptions) => {
   return createInstance<LoginResponse>(
     { url: `/users/check-auth`, method: "GET" },
+    options,
+  );
+};
+
+export const logout = (options?: RequestOptions) => {
+  return createInstance<LogoutResponse>(
+    { url: `/users/logout`, method: "GET" },
     options,
   );
 };

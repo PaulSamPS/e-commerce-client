@@ -4,6 +4,7 @@ import { signInApi } from "../api/api-sign-in";
 import { refreshTokenApi } from "../api/api-refresh-token";
 import { signUpApi } from "../api/api-sign-up";
 import { checkAuthApi } from "../api/api-check-auth";
+import { logoutApi } from "@/entities/user";
 
 const initialState: UserSchema = {
   userData: undefined,
@@ -69,6 +70,18 @@ export const userStore = createSlice({
         state.userData = action.payload.user;
       })
       .addCase(checkAuthApi.rejected, (state, action) => {
+        state.loading = false;
+      })
+      .addCase(logoutApi.pending, (state) => {
+        state.error = undefined;
+        state.loading = true;
+      })
+      .addCase(logoutApi.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = undefined;
+        state.userData = undefined;
+      })
+      .addCase(logoutApi.rejected, (state, action) => {
         state.loading = false;
       });
   },

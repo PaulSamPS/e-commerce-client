@@ -1,0 +1,70 @@
+.button {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+  justify-content: center;
+  height: 2.5rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  font-size: 15px;
+  line-height: 1.5rem;
+  white-space: nowrap;
+  background-color: transparent;
+  border-style: none;
+  border-radius: 0.5rem;
+  outline-color: var(--blue-active);
+  cursor: pointer;
+  transition: color ease-in-out .2s;
+  user-select: none;
+  touch-action: none;
+  text-decoration-line: none;
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.button[aria-expanded="true"] {
+  color: var(--blue-hover);
+}
+
+.button[data-focus-visible] {
+  outline-style: solid;
+}
+
+.button:hover {
+  color: var(--blue-hover);
+}
+
+.menu {
+  position: relative;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  min-width: 180px;
+  max-height: max-content;
+  padding: 0.5rem;
+  overflow: visible;
+  color: var(--steel-gray-a540);
+  font-size: 13px;
+  background-color: var(--white);
+  border: none;
+  border-radius: 8px;
+  outline: none !important;
+  box-shadow: 0 0 96px 0 rgb(0 0 0 / 16%), 0 0 2px 0 rgb(0 0 0 / 12%);
+  overscroll-behavior: contain;
+
+  svg {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+    color: var(--steel-gray-a540);
+  }
+}
+
+.menu-arrow {
+  top: -24px;
+  color: var(--white);
+  border: none;
+}

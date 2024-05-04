@@ -11,6 +11,7 @@ import { UiArrowButton } from "@/shared/ui/ui-arrow";
 import { AddToCart } from "@/features/add-to-cart/add-to-cart";
 import { FavouriteButton } from "@/features/favourites-button/favourite-button";
 import { UiCarouselProductCard } from "@/shared/ui/ui-carousel-product-card/ui-carousel-product-card";
+import { useAddToRecentlyViewed } from "@/features/use-add-to-recently-viewed/use-add-to-recently-viewed";
 
 const IMAGE_WIDTH = 336;
 const CONTAINER_WIDTH = 1200;
@@ -20,6 +21,7 @@ type TopProductsProps = {
   newProducts: IProduct[];
 };
 export const TopProducts = ({ newProducts, topProducts }: TopProductsProps) => {
+  const { addToRecentlyViewed } = useAddToRecentlyViewed();
   const { setActive, currentAction, topProductAction } = useTopProducts({
     newProducts,
     topProducts,
@@ -43,6 +45,7 @@ export const TopProducts = ({ newProducts, topProducts }: TopProductsProps) => {
         {currentAction &&
           currentAction.map((p) => (
             <UiCarouselProductCard
+              addToRecentlyViewed={addToRecentlyViewed}
               key={p.id}
               product={p}
               className={styles.card}

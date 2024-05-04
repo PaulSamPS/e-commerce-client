@@ -10,6 +10,7 @@ import { Timer } from "./day-products-timer/timer";
 import { DayProductsCard } from "./day-products-card/day-products-card";
 import { AddToCart } from "@/features/add-to-cart/add-to-cart";
 import { UiArrowButton } from "@/shared/ui/ui-arrow";
+import { useAddToRecentlyViewed } from "@/features/use-add-to-recently-viewed/use-add-to-recently-viewed";
 
 type DayProductsProps = {
   products: IDayProducts[];
@@ -17,6 +18,7 @@ type DayProductsProps = {
 export const DayProducts = ({ products }: DayProductsProps) => {
   const screenWidth = useScreenWidth();
   const { scrollRef, next, prev, activePageIndex, goTo } = useSnapCarousel();
+  const { addToRecentlyViewed } = useAddToRecentlyViewed();
 
   return (
     <div className={styles.wrapper}>
@@ -30,6 +32,7 @@ export const DayProducts = ({ products }: DayProductsProps) => {
         <div className={styles["day-product-block"]} ref={scrollRef}>
           {products.map((product) => (
             <DayProductsCard
+              addToRecentlyViewed={addToRecentlyViewed}
               className={styles.item}
               key={product.id}
               product={product}

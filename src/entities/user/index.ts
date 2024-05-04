@@ -10,3 +10,4 @@ export { checkAuthApi } from "./api/api-check-auth";
 export { newPasswordSet } from "./api/api-new-password-set";
 export { enterResetPasswordCode } from "./api/api-enter-reset-password-code";
 export { sendResetPasswordCode } from "./api/api-send-reset-password-code";
+export { logoutApi } from "./api/api-logout-api";

@@ -22,6 +22,7 @@
     "react-redux": "^9.1.1"
   },
   "devDependencies": {
+    "@ariakit/react": "^0.4.6",
     "@storybook/addon-actions": "^8.0.8",
     "@storybook/addon-controls": "^8.0.8",
     "@storybook/addon-docs": "^8.0.8",
