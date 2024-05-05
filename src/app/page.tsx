@@ -18,7 +18,7 @@ async function getShares(): Promise<IShares[]> {
 }
 
 async function getDayProducts(): Promise<IDayProducts[]> {
-  const data = await fetch("http://localhost:5500/day-products/get");
+  const data = await fetch("http://localhost:5500/day-products");
 
   if (!data) {
     throw new Error("Failed to fetch data");

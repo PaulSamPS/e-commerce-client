@@ -6,7 +6,7 @@ import { UiTitle } from "@/shared/ui/ui-title";
 import { UiDots } from "@/shared/ui/ui-dots/ui-dots";
 import { IDayProducts } from "@/shared/types/product";
 import { useScreenWidth } from "@/shared/hooks/use-screen-width";
-import { Timer } from "./day-products-timer/timer";
+import { UiTimer } from "@/shared/ui/ui-timer/ui-timer";
 import { DayProductsCard } from "./day-products-card/day-products-card";
 import { AddToCart } from "@/features/add-to-cart/add-to-cart";
 import { UiArrowButton } from "@/shared/ui/ui-arrow";
@@ -26,7 +26,7 @@ export const DayProducts = ({ products }: DayProductsProps) => {
         <UiTitle weight="medium" size="h2">
           Товары дня
         </UiTitle>
-        <Timer className={styles.timer} />
+        <UiTimer className={styles.timer} />
       </div>
       <div className={styles.block}>
         <div className={styles["day-product-block"]} ref={scrollRef}>

@@ -17,6 +17,7 @@ import {
   ProfileIcon,
 } from "@/shared/assets/icons";
 import { usePathname, useRouter } from "next/navigation";
+import { getCartApi } from "@/entities/cart";
 
 const LINKS = [
   { path: "/profile", label: "Профиль", icon: <ProfileIcon /> },
@@ -42,9 +43,9 @@ export const Auth = () => {
     setIsOpen(false);
   };
 
-  const onNavigate = (to: string, text?: string) => {
+  const onNavigate = async (to: string, text?: string) => {
     if (text === "Выйти") {
-      dispatch(logoutApi());
+      dispatch(logoutApi()).then(() => dispatch(getCartApi()));
     }
     if (to !== pathname || pathname === "/") {
       router.push(to);

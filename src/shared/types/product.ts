@@ -1,5 +1,4 @@
-import { IReviews } from "@/shared/types/reviews";
-import { Features, FeaturesItem } from "@/shared/types/features";
+import { FeaturesItem } from "@/shared/types/features";
 
 interface Img {
   url: string;

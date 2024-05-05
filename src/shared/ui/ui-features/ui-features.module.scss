@@ -1,0 +1,14 @@
+.features {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.title {
+  font-size: 20px;
+}
+
+.footnote {
+  color: var(--steel-gray-200);
+  font-size: 11px;
+}

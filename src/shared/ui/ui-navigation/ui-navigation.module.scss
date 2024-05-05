@@ -38,13 +38,14 @@
 
 .catalog {
   transition: opacity .1s;
+  box-shadow: 0 3px 15px 0 #00000019;
 
   &::before {
     position: absolute;
     top: -2px;
-    right: -8px;
+    right: -4px;
     display: block;
-    width: 12px;
+    width: 8px;
     height: 45px;
     background: var(--white);
     transform: rotate(11deg);

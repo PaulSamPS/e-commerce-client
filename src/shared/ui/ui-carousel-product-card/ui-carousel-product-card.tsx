@@ -21,7 +21,7 @@ interface RecentlyViewedCardProps {
   addToCart: ReactNode;
   addToFavourite: ReactNode;
   className?: string;
-  addToRecentlyViewed: (product: IProduct) => void;
+  addToRecentlyViewed?: (product: IProduct) => void;
 }
 
 export const UiCarouselProductCard: React.FC<RecentlyViewedCardProps> = ({
@@ -32,7 +32,9 @@ export const UiCarouselProductCard: React.FC<RecentlyViewedCardProps> = ({
   addToRecentlyViewed,
 }) => {
   const handleAddToRecentlyViewed = () => {
-    addToRecentlyViewed(product);
+    if (addToRecentlyViewed) {
+      addToRecentlyViewed(product);
+    }
   };
 
   return (

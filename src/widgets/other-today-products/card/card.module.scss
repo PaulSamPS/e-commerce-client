@@ -1,0 +1,84 @@
+.active {
+  border: 1px solid var(--red-bright) !important;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  width: 300px;
+  min-height: 100px;
+  padding: 15px 13px 14px 25px;
+  column-gap: 10px;
+  border: 1px solid transparent;
+  box-shadow: 0 3px 15px 0 #00000019;
+  cursor: pointer;
+  transition: all ease .2s;
+  border: 1px solid var(--steel-gray-80);
+  border-radius: var(--border-radius);
+
+
+  &:hover {
+    border: 1px solid var(--blue-themed);
+  }
+
+  .percent {
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 40px;
+    color: var(--white);
+    font-size: 20px;
+    letter-spacing: -1px;
+    background-color: var(--red-bright);
+    clip-path: polygon(97% 0,90% 100%,0 100%,0 0);
+    border-radius: var(--border-radius) 0 0 0;
+  }
+
+  .left {
+    img {
+      object-fit: contain;
+    }
+  }
+
+  .right {
+    flex: 1;
+
+    .sale {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .oldPrice {
+        color: var(--gray-400);
+        font-weight: 600;
+        font-size: 12px;
+        text-decoration: line-through;
+      }
+
+      .discount {
+        float: left;
+        height: 18px;
+        padding: 0 8px 0 9px;
+        color: var(--white);
+        font-size: 12px;
+        line-height: 18px;
+        background-color: var(--blue-themed);
+        border-radius: 2px;
+      }
+    }
+
+    .price {
+      font-weight: 600;
+      font-size: 20px;
+    }
+
+    .name {
+      margin: 0;
+      font-size: 12px;
+    }
+  }
+}

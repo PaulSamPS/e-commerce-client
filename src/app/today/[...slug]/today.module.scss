@@ -1,0 +1,71 @@
+.wrapper {
+  display: grid;
+  grid-template-areas:
+		"otherDay main"
+        "yesterday main";
+  grid-template-columns: 300px minmax(320px, 860px);
+  column-gap: 40px;
+  row-gap: 20px;
+  min-height: 100vh;
+}
+
+.otherDay {
+  grid-area: otherDay;
+}
+
+.yesterday {
+  grid-area: yesterday;
+}
+
+.title {
+  margin-bottom: 20px;
+}
+
+.main {
+  grid-area: main;
+  width: 100%;
+
+  .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 27px;
+    color: var(--white);
+    background-color: var(--orange);
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    box-shadow: 0 3px 15px 0 #00000019;
+
+    h2 {
+      padding: 0;
+      color: var(--white);
+      font-size: 30px;
+      line-height: 60px;
+    }
+  }
+
+  .end-action {
+    display: flex;
+    align-items: center;
+
+    .timer {
+      margin-left: 10px;
+      width: 155px;
+
+      span {
+        color: var(--white);
+        font-size: 30px;
+
+        div {
+          line-height: 23px;
+        }
+      }
+    }
+  }
+}
+
+
+
+.text {
+  font-size: 14px;
+}
+

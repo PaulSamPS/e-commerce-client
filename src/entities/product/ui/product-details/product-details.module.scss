@@ -1,16 +1,18 @@
-.social-list {
-  position: absolute;
-  bottom: 80px;
-  right: -20px;
+.right {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  font-weight: 400;
-  row-gap: 15px;
+  row-gap: 20px;
+  width: 100%;
+}
+
+.buy {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   border: 1px solid var(--steel-gray-80) !important;
   box-shadow: 0 3px 15px 0 #00000019;
   height: fit-content;
   border-radius: var(--border-radius);
-  background-color: var(--white);
-  padding: 20px 15px;
+  padding: 20px 20px 30px;
+  row-gap: 20px;
 }

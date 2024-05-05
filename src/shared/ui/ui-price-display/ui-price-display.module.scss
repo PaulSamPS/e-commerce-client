@@ -11,6 +11,13 @@
   justify-content: space-between;
 }
 
+.column {
+  grid-template-areas:
+          'sale sale'
+           'price price'
+            "addToCart addToCart" !important;
+}
+
 .sale {
   display: flex;
   align-items: center;

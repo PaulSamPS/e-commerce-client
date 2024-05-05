@@ -1,11 +1,23 @@
 .wrapper {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-areas: 'top top'
+                        'carousel right';
+  grid-template-columns: 650px minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  row-gap: 20px;
+  column-gap: 20px;
 }
 
 .top {
-  display: grid;
-  grid-template-columns: 650px auto;
+  grid-area: top;
+}
+
+.carousel {
+  grid-area: carousel;
+}
+
+.right {
+  grid-area: right;
 }
 
 .rating {
@@ -13,3 +25,4 @@
   margin-top: 10px;
   column-gap: 10px;
 }
+

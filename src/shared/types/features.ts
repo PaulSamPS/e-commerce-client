@@ -1,9 +1,12 @@
+export type IFeaturesProps = {
+  productId: number;
+};
+
 export interface FeaturesItem {
   name: string;
   value: string;
 }
 
-export interface Features {
-  productName: string;
+export interface IFeatures {
   features: FeaturesItem[];
 }

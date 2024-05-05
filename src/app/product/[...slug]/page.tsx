@@ -1,10 +1,14 @@
 import styles from "../product.module.scss";
 import { IProduct } from "@/shared/types/product";
-import Carousel from "@/shared/ui/ui-carousel/carousel";
 import { UiTitle } from "@/shared/ui/ui-title";
 import { UiReview } from "@/shared/ui/ui-review/ui-review";
 import { UiRating } from "@/shared/ui/ui-rating/ui-rating";
-import { Buy } from "@/widgets/buy/buy";
+import { FeaturesItem } from "@/shared/types/features";
+import dynamic from "next/dynamic";
+import { UiSpinner } from "@/shared/ui/ui-spinner";
+import React from "react";
+import { AddToCart } from "@/features/add-to-cart/add-to-cart";
+import { ProductDetails } from "@/entities/product/ui/product-details/product-details";
 
 type Params = {
   params: {
@@ -24,25 +28,59 @@ async function getProduct(
   return res.json();
 }
 
+async function getFeatures(productName: string): Promise<FeaturesItem[]> {
+  const res = await fetch(`http://localhost:5500/features/${productName}`);
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+
+  return res.json();
+}
+
+const Carousel = dynamic(() => import("@/shared/ui/ui-carousel/ui-carousel"), {
+  loading: () => (
+    <div style={{ height: "100%" }}>
+      <UiSpinner
+        color={"var(--blue-themed"}
+        position={"relative"}
+        bg={"transparent"}
+      />
+    </div>
+  ),
+  ssr: false,
+});
+
 const Product = async ({ params }: Params) => {
   const { product, reviewCount } = await getProduct(
+    decodeURI(params.slug[params.slug.length - 1]),
+  );
+  const productFeatures = await getFeatures(
     decodeURI(params.slug[params.slug.length - 1]),
   );
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.top}>
-        <div className={styles.left}>
-          <UiTitle weight="regular" size="h1">
-            {product.name}
-          </UiTitle>
-          <div className={styles.rating}>
-            {product.rating > 0 && <UiRating rating={product.rating} />}
-            <UiReview reviews={reviewCount} />
-          </div>
-          <Carousel currentProduct={product} imageWidth={500} />
+        <UiTitle weight="regular" size="h1">
+          {product.name}
+        </UiTitle>
+        <div className={styles.rating}>
+          {product.rating > 0 && <UiRating rating={product.rating} />}
+          <UiReview reviews={reviewCount} />
         </div>
-        <Buy product={product} />
+      </div>
+      <Carousel
+        product={product}
+        imageWidth={500}
+        className={styles.carousel}
+      />
+      <div className={styles.right}>
+        <ProductDetails
+          product={product}
+          addToCart={<AddToCart productId={product.id} variant={"primary"} />}
+          features={productFeatures}
+        />
       </div>
     </div>
   );

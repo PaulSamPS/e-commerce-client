@@ -1,5 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { apiDayProducts } from "@/shared/api";
+import { useEffect, useState } from "react";
 
 const calculateRemainingTime = () => {
   const now = new Date();
@@ -13,11 +12,6 @@ export const useTimer = () => {
   const [hours, setHours] = useState<number>(23);
   const [minutes, setMinutes] = useState<number>(59);
   const [seconds, setSeconds] = useState<number>(59);
-
-  const updateProducts = useCallback(async () => {
-    await apiDayProducts.yesterdayProductsSet();
-    await apiDayProducts.dayProductsSet();
-  }, []);
 
   useEffect(() => {
     const { hoursRemaining, minutesRemaining, secondsRemaining } =
@@ -39,7 +33,6 @@ export const useTimer = () => {
         setMinutes(59);
         setSeconds(59);
       } else {
-        await updateProducts();
         setHours(23);
         setMinutes(59);
         setSeconds(59);
@@ -49,7 +42,7 @@ export const useTimer = () => {
     return () => {
       clearInterval(timer);
     };
-  }, [hours, minutes, seconds, updateProducts]);
+  }, [hours, minutes, seconds]);
 
-  return { hours, minutes, seconds, updateProducts };
+  return { hours, minutes, seconds };
 };

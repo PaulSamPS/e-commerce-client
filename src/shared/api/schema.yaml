@@ -311,7 +311,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/FeaturesResponseType'
       tags:
-        - Features
+        - UiFeatures
   /features/find/{productId}:
     get:
       operationId: FeaturesController_getOne
@@ -329,7 +329,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/FeaturesResponseType'
       tags:
-        - Features
+        - UiFeatures
 info:
   title: e-commerce
   description: API Documentation

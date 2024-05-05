@@ -9,6 +9,7 @@ import { signInApi, userState } from "@/entities/user";
 import { useSelector } from "react-redux";
 import { AuthModalAppContext } from "@/shared/context/authModalAppContext";
 import { SignInFormProps } from "@/shared/types/auth";
+import { getCartApi } from "@/entities/cart";
 
 interface SignInProps {
   onSignUp: () => void;
@@ -21,7 +22,9 @@ export const SignIn: FC<SignInProps> = memo(({ onSignUp, onResetPassword }) => {
   const { setIsOpen } = useContext(AuthModalAppContext);
 
   const onSubmit = async (formData: SignInFormProps) => {
-    dispatch(signInApi(formData)).then(() => setIsOpen(false));
+    dispatch(signInApi(formData))
+      .then(() => setIsOpen(false))
+      .then(() => dispatch(getCartApi()));
   };
 
   const buttons: ButtonProps[] = [
