@@ -3,7 +3,7 @@
 import { ReactNode } from "react";
 import { Provider } from "react-redux";
 import { ReducersMapObject } from "@reduxjs/toolkit";
-import { AppState } from "./app-state-schema";
+import { AppState } from "@/shared/config/store";
 import { createReduxStore } from "./store";
 
 interface StoreProviderProps {

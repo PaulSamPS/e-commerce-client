@@ -1,3 +1,3 @@
-import { AppState } from "@/shared/providers/store-provider";
+import { AppState } from "@/shared/config/store";
 
 export const cartState = (state: AppState) => state.cart;

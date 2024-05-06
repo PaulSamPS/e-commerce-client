@@ -1,6 +1,6 @@
 import styles from "./ui-table.module.scss";
 import { DetailedHTMLProps, HTMLAttributes } from "react";
-import { FeaturesItem } from "@/shared/types/features";
+import { FeaturesItem } from "@/shared/api/types/features";
 
 export interface TableProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {

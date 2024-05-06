@@ -3,13 +3,13 @@ import {
   IDayProducts,
   IOneDayProducts,
   IYesterdayProducts,
-} from "@/shared/types/product";
+} from "@/shared/api/types/product";
 import styles from "./today.module.scss";
 import { TodayProductDetails } from "@/entities/product/ui/today-product-details/today-product-details";
 import { UiTitle } from "@/shared/ui/ui-title";
 import { UiTimer } from "@/shared/ui/ui-timer/ui-timer";
 import OtherDay from "@/widgets/other-today-products/other-day";
-import { FeaturesItem } from "@/shared/types/features";
+import { FeaturesItem } from "@/shared/api/types/features";
 import { AddToCart } from "@/features/add-to-cart/add-to-cart";
 import { YesterdayProduct } from "@/entities/product/ui/yesterday-product/yesterday-product";
 

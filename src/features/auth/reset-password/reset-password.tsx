@@ -1,12 +1,9 @@
-import {
-  DynamicModule,
-  ReducerMap,
-} from "@/shared/providers/store-provider/dynamic-module";
 import { resetPasswordReducer, resetPasswordState } from "@/entities/user";
 import { useResetPassword } from "./useResetPassword";
 import styles from "./reset-password.module.scss";
 import { useSelector } from "react-redux";
-import { ResetPasswordProps } from "@/shared/types/auth";
+import { ResetPasswordProps } from "@/shared/api/types/auth";
+import { DynamicModule, ReducerMap } from "@/shared/config/store";
 
 const INITIAL_REDUCERS: ReducerMap = {
   resetPassword: resetPasswordReducer,

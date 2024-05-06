@@ -1,9 +1,7 @@
-"use client";
-
 import React, { DetailedHTMLProps, HTMLAttributes, ReactNode } from "react";
 import Link from "next/link";
 import styles from "./day-products-card.module.scss";
-import { IProduct } from "@/shared/types/product";
+import { IProduct } from "@/shared/api/types/product";
 import clsx from "clsx";
 import { UiRating } from "@/shared/ui/ui-rating/ui-rating";
 import { UiReview } from "@/shared/ui/ui-review/ui-review";

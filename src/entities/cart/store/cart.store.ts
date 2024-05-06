@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { CartSchema } from "../schema/cart-schema.types";
+import { CartSchema } from "@/shared/config/store";
 import { addToCartApi } from "../api/api-add-to-cart";
 import { getCartApi } from "../api/api-get-cart";
 

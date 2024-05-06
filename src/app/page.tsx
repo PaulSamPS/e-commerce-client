@@ -1,11 +1,11 @@
 import { UiSlider } from "@/shared/ui/ui-slider";
 import { Social } from "@/widgets/social/social";
 import styles from "./page.module.scss";
-import { IDayProducts, IProduct } from "@/shared/types/product";
+import { IProduct } from "@/shared/api/types";
 import { DayProducts } from "@/widgets/day-products/day-products";
 import { Sidebar } from "@/widgets/sidebar/Sidebar";
 import { TopProducts } from "@/widgets/top-products/top-products";
-import { IShares } from "@/shared/types/shares";
+import { IShares } from "@/shared/api/types/shares";
 import { RecentlyViewed } from "@/widgets/recently-viewed/recently-viewed";
 
 async function getShares(): Promise<IShares[]> {
@@ -17,12 +17,13 @@ async function getShares(): Promise<IShares[]> {
   return data.json();
 }
 
-async function getDayProducts(): Promise<IDayProducts[]> {
+async function getDayProducts() {
   const data = await fetch("http://localhost:5500/day-products");
 
   if (!data) {
     throw new Error("Failed to fetch data");
   }
+
   return data.json();
 }
 

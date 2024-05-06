@@ -1,5 +1,5 @@
-import { createInstance } from "@/shared/api/api-instance";
-import { IProduct, IProductsSearchData } from "@/shared/types/product";
+import { createInstance } from "./api-instance";
+import { IProductsSearchData } from "./types";
 
 // Общий тип для параметра options
 

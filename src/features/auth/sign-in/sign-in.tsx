@@ -4,11 +4,11 @@ import { UiFormWithInputs } from "@/shared/ui/ui-form-with-inputs/ui-from-with-i
 import { UiButtonGroup } from "@/shared/ui/ui-button-group/ui-button-group";
 import { ButtonProps } from "@/shared/ui/ui-button";
 import { emailOptions, usernameOptions } from "../constants";
-import { useAppDispatch } from "@/shared/hooks/use-app-dispatch";
+import { useAppDispatch } from "@/shared/hooks";
 import { signInApi, userState } from "@/entities/user";
 import { useSelector } from "react-redux";
-import { AuthModalAppContext } from "@/shared/context/authModalAppContext";
-import { SignInFormProps } from "@/shared/types/auth";
+import { AuthModalAppContext } from "@/shared/context";
+import { SignInFormProps } from "@/shared/api/types/auth";
 import { getCartApi } from "@/entities/cart";
 
 interface SignInProps {

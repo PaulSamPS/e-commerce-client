@@ -1,9 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { ThunkConfig } from "@/shared/providers/store-provider";
+import { ThunkConfig } from "@/shared/config/store";
 import { toast } from "react-toastify";
 import { axiosErrorMessage } from "@/shared/lib/axios-error-message";
 import { apiCart } from "@/shared/api";
-import { ICartAddAndRemove, ICartProps } from "@/shared/types/cart";
+import { ICartAddAndRemove, ICartProps } from "@/shared/api/types";
 
 export const addToCartApi = createAsyncThunk<
   ICartAddAndRemove,

@@ -1,3 +1,3 @@
-import { AppState } from "@/shared/providers/store-provider";
+import { AppState } from "@/shared/config/store";
 
 export const searchState = (state: AppState) => state.searchProduct;

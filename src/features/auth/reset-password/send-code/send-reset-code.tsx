@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 import { UiSubhead } from "@/shared/ui/ui-subhead";
 import { FC } from "react";
 import { resetPasswordState, sendResetPasswordCode } from "@/entities/user";
-import { ResetPasswordFormProps } from "@/shared/types/auth";
+import { ResetPasswordFormProps } from "@/shared/api/types/auth";
 
 interface ResetPasswordProps {
   onSignIn: () => void;

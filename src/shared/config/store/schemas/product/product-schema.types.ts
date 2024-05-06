@@ -1,4 +1,4 @@
-import { IProductsSearchData } from "@/shared/types/product";
+import { IProductsSearchData } from "@/shared/api/types/product";
 
 export interface ProductsSearchSchema {
   data: IProductsSearchData;

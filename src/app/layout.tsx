@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.scss";
-import { AuthModalAppContextProvider } from "@/shared/context/authModalAppContext";
-import { StoreProvider } from "@/shared/providers/store-provider";
+import { AuthModalAppContextProvider } from "@/shared/context";
 import { ReactNode } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Header } from "@/widgets/header/header";
+import { Header } from "@/widgets/header";
 import styles from "./layout.module.scss";
-import { Footer } from "@/widgets/footer/footer";
+import { Footer } from "@/widgets/footer";
 import { UiNavigation } from "@/shared/ui/ui-navigation/ui-navigation";
+import { StoreProvider } from "./providers/store-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ResetPasswordSchema } from "../schema/password-store.types";
+import { ResetPasswordSchema } from "@/shared/config/store";
 import { newPasswordSet } from "../api/api-new-password-set";
 import { enterResetPasswordCode } from "../api/api-enter-reset-password-code";
 import { sendResetPasswordCode } from "../api/api-send-reset-password-code";

@@ -1,9 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { apiAuth } from "@/shared/api";
-import { ThunkConfig } from "@/shared/providers/store-provider";
+import { ThunkConfig } from "@/shared/config/store";
 import { axiosErrorMessage } from "@/shared/lib/axios-error-message";
 import { toast } from "react-toastify";
-import { SignUpFormProps, SignUpResult } from "@/shared/types/auth";
+import { SignUpFormProps, SignUpResult } from "@/shared/api/types/auth";
 
 export const signUpApi = createAsyncThunk<
   SignUpResult,

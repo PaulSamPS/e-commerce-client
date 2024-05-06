@@ -1,4 +1,4 @@
-import { ImageType } from "@/shared/types/image";
+import { ImageType } from "@/shared/api/types/image";
 
 export interface IShares {
   id: number;

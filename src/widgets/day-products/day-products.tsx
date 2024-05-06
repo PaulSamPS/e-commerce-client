@@ -4,13 +4,13 @@ import { useSnapCarousel } from "react-snap-carousel";
 import styles from "./day-products.module.scss";
 import { UiTitle } from "@/shared/ui/ui-title";
 import { UiDots } from "@/shared/ui/ui-dots/ui-dots";
-import { IDayProducts } from "@/shared/types/product";
-import { useScreenWidth } from "@/shared/hooks/use-screen-width";
+import { IDayProducts } from "@/shared/api/types/product";
+import { useScreenWidth } from "@/shared/hooks";
 import { UiTimer } from "@/shared/ui/ui-timer/ui-timer";
 import { DayProductsCard } from "./day-products-card/day-products-card";
-import { AddToCart } from "@/features/add-to-cart/add-to-cart";
+import { AddToCart } from "@/features/add-to-cart";
 import { UiArrowButton } from "@/shared/ui/ui-arrow";
-import { useAddToRecentlyViewed } from "@/features/use-add-to-recently-viewed/use-add-to-recently-viewed";
+import { useAddToRecentlyViewed } from "@/shared/hooks";
 
 type DayProductsProps = {
   products: IDayProducts[];

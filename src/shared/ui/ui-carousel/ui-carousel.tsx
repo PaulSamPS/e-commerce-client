@@ -2,7 +2,7 @@
 
 import clsx from "clsx";
 import styles from "./ui-carousel.module.scss";
-import { IProduct } from "@/shared/types/product";
+import { IProduct } from "@/shared/api/types/product";
 import { useScreenWidth } from "@/shared/hooks/use-screen-width";
 import { GalleryCarousel } from "@/shared/ui/ui-carousel/gallery-carousel/gallery-carousel";
 import { CarouselControls } from "./carousel-control/carousel-control";

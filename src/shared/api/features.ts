@@ -1,5 +1,5 @@
-import { createInstance } from "@/shared/api/api-instance";
-import { IFeatures } from "@/shared/types/features";
+import { createInstance } from "./api-instance";
+import { IFeatures } from "./types";
 
 type RequestOptions = Parameters<typeof createInstance>[1];
 

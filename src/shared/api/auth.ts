@@ -13,7 +13,7 @@ import {
   SendResetPasswordCodeProps,
   SignInProps,
   SignUpProps,
-} from "@/shared/types/auth";
+} from "./types";
 
 // Общий тип для параметра options
 type RequestOptions = Parameters<typeof createInstance>[1];

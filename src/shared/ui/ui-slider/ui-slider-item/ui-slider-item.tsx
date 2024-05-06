@@ -2,7 +2,7 @@ import React, { memo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./ui-slider-item.module.scss";
-import { IShares } from "@/shared/types/shares";
+import { IShares } from "@/shared/api/types/shares";
 
 interface SliderItemProps {
   width: number;

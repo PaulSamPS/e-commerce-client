@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { searchProductApi } from "../api/search-product-api";
-import { ProductsSearchSchema } from "../schema/product-store.types";
-import { IProductsSearchData } from "@/shared/types/product";
+import { ProductsSearchSchema } from "@/shared/config/store";
+import { IProductsSearchData } from "@/shared/api/types";
 
 const initialState: ProductsSearchSchema = {
   data: {

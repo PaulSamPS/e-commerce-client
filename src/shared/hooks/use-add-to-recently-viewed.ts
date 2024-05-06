@@ -1,6 +1,6 @@
 "use client";
 
-import { IProduct } from "@/shared/types/product";
+import { IProduct } from "@/shared/api/types/product";
 import { useEffect, useState } from "react";
 import {
   clearLocalStorage,

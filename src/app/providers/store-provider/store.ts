@@ -1,14 +1,9 @@
-import {
-  configureStore,
-  EnhancedStore,
-  Reducer,
-  ReducersMapObject,
-} from "@reduxjs/toolkit";
-import { AppState } from "./app-state-schema";
-import { createReducerManager } from "./redux-manager";
+import { configureStore, Reducer, ReducersMapObject } from "@reduxjs/toolkit";
+import { createReducerManager } from "@/shared/config/store";
 import { userReducer } from "@/entities/user";
-import { cartReducer } from "@/entities/cart/store/cart.store";
+import { cartReducer } from "@/entities/cart";
 import { productsSearchReducer } from "@/entities/product";
+import { AppState } from "@/shared/config/store";
 
 export const createReduxStore = (
   initialState?: AppState,

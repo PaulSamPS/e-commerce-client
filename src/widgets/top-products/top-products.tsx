@@ -3,15 +3,15 @@
 import React from "react";
 import styles from "./top-products.module.scss";
 import { UiTitle } from "@/shared/ui/ui-title";
-import { IProduct } from "@/shared/types/product";
+import { IProduct } from "@/shared/api/types/product";
 import { TopProductsNav } from "./top-products-nav/top-products-nav";
 import { useTopProducts } from "@/widgets/top-products/use-top-products";
-import { useCarousel } from "@/shared/hooks/use-carousel";
+import { useCarousel } from "@/shared/hooks";
 import { UiArrowButton } from "@/shared/ui/ui-arrow";
-import { AddToCart } from "@/features/add-to-cart/add-to-cart";
-import { FavouriteButton } from "@/features/favourites-button/favourite-button";
+import { AddToCart } from "@/features/add-to-cart";
+import { FavouriteButton } from "@/features/favourites-button";
 import { UiCarouselProductCard } from "@/shared/ui/ui-carousel-product-card/ui-carousel-product-card";
-import { useAddToRecentlyViewed } from "@/features/use-add-to-recently-viewed/use-add-to-recently-viewed";
+import { useAddToRecentlyViewed } from "@/shared/hooks";
 
 const IMAGE_WIDTH = 336;
 const CONTAINER_WIDTH = 1200;

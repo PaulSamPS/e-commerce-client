@@ -1,4 +1,4 @@
-import { FeaturesItem } from "@/shared/types/features";
+import { FeaturesItem } from "@/shared/api/types/features";
 
 interface Img {
   url: string;

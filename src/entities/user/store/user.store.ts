@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { UserSchema } from "../schema/user-store.types";
+import { UserSchema } from "@/shared/config/store";
 import { signInApi } from "../api/api-sign-in";
 import { refreshTokenApi } from "../api/api-refresh-token";
 import { signUpApi } from "../api/api-sign-up";

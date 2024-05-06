@@ -1,7 +1,7 @@
 import React, { DetailedHTMLProps, HTMLAttributes } from "react";
 import styles from "./ui-features.module.scss";
 import { UiTable } from "@/shared/ui/ui-features/ui-table/ui-table";
-import { FeaturesItem } from "@/shared/types/features";
+import { FeaturesItem } from "@/shared/api/types/features";
 import { UiText } from "@/shared/ui/ui-text";
 
 export interface FeaturesProps

@@ -7,10 +7,10 @@ import styles from "./ui-carousel-product-card.module.scss";
 import { UiRating } from "@/shared/ui/ui-rating/ui-rating";
 import { UiReview } from "@/shared/ui/ui-review/ui-review";
 import Image from "next/image";
-import { IProduct } from "@/shared/types/product";
+import { IProduct } from "@/shared/api/types/product";
 import { UiPriceDisplay } from "@/shared/ui/ui-price-display/ui-price-display";
 import { UiBadge } from "@/shared/ui/ui-badge/ui-badge";
-import { useAddToRecentlyViewed } from "@/features/use-add-to-recently-viewed/use-add-to-recently-viewed";
+import { useAddToRecentlyViewed } from "@/shared/hooks/use-add-to-recently-viewed";
 
 const config = {
   baseUrl: "http://localhost:5500",

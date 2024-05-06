@@ -2,12 +2,12 @@
 
 import styles from "./header.module.scss";
 import { UiLogo } from "@/shared/ui/ui-logo/ui-logo";
-import { Auth } from "@/features/auth/auth";
-import { Search } from "@/features/search/search";
+import { Auth } from "@/features/auth";
+import { Search } from "@/features/search";
 import { UiCartButton } from "@/shared/ui/ui-cart-button/ui-cart-button";
 import { useSelector } from "react-redux";
-import { cartState } from "@/entities/cart/state/state";
-import { useAppDispatch } from "@/shared/hooks/use-app-dispatch";
+import { cartState } from "@/entities/cart";
+import { useAppDispatch } from "@/shared/hooks";
 import { useEffect } from "react";
 import { getCartApi } from "@/entities/cart";
 import { useRouter } from "next/navigation";

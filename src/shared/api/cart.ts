@@ -1,5 +1,5 @@
-import { createInstance } from "@/shared/api/api-instance";
-import { ICart, ICartAddAndRemove, ICartProps } from "@/shared/types/cart";
+import { createInstance } from "./api-instance";
+import { ICart, ICartAddAndRemove, ICartProps } from "./types";
 
 // Общий тип для параметра options
 type RequestOptions = Parameters<typeof createInstance>[1];

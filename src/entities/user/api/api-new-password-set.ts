@@ -1,9 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { ThunkConfig } from "@/shared/providers/store-provider";
+import { ThunkConfig } from "@/shared/config/store";
 import { axiosErrorMessage } from "@/shared/lib/axios-error-message";
 import { toast } from "react-toastify";
 import { apiAuth } from "@/shared/api";
-import { NewPasswordProps, NewPasswordResponse } from "@/shared/types/auth";
+import { NewPasswordProps, NewPasswordResponse } from "@/shared/api/types/auth";
 
 export const newPasswordSet = createAsyncThunk<
   NewPasswordResponse,

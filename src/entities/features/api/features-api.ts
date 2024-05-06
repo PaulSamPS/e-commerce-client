@@ -1,8 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { ThunkConfig } from "@/shared/providers/store-provider";
+import { ThunkConfig } from "@/shared/config/store";
 import { apiFeatures } from "@/shared/api";
 import { axiosErrorMessage } from "@/shared/lib/axios-error-message";
-import { IFeatures, IFeaturesProps } from "@/shared/types/features";
+import { IFeatures, IFeaturesProps } from "@/shared/api/types/features";
 export const featuresApi = createAsyncThunk<
   IFeatures,
   IFeaturesProps,

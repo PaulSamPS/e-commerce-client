@@ -1,4 +1,4 @@
-export type { UserSchema } from "./schema/user-store.types";
+export type { UserSchema } from "../../shared/config/store/schemas/user/user-schema.types";
 export { userReducer, userActions } from "./store/user.store";
 export { resetPasswordReducer } from "./store/reset-password.store";
 export { userState } from "./state/user.state";

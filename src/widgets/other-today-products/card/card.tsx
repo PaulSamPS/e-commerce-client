@@ -2,7 +2,7 @@ import React, { DetailedHTMLProps, HTMLAttributes } from "react";
 import Link from "next/link";
 import styles from "./card.module.scss";
 import { priceRu } from "@/shared/lib/priceRu";
-import { IProduct } from "@/shared/types/product";
+import { IProduct } from "@/shared/api/types/product";
 import clsx from "clsx";
 import Image from "next/image";
 

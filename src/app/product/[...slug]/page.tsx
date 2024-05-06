@@ -1,14 +1,14 @@
 import styles from "../product.module.scss";
-import { IProduct } from "@/shared/types/product";
+import { IProduct } from "@/shared/api/product";
 import { UiTitle } from "@/shared/ui/ui-title";
 import { UiReview } from "@/shared/ui/ui-review/ui-review";
 import { UiRating } from "@/shared/ui/ui-rating/ui-rating";
-import { FeaturesItem } from "@/shared/types/features";
+import { FeaturesItem } from "@/shared/api/types/features";
 import dynamic from "next/dynamic";
 import { UiSpinner } from "@/shared/ui/ui-spinner";
 import React from "react";
-import { AddToCart } from "@/features/add-to-cart/add-to-cart";
-import { ProductDetails } from "@/entities/product/ui/product-details/product-details";
+import { AddToCart } from "@/features/add-to-cart";
+import { ProductDetails } from "@/entities/product-details";
 
 type Params = {
   params: {

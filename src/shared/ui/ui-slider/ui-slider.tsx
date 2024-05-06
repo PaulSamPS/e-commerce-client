@@ -8,7 +8,7 @@ import { useSnapCarousel } from "react-snap-carousel";
 import styles from "./ui-slider.module.scss";
 import { UiDots } from "@/shared/ui/ui-dots";
 import { UiTitle } from "@/shared/ui/ui-title";
-import { IShares } from "@/shared/types/shares";
+import { IShares } from "@/shared/api/types/shares";
 import dynamic from "next/dynamic";
 import { UiSpinner } from "@/shared/ui/ui-spinner";
 import { UiSliderItems } from "@/shared/ui/ui-slider/ui-slider-items/ui-slider-items";

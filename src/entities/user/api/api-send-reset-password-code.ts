@@ -2,8 +2,8 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import {
   SendResetCodeResponse,
   SendResetPasswordCodeProps,
-} from "@/shared/types/auth";
-import { ThunkConfig } from "@/shared/providers/store-provider";
+} from "@/shared/api/types/auth";
+import { ThunkConfig } from "@/shared/config/store";
 import { resetPasswordActions } from "../store/reset-password.store";
 import { toast } from "react-toastify";
 import { axiosErrorMessage } from "@/shared/lib/axios-error-message";

@@ -1,8 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { ThunkConfig } from "@/shared/providers/store-provider";
+import { ThunkConfig } from "@/shared/config/store";
 import { axiosErrorMessage } from "@/shared/lib/axios-error-message";
 import { apiAuth } from "@/shared/api";
-import { CheckAuthResult } from "@/shared/types/auth";
+import { CheckAuthResult } from "@/shared/api/types/auth";
 
 export const checkAuthApi = createAsyncThunk<
   CheckAuthResult,

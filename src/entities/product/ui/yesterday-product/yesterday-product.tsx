@@ -2,7 +2,7 @@ import clsx from "clsx";
 import styles from "./yesterday-product.module.scss";
 import { UiTitle } from "@/shared/ui/ui-title";
 import { YesterdayCard } from "./yesterday-card/yesterday-card";
-import { IProduct } from "@/shared/types/product";
+import { IProduct } from "@/shared/api/types/product";
 
 export interface YesterdayProps {
   productsYesterday: IProduct[];

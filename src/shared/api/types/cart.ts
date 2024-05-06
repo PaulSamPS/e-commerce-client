@@ -1,4 +1,4 @@
-import { ProductCart } from "@/shared/types/product";
+import { ProductCart } from "@/shared/api/types/product";
 
 export interface ICart {
   id: number;

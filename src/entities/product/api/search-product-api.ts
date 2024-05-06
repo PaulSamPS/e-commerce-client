@@ -1,8 +1,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { ThunkConfig } from "@/shared/providers/store-provider";
+import { ThunkConfig } from "@/shared/config/store";
 import { apiProduct } from "@/shared/api";
 import { axiosErrorMessage } from "@/shared/lib/axios-error-message";
-import { IProductsSearchData, ISearchProduct } from "@/shared/types/product";
+import {
+  IProductsSearchData,
+  ISearchProduct,
+} from "@/shared/api/types/product";
 export const searchProductApi = createAsyncThunk<
   IProductsSearchData,
   ISearchProduct,

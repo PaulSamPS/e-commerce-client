@@ -1,7 +1,7 @@
 import React, { DetailedHTMLProps, HTMLAttributes } from "react";
 import clsx from "clsx";
 import styles from "./yesterday-card.module.scss";
-import { IProduct } from "@/shared/types/product";
+import { IProduct } from "@/shared/api/types/product";
 import Image from "next/image";
 import { UiAppLink } from "@/shared/ui/ui-app-link";
 import { UiText } from "@/shared/ui/ui-text";

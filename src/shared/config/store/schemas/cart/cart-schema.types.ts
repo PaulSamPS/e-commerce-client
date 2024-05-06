@@ -1,4 +1,4 @@
-import { ICart } from "@/shared/types/cart";
+import { ICart } from "@/shared/api/types/cart";
 
 export interface CartSchema {
   cart: ICart | null;

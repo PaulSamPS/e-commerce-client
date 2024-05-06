@@ -1,4 +1,4 @@
-import { ImageType } from "@/shared/types/image";
+import { ImageType } from "@/shared/api/types/image";
 import styles from "./preview-carousel.module.scss";
 import clsx from "clsx";
 import { memo, useCallback } from "react";

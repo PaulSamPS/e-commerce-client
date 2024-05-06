@@ -4,16 +4,16 @@ import {
   ReducersMapObject,
   Reducer,
 } from "@reduxjs/toolkit";
-import { UserSchema } from "@/entities/user";
-import { ProductsSearchSchema } from "@/entities/product/schema/product-store.types";
-import { ResetPasswordSchema } from "@/entities/user/schema/password-store.types";
-import { CartSchema } from "@/entities/cart/schema/cart-schema.types";
+import { UserSchema } from "./user/user-schema.types";
+import { ProductsSearchSchema } from "./product/product-schema.types";
+import { ResetPasswordSchema } from "./user/password-schema.types";
+import { CartSchema } from "./cart/cart-schema.types";
 
 export interface AppState {
   user: UserSchema;
   cart: CartSchema;
-  resetPassword?: ResetPasswordSchema;
   searchProduct: ProductsSearchSchema;
+  resetPassword?: ResetPasswordSchema;
 }
 
 export type AppStateKey = keyof AppState;

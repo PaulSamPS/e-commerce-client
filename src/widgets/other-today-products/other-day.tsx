@@ -3,10 +3,10 @@
 import React, { DetailedHTMLProps, HTMLAttributes } from "react";
 import styles from "./other-day.module.scss";
 import { Card } from "@/widgets/other-today-products/card/card";
-import { IProduct } from "@/shared/types/product";
+import { IProduct } from "@/shared/api/types/product";
 import clsx from "clsx";
 import { UiTitle } from "@/shared/ui/ui-title";
-import { useAddToRecentlyViewed } from "@/features/use-add-to-recently-viewed/use-add-to-recently-viewed";
+import { useAddToRecentlyViewed } from "@/shared/hooks/use-add-to-recently-viewed";
 
 export interface OtherDayProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {

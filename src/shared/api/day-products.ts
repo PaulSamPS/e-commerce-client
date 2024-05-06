@@ -1,5 +1,5 @@
-import { createInstance } from "@/shared/api/api-instance";
-import { DayProductsProps, IProduct } from "@/shared/types/product";
+import { createInstance } from "./api-instance";
+import { DayProductsProps, IProduct } from "./types";
 
 // Общий тип для параметра options
 type RequestOptions = Parameters<typeof createInstance>[1];

@@ -1,4 +1,4 @@
-import { IUser } from "@/shared/types/auth";
+import { IUser } from "@/shared/api/types/auth";
 
 export interface UserSchema {
   userData?: IUser;

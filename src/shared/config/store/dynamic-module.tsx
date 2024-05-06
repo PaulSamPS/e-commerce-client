@@ -7,7 +7,7 @@ import {
   AppStateKey,
   ReducerManager,
   StoreWithReducerManager,
-} from "@/shared/providers/store-provider/app-state-schema";
+} from "./schemas/app-state-schema";
 
 export type ReducerMap = {
   [name in AppStateKey]?: Reducer;

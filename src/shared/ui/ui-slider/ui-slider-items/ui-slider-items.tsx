@@ -1,5 +1,5 @@
 import React, { LegacyRef } from "react";
-import { IShares } from "@/shared/types/shares";
+import { IShares } from "@/shared/api/types/shares";
 import styles from "./ui-slider-items.module.scss";
 import { UiSliderItem } from "@/shared/ui/ui-slider/ui-slider-item/ui-slider-item";
 

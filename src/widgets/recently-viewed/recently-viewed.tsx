@@ -1,11 +1,11 @@
 "use client";
 
 import React from "react";
-import { useAddToRecentlyViewed } from "@/features/use-add-to-recently-viewed/use-add-to-recently-viewed";
-import { AddToCart } from "@/features/add-to-cart/add-to-cart";
-import { FavouriteButton } from "@/features/favourites-button/favourite-button";
+import { useAddToRecentlyViewed } from "@/shared/hooks";
+import { AddToCart } from "@/features/add-to-cart";
+import { FavouriteButton } from "@/features/favourites-button";
 import { UiTitle } from "@/shared/ui/ui-title";
-import { useCarousel } from "@/shared/hooks/use-carousel";
+import { useCarousel } from "@/shared/hooks";
 import styles from "./recently-viewed.module.scss";
 import { UiArrowButton } from "@/shared/ui/ui-arrow";
 import { UiButton } from "@/shared/ui/ui-button";

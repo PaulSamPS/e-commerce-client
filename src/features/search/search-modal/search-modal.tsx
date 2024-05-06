@@ -5,7 +5,7 @@ import styles from "./search-modal.module.scss";
 import { UiSpinner } from "@/shared/ui/ui-spinner/ui-spinner";
 import { UiAppLink } from "@/shared/ui/ui-app-link";
 import { priceRu } from "@/shared/lib/priceRu";
-import { IProduct } from "@/shared/types/product";
+import { IProduct } from "@/shared/api/types/product";
 import { UiText } from "@/shared/ui/ui-text";
 
 const ANIMATE = {

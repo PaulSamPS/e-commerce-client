@@ -1,5 +1,5 @@
 import styles from "./gallery-carousel.module.scss";
-import { ImageType } from "@/shared/types/image";
+import { ImageType } from "@/shared/api/types/image";
 import Image from "next/image";
 import { MouseEvent, TouchEvent } from "react";
 

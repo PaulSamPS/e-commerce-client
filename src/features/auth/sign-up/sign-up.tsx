@@ -7,7 +7,7 @@ import { UiFormWithInputs } from "@/shared/ui/ui-form-with-inputs/ui-from-with-i
 import { ButtonProps } from "@/shared/ui/ui-button";
 import { emailOptions, usernameOptions } from "../constants";
 import { memo } from "react";
-import { SignUpFormProps } from "@/shared/types/auth";
+import { SignUpFormProps } from "@/shared/api/types/auth";
 
 type SignUpProps = {
   onSignIn: () => void;
