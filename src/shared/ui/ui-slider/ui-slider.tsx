@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import { UiSliderControls } from "@/shared/ui/ui-slider/ui-slider-controls/ui-slider-controls";
-import { useScreenWidth } from "@/shared/hooks/use-screen-width";
 import { useAutoScroll } from "./useAutoPlay";
 import { useSnapCarousel } from "react-snap-carousel";
 import styles from "./ui-slider.module.scss";
@@ -45,7 +44,6 @@ export const UiSlider = ({
 }: SliderProps) => {
   const { scrollRef, next, prev, activePageIndex, goTo, refresh } =
     useSnapCarousel();
-  const screenWidth = useScreenWidth();
   const [autoPlay, setAutoPlay] = useState<boolean>(auto);
 
   useAutoScroll({
@@ -63,11 +61,7 @@ export const UiSlider = ({
           {title}
         </UiTitle>
       )}
-      <WrapperSlider
-        screenWidth={screenWidth}
-        height={height}
-        setAuto={setAutoPlay}
-      >
+      <WrapperSlider height={height} setAuto={setAutoPlay}>
         <UiSliderItems
           width={width}
           height={height}
@@ -75,14 +69,12 @@ export const UiSlider = ({
           scrollRef={scrollRef}
         />
         <UiSliderControls prev={prev} next={next} />
-        {screenWidth > 1000 && (
-          <UiDots
-            className={styles.dots}
-            slideIndex={activePageIndex}
-            activeDot={goTo}
-            dotsCount={shares.length}
-          />
-        )}
+        <UiDots
+          className={styles.dots}
+          slideIndex={activePageIndex}
+          activeDot={goTo}
+          dotsCount={shares.length}
+        />
       </WrapperSlider>
     </div>
   );

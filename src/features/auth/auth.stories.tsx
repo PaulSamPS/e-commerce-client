@@ -3,8 +3,8 @@ import { Meta, StoryFn } from "@storybook/react";
 import { useState } from "react";
 import { UiModalWithHeader } from "@/shared/ui/ui-modal";
 import { useAuth } from "./useAuth";
-import { StoreProvider } from "@/shared/providers/store-provider";
 import { UiAuthButton } from "@/shared/ui/ui-auth-button/ui-auth-button";
+import { StoreProvider } from "@/app/providers/store-provider";
 
 export default {
   title: "widgets/auth",

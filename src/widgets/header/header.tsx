@@ -10,7 +10,6 @@ import { cartState } from "@/entities/cart";
 import { useAppDispatch } from "@/shared/hooks";
 import { useEffect } from "react";
 import { getCartApi } from "@/entities/cart";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import {
   favoriteActions,
@@ -21,7 +20,6 @@ import {
 export const Header = () => {
   const { loading, cart } = useSelector(cartState);
   const dispatch = useAppDispatch();
-  const { push } = useRouter();
   const favorite = useSelector(favoriteState);
 
   useEffect(() => {

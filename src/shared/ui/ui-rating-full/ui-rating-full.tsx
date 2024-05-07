@@ -4,7 +4,7 @@ import styles from "./ui-rating-full.module.scss";
 import { StarIcon } from "@/shared/assets/icons";
 import clsx from "clsx";
 
-interface UiRatingFullProps {
+export interface UiRatingFullProps {
   rating: number;
   className?: string;
 }
