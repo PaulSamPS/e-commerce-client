@@ -8,11 +8,13 @@ import { UserSchema } from "./user/user-schema.types";
 import { ProductsSearchSchema } from "./product/product-schema.types";
 import { ResetPasswordSchema } from "./user/password-schema.types";
 import { CartSchema } from "./cart/cart-schema.types";
+import { FavoriteSchema } from "./favorite/favorite-schema.type";
 
 export interface AppState {
   user: UserSchema;
   cart: CartSchema;
   searchProduct: ProductsSearchSchema;
+  favorites: FavoriteSchema;
   resetPassword?: ResetPasswordSchema;
 }
 

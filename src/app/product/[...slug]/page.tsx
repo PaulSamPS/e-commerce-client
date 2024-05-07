@@ -9,6 +9,7 @@ import { UiSpinner } from "@/shared/ui/ui-spinner";
 import React from "react";
 import { AddToCart } from "@/features/add-to-cart";
 import { ProductDetails } from "@/entities/product-details";
+import { FavouriteButton } from "@/features/favourites-button";
 
 type Params = {
   params: {
@@ -38,18 +39,21 @@ async function getFeatures(productName: string): Promise<FeaturesItem[]> {
   return res.json();
 }
 
-const Carousel = dynamic(() => import("@/entities/carousel-with-preview/carousel-with-preview"), {
-  loading: () => (
-    <div style={{ height: "100%" }}>
-      <UiSpinner
-        color={"var(--blue-themed"}
-        position={"relative"}
-        bg={"transparent"}
-      />
-    </div>
-  ),
-  ssr: false,
-});
+const Carousel = dynamic(
+  () => import("@/entities/carousel-with-preview/carousel-with-preview"),
+  {
+    loading: () => (
+      <div style={{ height: "100%" }}>
+        <UiSpinner
+          color={"var(--blue-themed"}
+          position={"relative"}
+          bg={"transparent"}
+        />
+      </div>
+    ),
+    ssr: false,
+  },
+);
 
 const Product = async ({ params }: Params) => {
   const { product, reviewCount } = await getProduct(
@@ -68,6 +72,11 @@ const Product = async ({ params }: Params) => {
         <div className={styles.rating}>
           {product.rating > 0 && <UiRating rating={product.rating} />}
           <UiReview reviews={reviewCount} />
+          <FavouriteButton
+            product={product}
+            withText
+            className={styles.favourite}
+          />
         </div>
       </div>
       <Carousel

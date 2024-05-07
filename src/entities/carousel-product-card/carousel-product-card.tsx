@@ -1,7 +1,6 @@
 "use client";
 
 import clsx from "clsx";
-import Link from "next/link";
 import React, { ReactNode } from "react";
 import styles from "./carousel-product-card.module.scss";
 import { UiRating } from "@/shared/ui/ui-rating/ui-rating";
@@ -10,7 +9,7 @@ import Image from "next/image";
 import { IProduct } from "@/shared/api/types/product";
 import { UiPriceDisplay } from "@/shared/ui/ui-price-display/ui-price-display";
 import { UiBadge } from "@/shared/ui/ui-badge/ui-badge";
-import { useAddToRecentlyViewed } from "@/shared/hooks/use-add-to-recently-viewed";
+import { UiAppLink } from "@/shared/ui/ui-app-link";
 
 const config = {
   baseUrl: "http://localhost:5500",
@@ -41,8 +40,8 @@ export const CarouselProductCard: React.FC<RecentlyViewedCardProps> = ({
     <div className={clsx(styles.wrapper, className)}>
       {product.isNew && <UiBadge text={"новинка"} color={"orange"} />}
       <div className={styles.img}>
-        <Link
-          href={`/product/${product.name}`}
+        <UiAppLink
+          to={`/product/${product.name}`}
           onClick={handleAddToRecentlyViewed}
         >
           <Image
@@ -53,7 +52,7 @@ export const CarouselProductCard: React.FC<RecentlyViewedCardProps> = ({
             title={product.name}
             priority
           />
-        </Link>
+        </UiAppLink>
       </div>
       {product.discount > 0 && (
         <UiBadge text={"скидка"} discount={product.discount} color={"red"} />
@@ -62,13 +61,13 @@ export const CarouselProductCard: React.FC<RecentlyViewedCardProps> = ({
         {product.rating > 0 && <UiRating rating={product.rating} />}
         <UiReview reviews={product.reviewCount || 0} />
       </div>
-      <Link
-        href={`/product/${product.category}/${product.name}`}
+      <UiAppLink
+        to={`/product/${product.category}/${product.name}`}
         className={styles.name}
         onClick={handleAddToRecentlyViewed}
       >
         <span>{product.name}</span>
-      </Link>
+      </UiAppLink>
       <UiPriceDisplay
         price={product.price}
         oldPrice={product.oldPrice}

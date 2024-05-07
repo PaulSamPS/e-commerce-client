@@ -12,6 +12,15 @@
   grid-area: top;
 }
 
+.favourite {
+    padding: 0 !important;
+  font-size: 12px !important;
+
+  svg {
+    height: 18px;
+  }
+}
+
 .carousel {
   grid-area: carousel;
 }

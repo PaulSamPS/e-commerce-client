@@ -12,14 +12,21 @@ import { useEffect } from "react";
 import { getCartApi } from "@/entities/cart";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import {
+  favoriteActions,
+  favoriteState,
+  FavouriteNotification,
+} from "@/entities/favorite";
 
 export const Header = () => {
   const { loading, cart } = useSelector(cartState);
   const dispatch = useAppDispatch();
   const { push } = useRouter();
+  const favorite = useSelector(favoriteState);
 
   useEffect(() => {
     dispatch(getCartApi()).finally(() => dispatch(getCartApi()));
+    dispatch(favoriteActions.getFavorites());
   }, [dispatch]);
 
   return (
@@ -29,6 +36,7 @@ export const Header = () => {
           <UiLogo companyName="Мебель-Стильно" slogan="Мебель со вкусом" />
         </Link>
         <Search />
+        <FavouriteNotification favoritesCount={favorite.favorites.length} />
         <Auth />
         <UiCartButton
           productsCount={cart?.products.length!}

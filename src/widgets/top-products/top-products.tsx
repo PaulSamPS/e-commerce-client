@@ -50,7 +50,7 @@ export const TopProducts = ({ newProducts, topProducts }: TopProductsProps) => {
               product={p}
               className={styles.card}
               addToCart={<AddToCart productId={p.id} variant="primary" />}
-              addToFavourite={<FavouriteButton productId={p.id} />}
+              addToFavourite={<FavouriteButton product={p} />}
             />
           ))}
         {canScrollLeft && (

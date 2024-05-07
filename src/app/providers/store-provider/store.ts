@@ -4,6 +4,7 @@ import { userReducer } from "@/entities/user";
 import { cartReducer } from "@/entities/cart";
 import { productsSearchReducer } from "@/entities/product";
 import { AppState } from "@/shared/config/store";
+import { favoriteReducer } from "@/entities/favorite";
 
 export const createReduxStore = (
   initialState?: AppState,
@@ -14,6 +15,7 @@ export const createReduxStore = (
     user: userReducer,
     cart: cartReducer,
     searchProduct: productsSearchReducer,
+    favorites: favoriteReducer,
   };
 
   const reducerManager = createReducerManager(rootReducers);

@@ -7,10 +7,17 @@ interface UiAppLinkProps {
   to: string;
   children: ReactNode;
   className?: string;
+  onClick: () => void;
 }
 
-export const UiAppLink = memo(({ to, children, className }: UiAppLinkProps) => (
-  <Link href={to} className={clsx(styles["app-link"], className)}>
-    {children}
-  </Link>
-));
+export const UiAppLink = memo(
+  ({ to, onClick, children, className }: UiAppLinkProps) => (
+    <Link
+      href={to}
+      className={clsx(styles["app-link"], className)}
+      onClick={onClick}
+    >
+      {children}
+    </Link>
+  ),
+);

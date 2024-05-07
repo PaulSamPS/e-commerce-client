@@ -1,57 +1,66 @@
 "use client";
 
-import React, { AllHTMLAttributes } from "react";
+import React, { AllHTMLAttributes, useEffect, useState } from "react";
 import clsx from "clsx";
 import styles from "./favourite-button.module.scss";
-import { useAppDispatch } from "@/shared/hooks/use-app-dispatch";
 import { UiButton } from "@/shared/ui/ui-button";
 import { FavoriteIcon, FavoriteFilledIcon } from "@/shared/assets/icons";
+import { IProduct } from "@/shared/api/types";
+import { useSelector } from "react-redux";
+import { favoriteActions, favoriteState } from "@/entities/favorite";
+import { useAppDispatch } from "@/shared/hooks";
 
 interface IFavouriteProps extends AllHTMLAttributes<HTMLButtonElement> {
-  productId: number;
+  product: IProduct;
+  withText?: boolean;
 }
 
-export const FavouriteButton = ({ productId, className }: IFavouriteProps) => {
-  const [isFavourite, setIsFavourite] = React.useState<boolean>(false);
-  // const favouritesIsLoading = useSelector(favouritesState.isLoading);
-  // const favouritesProducts = useSelector(favouritesState.products);
+export const FavouriteButton = ({
+  product,
+  withText = false,
+  className,
+}: IFavouriteProps) => {
+  const [isFavourite, setIsFavourite] = useState<boolean>(false);
+  const { favorites, loading } = useSelector(favoriteState);
+  const { id, images, name } = product;
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    const favoriteItem = favorites.some(
+      (favorite) => favorite.id === product.id,
+    );
+    if (favoriteItem) {
+      setIsFavourite(true);
+    } else {
+      setIsFavourite(false);
+    }
+  }, [favorites, isFavourite, product.id]);
 
   const onPressEnter = (e: React.KeyboardEvent<HTMLButtonElement>) => {
     if (e.key === "Enter") {
       if (isFavourite) {
-        // return dispatch(apiFavourites.remove({ productId }));
-        console.log("keyboard");
+        return dispatch(favoriteActions.removeFromFavorite(id));
       }
-      // return dispatch(apiFavourites.add({ productId }));
-      console.log("mouse");
+      return dispatch(
+        favoriteActions.addToFavorite({ id, images: images[0].url, name }),
+      );
     }
 
-    return undefined;
+    return;
   };
 
   const actionFavourites = () => {
-    // if (isFavourite) {
-    // return dispatch(apiFavourites.remove({ productId }));
-    // }
-    // return dispatch(apiFavourites.add({ productId }));
-    console.log("favourites");
+    if (isFavourite) {
+      return dispatch(favoriteActions.removeFromFavorite(id));
+    }
+    return dispatch(
+      favoriteActions.addToFavorite({ id, images: images[0].url, name }),
+    );
   };
-
-  // useEffect(() => {
-  //   const isFavourite = favouritesProducts?.find(
-  //     (p) => p.productId === productId,
-  //   );
-  //   if (isFavourite) {
-  //     setIsFavourite(true);
-  //   } else {
-  //     setIsFavourite(false);
-  //   }
-  // }, [favouritesProducts, productId]);
 
   return (
     <UiButton
-      isLoading={false}
+      isLoading={loading}
       appearance="clear"
       size="m"
       type="button"
@@ -60,9 +69,15 @@ export const FavouriteButton = ({ productId, className }: IFavouriteProps) => {
       className={clsx(styles.favourite, className)}
     >
       {isFavourite ? (
-        <FavoriteFilledIcon className={styles["icon-filled"]} />
+        <>
+          <FavoriteFilledIcon className={styles["icon-filled"]} />
+          {withText && "В избранном"}
+        </>
       ) : (
-        <FavoriteIcon />
+        <>
+          <FavoriteIcon />
+          {withText && "В избранное"}
+        </>
       )}
     </UiButton>
   );

@@ -43,7 +43,7 @@ export const RecentlyViewed = () => {
                 key={item.id}
                 product={item}
                 addToCart={<AddToCart productId={item.id} variant="primary" />}
-                addToFavourite={<FavouriteButton productId={item.id} />}
+                addToFavourite={<FavouriteButton product={item} />}
               />
             ))}
             {canScrollLeft && (
