@@ -1,25 +1,41 @@
 "use client";
 
 import { IProduct } from "@/shared/api/types/product";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
   clearLocalStorage,
   loadFromLocalStorage,
   saveToLocalStorage,
 } from "@/shared/lib/localstorage";
+import {apiProduct} from '@/shared/api'
 
 const MAX_ITEMS = 6;
 export const useAddToRecentlyViewed = () => {
   const [recentlyViewed, setRecentlyViewed] = useState<IProduct[]>([]);
 
-  useEffect(() => {
-    const data = loadFromLocalStorage("recentlyViewed");
-    if (data) {
-      setRecentlyViewed(data);
+  const updateRecentlyViewedProducts = useCallback(async () => {
+    try {
+      const data = loadFromLocalStorage("recentlyViewed");
+      if (data) {
+        const productsId: number[] = [];
+        for (const item of data) {
+          productsId.push(item.id);
+        }
+        const product = await apiProduct.recentlyViewedApi({productsId});
+        setRecentlyViewed(product);
+      }
+      return
+    } catch (error) {
+      console.error('Ошибка при обновлении просмотренных товаров:', error);
     }
   }, []);
 
-  const addToRecentlyViewed = (item: IProduct) => {
+  useEffect(() => {
+    updateRecentlyViewedProducts()
+  }, [updateRecentlyViewedProducts]);
+
+  const addToRecentlyViewed = async (item: IProduct) => {
+
     setRecentlyViewed((prevRecentlyViewed) => {
       const isDuplicate = prevRecentlyViewed.some(
         (prevItem) => prevItem.id === item.id,
@@ -27,6 +43,7 @@ export const useAddToRecentlyViewed = () => {
       if (isDuplicate) {
         return prevRecentlyViewed;
       }
+
 
       let updatedData = [
         item,

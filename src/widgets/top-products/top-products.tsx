@@ -10,7 +10,7 @@ import { useCarousel } from "@/shared/hooks";
 import { UiArrowButton } from "@/shared/ui/ui-arrow";
 import { AddToCart } from "@/features/add-to-cart";
 import { FavouriteButton } from "@/features/favourites-button";
-import { UiCarouselProductCard } from "@/shared/ui/ui-carousel-product-card/ui-carousel-product-card";
+import { CarouselProductCard } from "@/entities/carousel-product-card";
 import { useAddToRecentlyViewed } from "@/shared/hooks";
 
 const IMAGE_WIDTH = 336;
@@ -44,7 +44,7 @@ export const TopProducts = ({ newProducts, topProducts }: TopProductsProps) => {
       <div className={styles["card-block"]} ref={scrollRef}>
         {currentAction &&
           currentAction.map((p) => (
-            <UiCarouselProductCard
+            <CarouselProductCard
               addToRecentlyViewed={addToRecentlyViewed}
               key={p.id}
               product={p}

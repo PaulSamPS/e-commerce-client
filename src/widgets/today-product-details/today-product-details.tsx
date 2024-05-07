@@ -4,10 +4,10 @@ import { UiTitle } from "@/shared/ui/ui-title";
 import { IProduct } from "@/shared/api/types/product";
 import { UiRatingFull } from "@/shared/ui/ui-rating-full/ui-rating-full";
 import { UiReview } from "@/shared/ui/ui-review/ui-review";
-import UiCarousel from "@/shared/ui/ui-carousel/ui-carousel";
 import { UiPriceDisplay } from "@/shared/ui/ui-price-display/ui-price-display";
 import { UiFeatures } from "@/shared/ui/ui-features/ui-features";
 import { FeaturesItem } from "@/shared/api/types/features";
+import CarouselWithPreview  from "@/entities/carousel-with-preview/carousel-with-preview";
 
 type TodayProductsProps = {
   product: IProduct;
@@ -32,7 +32,7 @@ export const TodayProductDetails = ({
         </div>
         <div className={styles.productBlock}>
           <div className={styles.carousel}>
-            <UiCarousel product={product} imageWidth={400} />
+            <CarouselWithPreview product={product} imageWidth={400} />
           </div>
         </div>
       </div>

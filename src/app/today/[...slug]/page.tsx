@@ -5,13 +5,13 @@ import {
   IYesterdayProducts,
 } from "@/shared/api/types/product";
 import styles from "./today.module.scss";
-import { TodayProductDetails } from "@/entities/product/ui/today-product-details/today-product-details";
+import { TodayProductDetails } from "@/widgets/today-product-details";
 import { UiTitle } from "@/shared/ui/ui-title";
 import { UiTimer } from "@/shared/ui/ui-timer/ui-timer";
-import OtherDay from "@/widgets/other-today-products/other-day";
+import { OtherDay } from "@/widgets/other-today-products";
 import { FeaturesItem } from "@/shared/api/types/features";
-import { AddToCart } from "@/features/add-to-cart/add-to-cart";
-import { YesterdayProduct } from "@/entities/product/ui/yesterday-product/yesterday-product";
+import { AddToCart } from "@/features/add-to-cart";
+import { YesterdayProduct } from "@/widgets/yesterday-product";
 
 type Params = {
   params: {

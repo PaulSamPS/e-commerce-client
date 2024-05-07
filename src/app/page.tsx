@@ -1,12 +1,12 @@
 import { UiSlider } from "@/shared/ui/ui-slider";
-import { Social } from "@/widgets/social/social";
+import { Social } from "@/widgets/social";
 import styles from "./page.module.scss";
 import { IProduct } from "@/shared/api/types";
-import { DayProducts } from "@/widgets/day-products/day-products";
-import { Sidebar } from "@/widgets/sidebar/Sidebar";
-import { TopProducts } from "@/widgets/top-products/top-products";
+import { DayProducts } from "@/widgets/day-products";
+import { Sidebar } from "@/widgets/sidebar";
+import { TopProducts } from "@/widgets/top-products";
 import { IShares } from "@/shared/api/types/shares";
-import { RecentlyViewed } from "@/widgets/recently-viewed/recently-viewed";
+import { RecentlyViewed } from "@/widgets/recently-viewed";
 
 async function getShares(): Promise<IShares[]> {
   const data = await fetch("http://localhost:5500/shares");

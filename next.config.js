@@ -11,7 +11,13 @@ const nextConfig = {
     ]
   },
   images: {
-    domains: ["localhost"],
+    remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        pathname: '**',
+      },
+    ],
   },
   webpack(config) {
     const fileLoaderRule = config.module.rules.find(

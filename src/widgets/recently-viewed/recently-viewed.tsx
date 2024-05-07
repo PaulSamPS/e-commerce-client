@@ -9,7 +9,7 @@ import { useCarousel } from "@/shared/hooks";
 import styles from "./recently-viewed.module.scss";
 import { UiArrowButton } from "@/shared/ui/ui-arrow";
 import { UiButton } from "@/shared/ui/ui-button";
-import { UiCarouselProductCard } from "@/shared/ui/ui-carousel-product-card/ui-carousel-product-card";
+import { CarouselProductCard } from "@/entities/carousel-product-card";
 
 const IMAGE_WIDTH = 336;
 const CONTAINER_WIDTH = 1200;
@@ -38,7 +38,7 @@ export const RecentlyViewed = () => {
           </div>
           <div className={styles["card-block"]} ref={scrollRef}>
             {recentlyViewed.map((item) => (
-              <UiCarouselProductCard
+              <CarouselProductCard
                 className={styles.card}
                 key={item.id}
                 product={item}

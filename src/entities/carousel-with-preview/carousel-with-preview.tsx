@@ -1,10 +1,9 @@
 "use client";
 
 import clsx from "clsx";
-import styles from "./ui-carousel.module.scss";
+import styles from "./carousel-with-preview.module.scss";
 import { IProduct } from "@/shared/api/types/product";
-import { useScreenWidth } from "@/shared/hooks/use-screen-width";
-import { GalleryCarousel } from "@/shared/ui/ui-carousel/gallery-carousel/gallery-carousel";
+import { GalleryCarousel } from "@/entities/carousel-with-preview/gallery-carousel/gallery-carousel";
 import { CarouselControls } from "./carousel-control/carousel-control";
 import { PreviewCarousel } from "./preview-carousel/preview-carousel";
 import { useSnapCarousel } from "react-snap-carousel";
@@ -16,8 +15,7 @@ export interface CarouselProps {
   className?: string;
 }
 
-const UiCarousel = ({ product, imageWidth, className }: CarouselProps) => {
-  const screenWidth = useScreenWidth();
+const CarouselWithPreview = ({ product, imageWidth, className }: CarouselProps) => {
   const { scrollRef, next, prev, activePageIndex, goTo } = useSnapCarousel();
 
   return (
@@ -32,7 +30,6 @@ const UiCarousel = ({ product, imageWidth, className }: CarouselProps) => {
         left={prev}
         right={next}
         currentSlideIndex={activePageIndex}
-        screenWidth={screenWidth}
         imgLength={product.images.length}
         arrowTop
       />
@@ -62,4 +59,4 @@ const UiCarousel = ({ product, imageWidth, className }: CarouselProps) => {
   );
 };
 
-export default UiCarousel;
+export default CarouselWithPreview

@@ -6,7 +6,7 @@ import { Card } from "@/widgets/other-today-products/card/card";
 import { IProduct } from "@/shared/api/types/product";
 import clsx from "clsx";
 import { UiTitle } from "@/shared/ui/ui-title";
-import { useAddToRecentlyViewed } from "@/shared/hooks/use-add-to-recently-viewed";
+import { useAddToRecentlyViewed } from "@/shared/hooks";
 
 export interface OtherDayProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
@@ -14,7 +14,7 @@ export interface OtherDayProps
   currentProduct: IProduct;
 }
 
-const OtherDay = ({
+export const OtherDay = ({
   dayProducts,
   currentProduct,
   className,
@@ -41,4 +41,3 @@ const OtherDay = ({
   );
 };
 
-export default OtherDay;

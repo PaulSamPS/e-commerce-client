@@ -1,5 +1,5 @@
 import styles from "../product.module.scss";
-import { IProduct } from "@/shared/api/product";
+import { IProduct } from "@/shared/api/types";
 import { UiTitle } from "@/shared/ui/ui-title";
 import { UiReview } from "@/shared/ui/ui-review/ui-review";
 import { UiRating } from "@/shared/ui/ui-rating/ui-rating";
@@ -38,7 +38,7 @@ async function getFeatures(productName: string): Promise<FeaturesItem[]> {
   return res.json();
 }
 
-const Carousel = dynamic(() => import("@/shared/ui/ui-carousel/ui-carousel"), {
+const Carousel = dynamic(() => import("@/entities/carousel-with-preview/carousel-with-preview"), {
   loading: () => (
     <div style={{ height: "100%" }}>
       <UiSpinner

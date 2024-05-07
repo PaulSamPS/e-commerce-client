@@ -2,13 +2,13 @@
 
 import { useAuth } from "@/features/auth/useAuth";
 import { useContext, useEffect, useState } from "react";
-import { AuthModalAppContext } from "@/shared/context/authModalAppContext";
+import { AuthModalAppContext } from "@/shared/context";
 import { UiModalWithHeader } from "@/shared/ui/ui-modal";
 import { UiAuthButton } from "@/shared/ui/ui-auth-button/ui-auth-button";
-import { useAppDispatch } from "@/shared/hooks/use-app-dispatch";
+import { useAppDispatch } from "@/shared/hooks";
 import { useSelector } from "react-redux";
 import { logoutApi, userState } from "@/entities/user";
-import { checkAuthApi } from "@/entities/user/api/api-check-auth";
+import { checkAuthApi } from "@/entities/user";
 import { UiDropdown } from "@/shared/ui/ui-dropdown";
 import {
   ExitIcon,
@@ -17,7 +17,7 @@ import {
   ProfileIcon,
 } from "@/shared/assets/icons";
 import { usePathname, useRouter } from "next/navigation";
-import { getCartApi } from "@/entities/cart";
+import { getCartApi, cartActions } from "@/entities/cart";
 
 const LINKS = [
   { path: "/profile", label: "Профиль", icon: <ProfileIcon /> },
@@ -36,7 +36,7 @@ export const Auth = () => {
   const router = useRouter();
 
   useEffect(() => {
-    dispatch(checkAuthApi()).finally(() => dispatch(checkAuthApi()));
+    dispatch(checkAuthApi()).finally(() => dispatch(getCartApi()));
   }, [dispatch]);
 
   const handleCloseModal = () => {
@@ -45,7 +45,7 @@ export const Auth = () => {
 
   const onNavigate = async (to: string, text?: string) => {
     if (text === "Выйти") {
-      dispatch(logoutApi()).then(() => dispatch(getCartApi()));
+      dispatch(logoutApi()).then(() => dispatch(cartActions.clearCart()));
     }
     if (to !== pathname || pathname === "/") {
       router.push(to);

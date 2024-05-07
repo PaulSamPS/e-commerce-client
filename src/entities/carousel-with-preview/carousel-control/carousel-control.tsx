@@ -5,7 +5,6 @@ type CarouselControlsProps = {
   left: () => void;
   right: () => void;
   currentSlideIndex: number;
-  screenWidth: number;
   imgLength: number;
   arrowTop?: boolean;
 };
@@ -14,13 +13,12 @@ export const CarouselControls = ({
   left,
   right,
   currentSlideIndex,
-  screenWidth,
   imgLength,
   arrowTop,
 }: CarouselControlsProps) => {
   return (
     <>
-      {arrowTop && currentSlideIndex > 0 && screenWidth > 650 && (
+      {arrowTop && currentSlideIndex > 0 && (
         <UiArrowButton
           appearance="left"
           background={"none"}
@@ -28,7 +26,7 @@ export const CarouselControls = ({
           className={styles.leftTop}
         />
       )}
-      {arrowTop && currentSlideIndex !== imgLength - 1 && screenWidth > 650 && (
+      {arrowTop && currentSlideIndex !== imgLength - 1 && (
         <UiArrowButton
           appearance="right"
           background={"none"}

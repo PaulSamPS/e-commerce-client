@@ -3,7 +3,7 @@
 import clsx from "clsx";
 import Link from "next/link";
 import React, { ReactNode } from "react";
-import styles from "./ui-carousel-product-card.module.scss";
+import styles from "./carousel-product-card.module.scss";
 import { UiRating } from "@/shared/ui/ui-rating/ui-rating";
 import { UiReview } from "@/shared/ui/ui-review/ui-review";
 import Image from "next/image";
@@ -24,7 +24,7 @@ interface RecentlyViewedCardProps {
   addToRecentlyViewed?: (product: IProduct) => void;
 }
 
-export const UiCarouselProductCard: React.FC<RecentlyViewedCardProps> = ({
+export const CarouselProductCard: React.FC<RecentlyViewedCardProps> = ({
   product,
   addToCart,
   addToFavourite,

@@ -1,5 +1,5 @@
 import { createInstance } from "./api-instance";
-import { IProductsSearchData } from "./types";
+import { IProduct, IProductsSearchData } from "./types";
 
 // Общий тип для параметра options
 
@@ -8,6 +8,10 @@ type RequestOptions = Parameters<typeof createInstance>[1];
 // Интерфейсы для параметров запросов API
 export interface SearchProductsProps {
   productName: string;
+}
+
+interface recentlyViewedApiProps {
+  productsId: number[];
 }
 
 export const searchProductByName = (
@@ -20,6 +24,21 @@ export const searchProductByName = (
       method: "POST",
       headers: { "Content-Type": "application/json" },
       data: searchProducts,
+    },
+    options,
+  );
+};
+
+export const recentlyViewedApi = (
+  recentlyViewedA: recentlyViewedApiProps,
+  options?: RequestOptions,
+) => {
+  return createInstance<IProduct[]>(
+    {
+      url: `/products/recently-viewed`,
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      data: recentlyViewedA,
     },
     options,
   );

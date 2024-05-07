@@ -12,7 +12,11 @@ const initialState: CartSchema = {
 export const cartStore = createSlice({
   name: "cart",
   initialState,
-  reducers: {},
+  reducers: {
+    clearCart: (state) => {
+      state.cart = null;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(addToCartApi.pending, (state) => {

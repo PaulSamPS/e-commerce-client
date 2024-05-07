@@ -1,9 +1,9 @@
 import React, { ReactNode } from "react";
 import styles from "./product-details.module.scss";
 import { IProduct } from "@/shared/api/types/product";
-import { UiPriceDisplay } from "@/shared/ui/ui-price-display/ui-price-display";
 import { UiFeatures } from "@/shared/ui/ui-features/ui-features";
 import { FeaturesItem } from "@/shared/api/types/features";
+import { UiPriceDisplay } from "@/shared/ui/ui-price-display/ui-price-display";
 
 type TodayProductsProps = {
   product: IProduct;

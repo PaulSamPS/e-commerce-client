@@ -1,6 +1,6 @@
 import { IProduct } from "@/shared/api/types/product";
 
-export const saveToLocalStorage = (key: string, data: IProduct[]) => {
+export const saveToLocalStorage = <T>(key: string, data: T[]) => {
   localStorage.setItem(key, JSON.stringify(data));
 };
 
