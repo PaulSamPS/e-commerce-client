@@ -1,5 +1,11 @@
 import { createInstance } from "./api-instance";
-import { ICart, ICartAddAndRemove, ICartProps } from "./types";
+import {
+  ICart,
+  ICartAddAndRemove,
+  ICartProps,
+  IClearCart,
+  RemoveProduct,
+} from "./types";
 
 // Общий тип для параметра options
 type RequestOptions = Parameters<typeof createInstance>[1];
@@ -64,7 +70,7 @@ export const deleteProductFromCart = (
   addToCartDto: ICartProps,
   options?: RequestOptions,
 ) => {
-  return createInstance<ICart>(
+  return createInstance<RemoveProduct>(
     {
       url: `/cart/${addToCartDto.productId}`,
       method: "DELETE",
@@ -75,7 +81,7 @@ export const deleteProductFromCart = (
 };
 
 export const deleteAllProductFromCart = (options?: RequestOptions) => {
-  return createInstance<ICart>(
+  return createInstance<IClearCart>(
     {
       url: `/cart`,
       method: "DELETE",

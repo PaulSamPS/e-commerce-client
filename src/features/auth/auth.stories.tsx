@@ -4,6 +4,7 @@ import { useState } from "react";
 import { UiModalWithHeader } from "@/shared/ui/ui-modal";
 import { useAuth } from "./useAuth";
 import { UiAuthButton } from "@/shared/ui/ui-auth-button/ui-auth-button";
+// eslint-disable-next-line boundaries/element-types,boundaries/entry-point
 import { StoreProvider } from "@/app/providers/store-provider";
 
 export default {

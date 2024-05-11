@@ -51,7 +51,7 @@ export const UiCartButton = ({
 
   return (
     <Link
-      href="/basket"
+      href="/cart"
       className={hasProducts ? styles["basket-product"] : styles.basket}
     >
       {renderBasketContent()}

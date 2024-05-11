@@ -1,0 +1,56 @@
+.wrapper {
+  border-radius: var(--border-radius);
+  border: 1px solid rgb(0 0 0 / 15%);
+  padding: 20px;
+  box-shadow: 0 0 12px 1px rgb(0 0 0 / 10%);
+  width: 50%;
+  margin: 0 auto;
+}
+
+.title {
+  padding-bottom: 10px;
+  font-size: 19px;
+}
+
+.total-block {
+  padding: 0;
+  list-style-type: none;
+
+  li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 13px;
+    column-gap: 5px;
+  }
+}
+
+.value {
+  color: var(--black);
+}
+
+.total-value {
+  color: var(--black);
+  font-size: 22px;
+}
+
+.text {
+  flex-grow: 1;
+
+  span {
+    margin-left: 5px;
+  }
+}
+
+.total {
+  margin-top: 40px;
+}
+
+.offer {
+  padding-top: 15px;
+  color: #ACA7A4;
+  font-size: 11px;
+  text-align: center;
+}
+

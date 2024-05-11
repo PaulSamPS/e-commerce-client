@@ -14,6 +14,8 @@ import CatalogIcon from "./catalog.svg";
 import OnOrderIcon from "./on-order.svg";
 import ExitIcon from "./exit-icon.svg";
 import MenuFavoriteIcon from "./menu-favorite.svg";
+import RemoveIcon from "./remove.svg";
+import EmptyCartIcon from "./empty-cart.svg";
 
 export {
   ChatIcon,
@@ -32,4 +34,6 @@ export {
   OnOrderIcon,
   ExitIcon,
   MenuFavoriteIcon,
+  RemoveIcon,
+  EmptyCartIcon,
 };

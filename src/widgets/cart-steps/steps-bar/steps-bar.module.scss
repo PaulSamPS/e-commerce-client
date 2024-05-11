@@ -1,0 +1,54 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--gray-300);
+  box-shadow: 0 1px 0 #FDFDFD, 0 1px 0 #FDFDFD inset;
+
+  .active-white {
+    background-color: #F5F5F5 !important;
+    background-position: 100% -40px !important;
+
+    span {
+      font-family: 'Graphik LC Medium', sans-serif !important;
+    }
+  }
+
+  .active-gray {
+    color: var(--blue-themed);
+    background-color: var(--gray-100) !important;
+
+    span {
+      font-family: 'Graphik LC Medium', sans-serif !important;
+    }
+  }
+
+  .last-gray {
+    background-color: var(--gray-100);
+  }
+
+  .triangles {
+    position: relative;
+    width: 100%;
+    height: 41px;
+    background-color: var(--white);
+    background-image:  url('/basketNavArrow-white.webp');
+    background-repeat:  no-repeat;
+    background-position:  100% 0;
+    background-attachment: scroll;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:last-child {
+      background-color: transparent;
+      background-position:  100% 100px !important;
+    }
+
+    span {
+      width: 100%;
+      font-size: 15px;
+      text-align: center;
+    }
+  }
+}
+

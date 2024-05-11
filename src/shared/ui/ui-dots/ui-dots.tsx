@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import clsx from "clsx";
 import styles from "./ui-dots.module.scss";
 
-type UiDotsProps<T> = {
+export type UiDotsProps<T> = {
   slideIndex: number;
   activeDot: (index: number) => void;
   dotsCount: number;

@@ -6,7 +6,7 @@ type Colors = "orange" | "red" | "blue";
 
 type Side = "left" | "right";
 
-type UiBadgeProps = {
+export type UiBadgeProps = {
   discount?: number;
   text: string;
   color?: Colors;

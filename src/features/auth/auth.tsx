@@ -1,7 +1,7 @@
 "use client";
 
 import { useAuth } from "@/features/auth/useAuth";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { AuthModalAppContext } from "@/shared/context";
 import { UiModalWithHeader } from "@/shared/ui/ui-modal";
 import { UiAuthButton } from "@/shared/ui/ui-auth-button/ui-auth-button";
@@ -18,6 +18,7 @@ import {
 } from "@/shared/assets/icons";
 import { usePathname, useRouter } from "next/navigation";
 import { getCartApi, cartActions } from "@/entities/cart";
+import { useStrictContext } from "@/shared/lib/react";
 
 const LINKS = [
   { path: "/profile", label: "Профиль", icon: <ProfileIcon /> },
@@ -27,7 +28,7 @@ const LINKS = [
 ];
 
 export const Auth = () => {
-  const { isOpen, setIsOpen } = useContext(AuthModalAppContext);
+  const { isOpen, setIsOpen } = useStrictContext(AuthModalAppContext);
   const { authAction, currentAction } = useAuth({ isOpen });
   const dispatch = useAppDispatch();
   const { userData, loading } = useSelector(userState);

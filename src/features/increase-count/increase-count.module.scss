@@ -1,0 +1,32 @@
+.increase {
+  position: relative;
+  float: left;
+  width: 30px;
+  height: 30px;
+  font-size: 1.1em;
+  background: #FFF;
+  border-left: 1px solid #CBCBCB;
+  cursor: pointer;
+
+  &::before {
+    position: absolute;
+    top: 15px;
+    left: 10px;
+    display: block;
+    width: 9px;
+    height: 1px;
+    background: #3F454B;
+    content: " ";
+  }
+
+  &::after {
+    position: absolute;
+    top: 11px;
+    left: 14px;
+    display: block;
+    width: 1px;
+    height: 9px;
+    background: #3F454B;
+    content: " ";
+  }
+}

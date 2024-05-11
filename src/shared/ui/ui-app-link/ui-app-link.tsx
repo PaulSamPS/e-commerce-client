@@ -3,11 +3,11 @@ import Link from "next/link";
 import clsx from "clsx";
 import styles from "./ui-app-link.module.scss";
 
-interface UiAppLinkProps {
+export interface UiAppLinkProps {
   to: string;
   children: ReactNode;
   className?: string;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 export const UiAppLink = memo(

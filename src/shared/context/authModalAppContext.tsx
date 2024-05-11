@@ -7,16 +7,14 @@ import React, {
   useMemo,
   useState,
 } from "react";
+import { createStrictContext } from "@/shared/lib/react";
 
 interface IAuthModalAppContext {
   isOpen: boolean;
   setIsOpen: (value: boolean) => void;
 }
 
-export const AuthModalAppContext = createContext<IAuthModalAppContext>({
-  isOpen: false,
-  setIsOpen: () => {},
-});
+export const AuthModalAppContext = createStrictContext<IAuthModalAppContext>();
 
 export const AuthModalAppContextProvider: React.FC<PropsWithChildren<{}>> = ({
   children,
@@ -29,7 +27,7 @@ export const AuthModalAppContextProvider: React.FC<PropsWithChildren<{}>> = ({
 
   const val = useMemo(
     () => ({ isOpen, setIsOpen: memoizedSetIsOpen }),
-    [isOpen, memoizedSetIsOpen]
+    [isOpen, memoizedSetIsOpen],
   );
 
   return (

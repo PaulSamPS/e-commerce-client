@@ -1,0 +1,21 @@
+.decrease {
+  position: relative;
+  float: left;
+  width: 30px;
+  height: 30px;
+  font-size: 1.1em;
+  border-right: 1px solid #CBCBCB;
+  cursor: pointer;
+
+  &::before {
+    position: absolute;
+    top: 15px;
+    left: 11px;
+    display: block;
+    width: 8px;
+    height: 1px;
+    background: #3F454B;
+    content: "";
+  }
+}
+

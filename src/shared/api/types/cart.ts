@@ -10,6 +10,14 @@ export interface ICart {
   user: number;
 }
 
+export type IClearCart = {
+  message: string;
+} & ICart;
+
+export type RemoveProduct = {
+  message: string;
+} & ICart;
+
 export interface ICartAddAndRemove {
   id: number;
   products: ProductCart[];
