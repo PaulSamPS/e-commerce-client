@@ -11,11 +11,12 @@ import { useStrictContext } from "@/shared/lib/react";
 import { CartStepsContext } from "@/widgets/cart-steps/cart-steps-context";
 import { cartState, Total } from "@/entities/cart";
 import { UiButton } from "@/shared/ui/ui-button";
+import { PersonalData } from "@/entities/user";
 
 export const StepOrderConfirmation = () => {
   const dispatch = useAppDispatch();
   const { cart } = useSelector(cartState);
-  const { deliveryMethod } = useStrictContext(CartStepsContext);
+  const { deliveryMethod, step } = useStrictContext(CartStepsContext);
   const { push } = useRouter();
   // const {
   //   control,
@@ -73,6 +74,7 @@ export const StepOrderConfirmation = () => {
           productsLength={cart?.products.length!}
           discount={cart?.discount!}
           totalPrice={cart?.total_price!}
+          step={step}
           nextStep={
             <UiButton
               appearance="primary"

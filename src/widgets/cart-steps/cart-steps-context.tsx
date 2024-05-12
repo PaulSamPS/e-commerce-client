@@ -18,7 +18,6 @@ export const CartStepsContextProvider: React.FC<PropsWithChildren<{}>> = ({
 }) => {
   const [step, setStep] = React.useState<number>(0);
   const [deliveryMethod, setDeliveryMethod] = useState("Самовывоз");
-  console.log(step);
 
   const nextStep = () => {
     console.log("next");

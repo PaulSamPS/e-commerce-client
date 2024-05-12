@@ -6,22 +6,26 @@ const nextConfig = {
     return [
       {
         source: "/api/:path*",
-        destination: "http://localhost:5500/:path*"
-      }
-    ]
+        destination: "http://localhost:5500/:path*",
+      },
+      {
+        source: "/cdek/:path*",
+        destination: "https://api.edu.cdek.ru/v2/:path*",
+      },
+    ];
   },
   images: {
     remotePatterns: [
       {
-        protocol: 'http',
-        hostname: 'localhost',
-        pathname: '**',
+        protocol: "http",
+        hostname: "localhost",
+        pathname: "**",
       },
     ],
   },
   webpack(config) {
     const fileLoaderRule = config.module.rules.find(
-      (rule) => rule.test && rule.test.test && rule.test.test(".svg")
+      (rule) => rule.test && rule.test.test && rule.test.test(".svg"),
     );
 
     // Добавляем правило для SVG, когда они используются как URL

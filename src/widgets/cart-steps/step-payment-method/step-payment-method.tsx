@@ -9,7 +9,7 @@ import { CartStepsContext } from "@/widgets/cart-steps/cart-steps-context";
 
 export const StepPaymentMethod = () => {
   const { cart } = useSelector(cartState);
-  const { nextStep, deliveryMethod } = useStrictContext(CartStepsContext);
+  const { nextStep, deliveryMethod, step } = useStrictContext(CartStepsContext);
 
   return (
     <div className={styles.wrapper}>
@@ -17,20 +17,19 @@ export const StepPaymentMethod = () => {
         <div className={styles.method}>
           <label htmlFor="method">
             <input type="radio" name="method" checked readOnly />
-            <span>Оплата картой онлайн</span>
+            <span>Оплата онлайн</span>
           </label>
         </div>
       </div>
-      <div className={styles.total}>
-        <Total
-          productsLength={cart?.products?.length!}
-          discount={cart?.discount!}
-          totalPrice={cart?.total_price!}
-          nextStep={<NextStep text="Продолжить" nextStep={nextStep} />}
-          title="Ваш заказ"
-          delivery={deliveryMethod}
-        />
-      </div>
+      <Total
+        productsLength={cart?.products?.length!}
+        discount={cart?.discount!}
+        totalPrice={cart?.total_price!}
+        nextStep={<NextStep text="Продолжить" nextStep={nextStep} />}
+        title="Ваш заказ"
+        delivery={deliveryMethod}
+        step={step}
+      />
     </div>
   );
 };

@@ -16,44 +16,47 @@ import { CartStepsContext } from "@/widgets/cart-steps/cart-steps-context";
 import { IncreaseCount } from "@/features/increase-count";
 import { DecreaseCount } from "@/features/decrease-count";
 import { DeleteProduct } from "@/features/delete-product";
+import { useMemo } from "react";
 
 export const StepProductsList = () => {
   const { cart } = useSelector(cartState);
   const dispatch = useAppDispatch();
-  const { nextStep } = useStrictContext(CartStepsContext);
+  const { nextStep, step } = useStrictContext(CartStepsContext);
 
   const handleClearCart = () => {
     dispatch(apiClearCart());
   };
 
-  const totalCount = () => {
-    let count = 0;
-
-    for (let i = 0; i < cart?.products.length; i++) {
-      count += cart?.products[i].count;
-    }
-    return count;
+  const calculateTotalCount = () => {
+    return cart?.products.reduce((acc, curr) => acc + curr.count, 0) || 0;
   };
 
-  return (
-    <>
-      <TopCart clearCart={handleClearCart} />
-      {cart?.products.map((p) => (
+  const renderCartItems = useMemo(
+    () =>
+      cart?.products.map((product) => (
         <CardCart
-          key={p.productId}
-          product={p}
+          key={product.productId}
+          product={product}
           className={styles.card}
           IncreaseCount={IncreaseCount}
           DecreaseCount={DecreaseCount}
           DeleteProduct={DeleteProduct}
         />
-      ))}
+      )),
+    [cart?.products],
+  );
+
+  return (
+    <>
+      <TopCart clearCart={handleClearCart} />
+      {renderCartItems}
       <Total
-        productsLength={totalCount()}
-        discount={cart?.discount}
-        totalPrice={cart?.total_price}
+        productsLength={calculateTotalCount()}
+        discount={cart?.discount!}
+        totalPrice={cart?.total_price!}
         nextStep={<NextStep nextStep={nextStep} text={"Продолжить"} />}
-        title={"Продолжить"}
+        title={"Оформить заказ"}
+        step={step}
       />
     </>
   );

@@ -1,7 +1,6 @@
 "use client";
 
 import React, { ComponentType, DetailedHTMLProps, HTMLAttributes } from "react";
-import Link from "next/link";
 import clsx from "clsx";
 import Image from "next/image";
 import styles from "./card-cart.module.scss";

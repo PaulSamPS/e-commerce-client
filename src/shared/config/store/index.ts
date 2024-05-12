@@ -16,3 +16,4 @@ export type {
   StoreWithReducerManager,
   ThunkConfig,
 } from "./schemas/app-state-schema";
+export type { ProfileSchema } from "./schemas/profile/profile-schema.types";

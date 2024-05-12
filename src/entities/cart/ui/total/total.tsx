@@ -14,6 +14,7 @@ type TotalProps = {
   title: string;
   offer?: boolean;
   delivery?: string;
+  step: number;
 };
 
 export const Total = ({
@@ -24,6 +25,7 @@ export const Total = ({
   title,
   offer,
   delivery,
+  step,
 }: TotalProps) => (
   <div className={styles.wrapper}>
     <UiTitle size="h2" weight="medium" className={styles.title}>
@@ -31,31 +33,35 @@ export const Total = ({
     </UiTitle>
     <ul className={styles["total-block"]}>
       <li>
-        <UiText weight={"medium"}> {productsLength}</UiText>
-        <UiText weight={"medium"} className={styles.text}>
+        <UiText weight={"regular"}> {productsLength}</UiText>
+        <UiText weight={"regular"} className={styles.text}>
           {endOf(productsLength || 0, "товар", "товара", "товаров")}
-          <UiText weight={"medium"}>на</UiText>
+          <UiText weight={"regular"}>на</UiText>
         </UiText>
         <UiText weight={"medium"} className={styles.value}>
           {priceRu(totalPrice + discount)}
         </UiText>
       </li>
-      <li>
-        <UiSubhead weight={"medium"} className={styles.text}>
-          Ваша выгода
-        </UiSubhead>
-        <UiText weight={"medium"} className={styles.value}>
-          {priceRu(discount)}
-        </UiText>
-      </li>
-      <li>
-        <UiSubhead weight={"medium"}>Доставка</UiSubhead>
-        <UiText weight={"medium"} className={styles.value}>
-          {delivery}
-        </UiText>
-      </li>
+      {discount > 0 && (
+        <li>
+          <UiSubhead weight={"regular"} className={styles.text}>
+            Ваша выгода
+          </UiSubhead>
+          <UiText weight={"medium"} className={styles.value}>
+            {priceRu(discount)}
+          </UiText>
+        </li>
+      )}
+      {step > 0 && (
+        <li>
+          <UiSubhead weight={"regular"}>Доставка</UiSubhead>
+          <UiText weight={"medium"} className={styles.value}>
+            {delivery}
+          </UiText>
+        </li>
+      )}
       <li className={styles.total}>
-        <UiSubhead weight={"medium"}>Всего к оплате</UiSubhead>
+        <UiSubhead weight={"regular"}>Всего к оплате</UiSubhead>
         {totalPrice > 0 && (
           <UiText weight={"medium"} className={styles["total-value"]}>
             {priceRu(totalPrice)}
@@ -64,7 +70,7 @@ export const Total = ({
       </li>
       {nextStep}
       {offer && (
-        <UiText weight={"medium"} className={styles.offer}>
+        <UiText weight={"regular"} className={styles.offer}>
           Нажимая кнопку Подтвердить заказ, я соглашаюсь с условиями Оферты,
           включающей условия обработки персональных данных.
         </UiText>

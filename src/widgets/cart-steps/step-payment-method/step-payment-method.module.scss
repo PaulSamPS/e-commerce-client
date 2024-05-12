@@ -7,17 +7,19 @@
 }
 
 .payment {
-  flex-grow: 1;
   height: fit-content;
-  padding: 20px;
   background-color: var(--white);
-  border: 1px solid var(--gray-300);
-  border-radius: 2px;
+  border-radius: var(--border-radius);
+  border: 1px solid rgb(0 0 0 / 15%);
+  padding: 20px;
+  box-shadow: 0 0 12px 1px rgb(0 0 0 / 10%);
+  width: 100%;
 }
 
 .method {
   padding: 20px 10px;
   background: #F9F9F9;
+  border-radius: var(--border-radius);
 
   input {
     margin: 0;
@@ -25,18 +27,17 @@
 
   label {
     display: flex;
-    align-items: self-start;
     font-size: 14px;
     column-gap: 10px;
   }
 }
 
 .total {
-  width: 300px;
-  min-width: 300px;
-  height: fit-content;
-  padding: 15px;
-  border: 1px solid var(--gray-300);
-  border-radius: 2px;
+  //width: 300px;
+  //min-width: 300px;
+  //height: fit-content;
+  //padding: 15px;
+  //border: 1px solid var(--gray-300);
+  //border-radius: 2px;
 }
 

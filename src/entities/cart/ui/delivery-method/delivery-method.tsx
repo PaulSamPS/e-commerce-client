@@ -1,12 +1,16 @@
 import { ReactNode } from "react";
 import styles from "./delivery-method.module.scss";
 import { UiTitle } from "@/shared/ui/ui-title";
+import { UiRadioGroup } from "@/shared/ui/ui-radio-group/ui-radio-group";
 
 type MethodProps = {
   total: ReactNode;
-  setDeliveryMethod: (deliveryMethod: string) => string;
+  setDeliveryMethod: (deliveryMethod: string) => void;
   deliveryMethod: string;
 };
+
+const RADIO_ITEMS = [{ value: "Самовывоз" }, { value: "Доставка" }];
+
 export const DeliveryMethod = ({
   total,
   deliveryMethod,
@@ -18,24 +22,12 @@ export const DeliveryMethod = ({
         <UiTitle size="h2" weight="medium">
           Выберите способ получения заказа
         </UiTitle>
-        <label htmlFor="self-delivery">
-          <input
-            type="radio"
-            name="self-delivery"
-            checked={deliveryMethod === "self-delivery"}
-            onChange={(e) => setDeliveryMethod(e.target.name)}
-          />
-          <span>Самовывоз</span>
-        </label>
-        <label htmlFor="delivery">
-          <input
-            type="radio"
-            name="delivery"
-            checked={deliveryMethod === "delivery"}
-            onChange={(e) => setDeliveryMethod(e.target.name)}
-          />
-          <span>Доставка</span>
-        </label>
+        <UiRadioGroup
+          items={RADIO_ITEMS}
+          nameGroup={"delivery"}
+          onChangeRadio={setDeliveryMethod}
+          value={deliveryMethod}
+        />
       </div>
       <div className={styles.right}>{total}</div>
     </div>

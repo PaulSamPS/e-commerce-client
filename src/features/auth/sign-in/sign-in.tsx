@@ -1,4 +1,4 @@
-import { FC, memo, useContext } from "react";
+import { FC, memo } from "react";
 import styles from "./sign-in.module.scss";
 import { UiFormWithInputs } from "@/shared/ui/ui-form-with-inputs/ui-from-with-inputs";
 import { UiButtonGroup } from "@/shared/ui/ui-button-group/ui-button-group";
@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import { AuthModalAppContext } from "@/shared/context";
 import { SignInFormProps } from "@/shared/api/types/auth";
 import { getCartApi } from "@/entities/cart";
+import { useStrictContext } from "@/shared/lib/react";
 
 interface SignInProps {
   onSignUp: () => void;
@@ -19,7 +20,7 @@ interface SignInProps {
 export const SignIn: FC<SignInProps> = memo(({ onSignUp, onResetPassword }) => {
   const dispatch = useAppDispatch();
   const { error, loading } = useSelector(userState);
-  const { setIsOpen } = useContext(AuthModalAppContext);
+  const { setIsOpen } = useStrictContext(AuthModalAppContext);
 
   const onSubmit = async (formData: SignInFormProps) => {
     dispatch(signInApi(formData))

@@ -19,7 +19,7 @@ export const withAuth =
 
 // function withAuth<T>(Component: NextComponentType<T>) {
 //   const Auth = (props: T) => {
-//     const { userData } = useSelector(userState);
+//     const { userData } = useSelector(profileState);
 //     const { push } = useRouter();
 //
 //     if (!userData) {

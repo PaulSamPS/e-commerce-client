@@ -4,6 +4,8 @@ import { UiButton } from "@/shared/ui/ui-button";
 import { UiSubhead } from "@/shared/ui/ui-subhead";
 import styles from "./ui-form-with-inputs.module.scss";
 import clsx from "clsx";
+import { ReactNode } from "react";
+import { UiPhoneNumber } from "@/shared/ui/ui-phone-number/ui-phone-number";
 
 interface FormInput<K> {
   name: keyof K; // Название поля в объекте данных формы.
@@ -19,6 +21,7 @@ export interface FormWithInputsProps<T extends FieldValues, K> {
   onSubmit: SubmitHandler<T>; // Функция для обработки отправки формы.
   className?: string; // CSS класс для стилизации формы.
   actionText: string; // Текст кнопки действия формы.
+  phoneNumber?: string;
 }
 export const UiFormWithInputs = <
   T extends FieldValues,
@@ -30,8 +33,9 @@ export const UiFormWithInputs = <
   onSubmit,
   className,
   actionText,
+  phoneNumber,
 }: FormWithInputsProps<T, K>) => {
-  const { register, handleSubmit, formState } = useForm<T>({
+  const { register, handleSubmit, formState, control } = useForm<T>({
     mode: "onChange",
   });
 
@@ -57,6 +61,13 @@ export const UiFormWithInputs = <
           readOnly={isLoading}
         />
       ))}
+      {phoneNumber && (
+        <UiPhoneNumber
+          control={control}
+          profileNumber={phoneNumber}
+          name={"phoneNumber"}
+        />
+      )}
       <UiButton
         size="l"
         appearance="primary"

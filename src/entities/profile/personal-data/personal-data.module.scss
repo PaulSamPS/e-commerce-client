@@ -1,0 +1,17 @@
+.form-items {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 20px;
+  background-color: var(--white);
+  border: 1px solid var(--gray-300);
+  border-radius: 2px;
+  row-gap: 10px;
+}
+
+.label {
+  color: var(--steel-gray-500);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+}
