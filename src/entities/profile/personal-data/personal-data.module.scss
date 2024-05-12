@@ -4,8 +4,9 @@
   width: 100%;
   padding: 20px;
   background-color: var(--white);
-  border: 1px solid var(--gray-300);
-  border-radius: 2px;
+  border-radius: var(--border-radius);
+  border: 1px solid rgb(0 0 0 / 15%);
+  box-shadow: 0 0 12px 1px rgb(0 0 0 / 10%);
   row-gap: 10px;
 }
 

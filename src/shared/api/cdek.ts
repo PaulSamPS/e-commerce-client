@@ -15,6 +15,13 @@ type CdekLoginResponse = {
   jti: string;
 };
 
+type Packages = {
+  height: number;
+  length: number;
+  weight: number;
+  width: number;
+};
+
 type CdekDeliveryPricesProps = {
   type: number;
   currency: number;
@@ -24,14 +31,7 @@ type CdekDeliveryPricesProps = {
   to_location: {
     code: number;
   };
-  packages: [
-    {
-      height: number;
-      length: number;
-      weight: number;
-      width: number;
-    },
-  ];
+  packages: Packages[];
 };
 
 type RequestOptions = Parameters<typeof createInstanceCdek>[1];
@@ -43,6 +43,17 @@ export const cdekLogin = (cdekLoginDto: FormData, options?: RequestOptions) => {
       method: "POST",
       headers: { "Content-Type": "multipart/form-data" },
       data: cdekLoginDto,
+    },
+    options,
+  );
+};
+
+export const cdekGetCity = (city: string, options?: RequestOptions) => {
+  return createInstanceCdek<{ code: number }>(
+    {
+      url: `/location/cities/?city=${city}`,
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
     },
     options,
   );

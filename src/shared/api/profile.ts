@@ -19,7 +19,7 @@ export const profileUpdate = (
   return createInstance<IProfile>(
     {
       url: `/profile/update`,
-      method: "POST",
+      method: "PATCH",
       headers: { "Content-Type": "application/json" },
       data: profileDto,
     },

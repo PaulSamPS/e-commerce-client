@@ -10,12 +10,18 @@ import {
   middleNameOptions,
 } from "./constants";
 import { IProfile, ProfileFormProps } from "../types";
+import clsx from "clsx";
 
 type PersonalDataProps = {
   profile: IProfile;
   onSubmit: (formData: ProfileFormProps) => void;
+  className?: string;
 };
-export const PersonalData = ({ profile, onSubmit }: PersonalDataProps) => {
+export const PersonalData = ({
+  profile,
+  onSubmit,
+  className,
+}: PersonalDataProps) => {
   const inputFields = [
     {
       name: "firstname",
@@ -56,13 +62,14 @@ export const PersonalData = ({ profile, onSubmit }: PersonalDataProps) => {
   ];
 
   return (
-    <div className={styles["form-items"]}>
+    <div className={clsx(styles["form-items"], className)}>
       <UiFormWithInputs
         isLoading={false}
         inputs={inputFields}
         onSubmit={onSubmit}
         actionText={"Расчитать"}
         phoneNumber={profile.phoneNumber}
+        withPhoneNumber
       />
     </div>
   );

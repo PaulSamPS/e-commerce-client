@@ -2,7 +2,7 @@ import axios from "axios";
 import { loadFromLocalStorage } from "@/shared/lib/localstorage";
 
 const $api = axios.create({
-  baseURL: "http://api.edu.cdek.ru/v2/",
+  baseURL: "/cdek",
 });
 
 const authInterceptor = (config: any) => {

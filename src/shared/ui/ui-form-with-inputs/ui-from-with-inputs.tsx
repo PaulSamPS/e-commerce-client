@@ -1,11 +1,18 @@
-import { useForm, Path, FieldValues, SubmitHandler } from "react-hook-form";
+import {
+  useForm,
+  Path,
+  FieldValues,
+  SubmitHandler,
+  Controller,
+} from "react-hook-form";
 import { UiInput } from "@/shared/ui/ui-input";
 import { UiButton } from "@/shared/ui/ui-button";
 import { UiSubhead } from "@/shared/ui/ui-subhead";
 import styles from "./ui-form-with-inputs.module.scss";
 import clsx from "clsx";
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 import { UiPhoneNumber } from "@/shared/ui/ui-phone-number/ui-phone-number";
+import { PatternFormat } from "react-number-format";
 
 interface FormInput<K> {
   name: keyof K; // Название поля в объекте данных формы.
@@ -22,6 +29,7 @@ export interface FormWithInputsProps<T extends FieldValues, K> {
   className?: string; // CSS класс для стилизации формы.
   actionText: string; // Текст кнопки действия формы.
   phoneNumber?: string;
+  withPhoneNumber?: boolean;
 }
 export const UiFormWithInputs = <
   T extends FieldValues,
@@ -34,9 +42,10 @@ export const UiFormWithInputs = <
   className,
   actionText,
   phoneNumber,
+  withPhoneNumber,
 }: FormWithInputsProps<T, K>) => {
   const { register, handleSubmit, formState, control } = useForm<T>({
-    mode: "onChange",
+    reValidateMode: "onChange",
   });
 
   const { errors, isValid } = formState;
@@ -52,19 +61,38 @@ export const UiFormWithInputs = <
         </UiSubhead>
       )}
       {inputs.map(({ name, type, placeholder, options }) => (
-        <UiInput
+        // <UiInput
+        //   key={name.toString()}
+        //   {...register(name as Path<T>, options)}
+        //   type={type}
+        //   value={placeholder}
+        //   placeholder={placeholder}
+        //   error={errors[name as keyof T]?.message as string}
+        //   readOnly={isLoading}
+        // />
+        <Controller
           key={name.toString()}
-          {...register(name as Path<T>, options)}
-          type={type}
-          placeholder={placeholder}
-          error={errors[name as keyof T]?.message as string}
-          readOnly={isLoading}
+          name={name as Path<T>}
+          control={control}
+          rules={options}
+          render={({ field: { onChange, name, value = placeholder } }) => (
+            <div className={styles["input-number"]}>
+              <UiInput
+                type={type}
+                value={value}
+                placeholder={placeholder}
+                error={errors[name as keyof T]?.message as string}
+                readOnly={isLoading}
+                onChange={onChange}
+              />
+            </div>
+          )}
         />
       ))}
-      {phoneNumber && (
+      {withPhoneNumber && (
         <UiPhoneNumber
           control={control}
-          profileNumber={phoneNumber}
+          profileNumber={phoneNumber!}
           name={"phoneNumber"}
         />
       )}
