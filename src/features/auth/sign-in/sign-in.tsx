@@ -3,12 +3,12 @@ import styles from "./sign-in.module.scss";
 import { UiFormWithInputs } from "@/shared/ui/ui-form-with-inputs/ui-from-with-inputs";
 import { UiButtonGroup } from "@/shared/ui/ui-button-group/ui-button-group";
 import { ButtonProps } from "@/shared/ui/ui-button";
-import { emailOptions, usernameOptions } from "../constants";
+import { emailOptions, passwordOptions, usernameOptions } from "../constants";
 import { useAppDispatch } from "@/shared/hooks";
 import { signInApi, userState } from "@/entities/user";
 import { useSelector } from "react-redux";
 import { AuthModalAppContext } from "@/shared/context";
-import { SignInFormProps } from "@/shared/api/types/auth";
+import { SignInFormProps, signInSchema } from "./sign-in.schema";
 import { getCartApi } from "@/entities/cart";
 import { useStrictContext } from "@/shared/lib/react";
 
@@ -54,13 +54,14 @@ export const SignIn: FC<SignInProps> = memo(({ onSignUp, onResetPassword }) => {
       name: "password",
       type: "password",
       placeholder: "Введите пароль",
-      options: usernameOptions,
+      options: passwordOptions,
     },
   ];
 
   return (
     <div className={styles.wrapper}>
       <UiFormWithInputs
+        schema={signInSchema}
         isLoading={loading}
         inputs={inputFields}
         onSubmit={onSubmit}

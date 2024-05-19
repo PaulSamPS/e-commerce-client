@@ -1,30 +1,28 @@
 "use client";
 
 import { useAuth } from "@/features/auth/useAuth";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { AuthModalAppContext } from "@/shared/context";
 import { UiModalWithHeader } from "@/shared/ui/ui-modal";
 import { UiAuthButton } from "@/shared/ui/ui-auth-button/ui-auth-button";
 import { useAppDispatch } from "@/shared/hooks";
 import { useSelector } from "react-redux";
 import { logoutApi, userState } from "@/entities/user";
-import { checkAuthApi } from "@/entities/user";
 import { UiDropdown } from "@/shared/ui/ui-dropdown";
-import {
-  ExitIcon,
-  MenuFavoriteIcon,
-  OnOrderIcon,
-  ProfileIcon,
-} from "@/shared/assets/icons";
 import { usePathname, useRouter } from "next/navigation";
-import { getCartApi, cartActions } from "@/entities/cart";
+import { cartActions } from "@/entities/cart";
 import { useStrictContext } from "@/shared/lib/react";
+import { UiLogo } from "@/shared/ui/ui-logo/ui-logo";
+import { VscAccount } from "react-icons/vsc";
+import { MdFavorite } from "react-icons/md";
+import { TbChecklist } from "react-icons/tb";
+import { IoMdExit } from "react-icons/io";
 
 const LINKS = [
-  { path: "/profile", label: "Профиль", icon: <ProfileIcon /> },
-  { path: "/favorites", label: "Избранное", icon: <MenuFavoriteIcon /> },
-  { path: "/order", label: "Заказы", icon: <OnOrderIcon /> },
-  { path: "/", label: "Выйти", icon: <ExitIcon /> },
+  { path: "/profile", label: "Профиль", icon: <VscAccount /> },
+  { path: "/favorites", label: "Избранное", icon: <MdFavorite /> },
+  { path: "/order", label: "Заказы", icon: <TbChecklist /> },
+  { path: "/", label: "Выйти", icon: <IoMdExit /> },
 ];
 
 export const Auth = () => {
@@ -35,10 +33,6 @@ export const Auth = () => {
   const [isMenu, setIsMenu] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
-
-  useEffect(() => {
-    dispatch(checkAuthApi()).finally(() => dispatch(getCartApi()));
-  }, [dispatch]);
 
   const handleCloseModal = () => {
     setIsOpen(false);
@@ -59,7 +53,7 @@ export const Auth = () => {
         <UiDropdown
           label={userData?.username}
           items={LINKS}
-          icon={<ProfileIcon />}
+          icon={<VscAccount />}
           open={isMenu}
           setOpen={setIsMenu}
           onNavigate={onNavigate}
@@ -72,6 +66,11 @@ export const Auth = () => {
         isOpen={isOpen}
         onClose={handleCloseModal}
       >
+        <UiLogo
+          companyName={"Мебель-стильно"}
+          slogan={"мебель со вкусом"}
+          style={{ marginBottom: "40px" }}
+        />
         {currentAction}
       </UiModalWithHeader>
     </>

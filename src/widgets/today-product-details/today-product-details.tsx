@@ -1,4 +1,3 @@
-import React, { ReactNode } from "react";
 import styles from "./today-product-details.module.scss";
 import { UiTitle } from "@/shared/ui/ui-title";
 import { IProduct } from "@/shared/api/types/product";
@@ -7,18 +6,20 @@ import { UiReview } from "@/shared/ui/ui-review/ui-review";
 import { UiPriceDisplay } from "@/shared/ui/ui-price-display/ui-price-display";
 import { UiFeatures } from "@/shared/ui/ui-features/ui-features";
 import { FeaturesItem } from "@/shared/api/types/features";
-import CarouselWithPreview  from "@/entities/carousel-with-preview/carousel-with-preview";
+import { ReactNode } from "react";
 
 type TodayProductsProps = {
   product: IProduct;
   features: FeaturesItem[];
   addToCart: ReactNode;
+  carousel: ReactNode;
 };
 
 export const TodayProductDetails = ({
   product,
   addToCart,
   features,
+  carousel,
 }: TodayProductsProps) => (
   <div className={styles.wrapper}>
     <div className={styles.info}>
@@ -31,9 +32,7 @@ export const TodayProductDetails = ({
           <UiReview reviews={product.reviewCount} className={styles.comments} />
         </div>
         <div className={styles.productBlock}>
-          <div className={styles.carousel}>
-            <CarouselWithPreview product={product} imageWidth={400} />
-          </div>
+          <div className={styles.carousel}>{carousel}</div>
         </div>
       </div>
       <div className={styles.right}>

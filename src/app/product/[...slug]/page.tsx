@@ -4,12 +4,12 @@ import { UiTitle } from "@/shared/ui/ui-title";
 import { UiReview } from "@/shared/ui/ui-review/ui-review";
 import { UiRating } from "@/shared/ui/ui-rating/ui-rating";
 import { FeaturesItem } from "@/shared/api/types/features";
-import dynamic from "next/dynamic";
-import { UiSpinner } from "@/shared/ui/ui-spinner";
 import React from "react";
 import { AddToCart } from "@/features/add-to-cart";
 import { ProductDetails } from "@/entities/product-details";
 import { FavouriteButton } from "@/features/favourites-button";
+import { UiSpinner } from "@/shared/ui/ui-spinner";
+import dynamic from "next/dynamic";
 
 type Params = {
   params: {

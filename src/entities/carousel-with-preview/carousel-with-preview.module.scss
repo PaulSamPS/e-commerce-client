@@ -4,3 +4,11 @@
   background: var(--white);
 }
 
+.badges {
+  display: flex;
+  column-gap: 15px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+

@@ -6,7 +6,7 @@ import { apiProfileGet } from "../api/api-profile-get";
 const initialState: ProfileSchema = {
   data: undefined,
   isReadonly: true,
-  loading: true,
+  loading: false,
   error: undefined,
 };
 

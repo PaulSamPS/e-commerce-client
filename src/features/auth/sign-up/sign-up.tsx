@@ -1,13 +1,13 @@
 import { useSelector } from "react-redux";
 import styles from "./sign-up.module.scss";
-import { useAppDispatch } from "@/shared/hooks/use-app-dispatch";
+import { useAppDispatch } from "@/shared/hooks";
 import { signUpApi, userState } from "@/entities/user";
 import { UiButtonGroup } from "@/shared/ui/ui-button-group/ui-button-group";
 import { UiFormWithInputs } from "@/shared/ui/ui-form-with-inputs/ui-from-with-inputs";
 import { ButtonProps } from "@/shared/ui/ui-button";
 import { emailOptions, usernameOptions } from "../constants";
 import { memo } from "react";
-import { SignUpFormProps } from "@/shared/api/types/auth";
+import { SignUpFormProps, signUpSchema } from "./sign-up.schema";
 
 type SignUpProps = {
   onSignIn: () => void;
@@ -54,6 +54,7 @@ export const SignUp = memo(({ onSignIn }: SignUpProps) => {
   return (
     <div className={styles.wrapper}>
       <UiFormWithInputs
+        schema={signUpSchema}
         isLoading={loading}
         inputs={inputFields}
         onSubmit={onSubmit}

@@ -1,4 +1,9 @@
-export { cartState } from "./state/state";
+export {
+  cartProductsState,
+  cartStateLoading,
+  cartTotalPricesState,
+  cartDiscountState,
+} from "./state/state";
 export { cartReducer, cartActions } from "./store/cart.store";
 export { getCartApi } from "./api/api-get-cart";
 export { addToCartApi } from "./api/api-add-to-cart";

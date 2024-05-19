@@ -12,6 +12,8 @@ import { OtherDay } from "@/widgets/other-today-products";
 import { FeaturesItem } from "@/shared/api/types/features";
 import { AddToCart } from "@/features/add-to-cart";
 import { YesterdayProduct } from "@/widgets/yesterday-product";
+import dynamic from "next/dynamic";
+import { UiSpinner } from "@/shared/ui/ui-spinner";
 
 type Params = {
   params: {
@@ -59,6 +61,22 @@ async function getFeatures(productName: string): Promise<FeaturesItem[]> {
   return res.json();
 }
 
+const Carousel = dynamic(
+  () => import("@/entities/carousel-with-preview/carousel-with-preview"),
+  {
+    loading: () => (
+      <div style={{ height: "400px" }}>
+        <UiSpinner
+          color={"var(--blue-themed"}
+          position={"relative"}
+          bg={"transparent"}
+        />
+      </div>
+    ),
+    ssr: false,
+  },
+);
+
 const Product = async ({ params, searchParams }: Params) => {
   const oneDayProduct = await getOneDayProduct(decodeURI(params.slug));
   const dayProducts = await getDayProducts();
@@ -78,7 +96,6 @@ const Product = async ({ params, searchParams }: Params) => {
         productsYesterday={yesterdayProducts}
         className={styles.yesterday}
       />
-      {/*<YesterdayProduct productsYesterday={yesterdayProducts} className={styles.yesterday} />*/}
       <div className={styles.main}>
         <UiTitle weight="medium" size="h2" className={styles.title}>
           Только сегодня!
@@ -100,6 +117,7 @@ const Product = async ({ params, searchParams }: Params) => {
             <AddToCart productId={oneDayProduct.id} variant={"primary"} />
           }
           features={productFeatures}
+          carousel={<Carousel product={oneDayProduct} imageWidth={400} />}
         />
       </div>
     </div>

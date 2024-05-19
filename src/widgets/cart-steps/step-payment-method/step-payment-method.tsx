@@ -1,15 +1,14 @@
 "use client";
 
 import React from "react";
-import { useSelector } from "react-redux";
 import styles from "./step-payment-method.module.scss";
-import { NextStep, Total, cartState } from "@/entities/cart";
-import { useStrictContext } from "@/shared/lib/react";
-import { CartStepsContext } from "@/widgets/cart-steps/cart-steps-context";
+import { NextStep, Total } from "@/entities/cart";
+import { useCartState } from "../useCartState";
+import { useCartSteps } from "../useCartSteps";
 
 export const StepPaymentMethod = () => {
-  const { cart } = useSelector(cartState);
-  const { nextStep, deliveryMethod, step } = useStrictContext(CartStepsContext);
+  const { products, discount, totalPrice } = useCartState();
+  const { step, deliveryMethod, nextStep } = useCartSteps();
 
   return (
     <div className={styles.wrapper}>
@@ -22,9 +21,9 @@ export const StepPaymentMethod = () => {
         </div>
       </div>
       <Total
-        productsLength={cart?.products?.length!}
-        discount={cart?.discount!}
-        totalPrice={cart?.total_price!}
+        productsLength={products?.length!}
+        discount={discount!}
+        totalPrice={totalPrice!}
         nextStep={<NextStep text="Продолжить" nextStep={nextStep} />}
         title="Ваш заказ"
         delivery={deliveryMethod}

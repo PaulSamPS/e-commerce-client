@@ -10,9 +10,7 @@ type HeaderProps = {
 
 export const Header: FC<HeaderProps> = ({ headerText, children }) => (
   <motion.div className={styles.content} {...animateContent}>
-    <div className={styles.header}>
-      <span>{headerText}</span>
-    </div>
+    <div className={styles.header}>{/*<span>{headerText}</span>*/}</div>
     <div className={styles.body}>{children}</div>
   </motion.div>
 );

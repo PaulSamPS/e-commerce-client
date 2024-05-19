@@ -6,11 +6,11 @@ const nextConfig = {
     return [
       {
         source: "/api/:path*",
-        destination: "http://localhost:5500/:path*",
+        destination: `${process.env.API_URL}/:path*`,
       },
       {
         source: "/cdek/:path*",
-        destination: "https://api.edu.cdek.ru/v2/:path*",
+        destination: `${process.env.API_CDEK}/:path*`,
       },
     ];
   },

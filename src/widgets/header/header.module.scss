@@ -3,7 +3,7 @@
   top: 0;
   right: 0;
   left: 0;
-  z-index: 2;
+  z-index: 1;
   width: 100%;
   background: var(--white);
   border-bottom: 1px solid var(--steel-gray-80);
@@ -15,6 +15,10 @@
     width: 1200px;
     margin: 0 auto;
     padding: 15px 0;
+  }
+
+  .logo {
+    cursor: pointer;
   }
 }
 

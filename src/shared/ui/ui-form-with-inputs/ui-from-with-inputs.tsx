@@ -10,15 +10,14 @@ import { UiButton } from "@/shared/ui/ui-button";
 import { UiSubhead } from "@/shared/ui/ui-subhead";
 import styles from "./ui-form-with-inputs.module.scss";
 import clsx from "clsx";
-import React, { ReactNode } from "react";
 import { UiPhoneNumber } from "@/shared/ui/ui-phone-number/ui-phone-number";
-import { PatternFormat } from "react-number-format";
+import { ZodType } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 interface FormInput<K> {
   name: keyof K; // Название поля в объекте данных формы.
   type: string; // Тип элемента ввода (например, 'text', 'password').
   placeholder: string; // Текст заполнителя для поля ввода.
-  options: Record<string, any>; // Дополнительные параметры для поля ввода.
 }
 
 export interface FormWithInputsProps<T extends FieldValues, K> {
@@ -28,9 +27,11 @@ export interface FormWithInputsProps<T extends FieldValues, K> {
   onSubmit: SubmitHandler<T>; // Функция для обработки отправки формы.
   className?: string; // CSS класс для стилизации формы.
   actionText: string; // Текст кнопки действия формы.
+  schema: ZodType<T>;
   phoneNumber?: string;
   withPhoneNumber?: boolean;
 }
+
 export const UiFormWithInputs = <
   T extends FieldValues,
   K extends Record<string, unknown>,
@@ -43,9 +44,10 @@ export const UiFormWithInputs = <
   actionText,
   phoneNumber,
   withPhoneNumber,
+  schema,
 }: FormWithInputsProps<T, K>) => {
-  const { register, handleSubmit, formState, control } = useForm<T>({
-    reValidateMode: "onChange",
+  const { handleSubmit, formState, control } = useForm<T>({
+    resolver: zodResolver(schema),
   });
 
   const { errors, isValid } = formState;
@@ -60,32 +62,20 @@ export const UiFormWithInputs = <
           {error}
         </UiSubhead>
       )}
-      {inputs.map(({ name, type, placeholder, options }) => (
-        // <UiInput
-        //   key={name.toString()}
-        //   {...register(name as Path<T>, options)}
-        //   type={type}
-        //   value={placeholder}
-        //   placeholder={placeholder}
-        //   error={errors[name as keyof T]?.message as string}
-        //   readOnly={isLoading}
-        // />
+      {inputs.map(({ name, type, placeholder }) => (
         <Controller
           key={name.toString()}
           name={name as Path<T>}
           control={control}
-          rules={options}
-          render={({ field: { onChange, name, value = placeholder } }) => (
-            <div className={styles["input-number"]}>
-              <UiInput
-                type={type}
-                value={value}
-                placeholder={placeholder}
-                error={errors[name as keyof T]?.message as string}
-                readOnly={isLoading}
-                onChange={onChange}
-              />
-            </div>
+          render={({ field: { onChange, name, value } }) => (
+            <UiInput
+              type={type}
+              value={value}
+              placeholder={placeholder}
+              error={errors[name as keyof T]?.message as string}
+              readOnly={isLoading}
+              onChange={onChange}
+            />
           )}
         />
       ))}

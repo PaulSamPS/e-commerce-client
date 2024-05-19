@@ -1,7 +1,6 @@
 import clsx from "clsx";
 import styles from "./steps-bar.module.scss";
-import { CartStepsContext } from "../cart-steps-context";
-import { useStrictContext } from "@/shared/lib/react";
+import { useCartSteps } from "../useCartSteps";
 
 const navItems = [
   { id: 0, name: "Ваша корзина" },
@@ -11,7 +10,7 @@ const navItems = [
 ];
 
 export const StepsBar = () => {
-  const { step, setStep } = useStrictContext(CartStepsContext);
+  const { step, setStep } = useCartSteps();
 
   return (
     <div className={styles.wrapper}>

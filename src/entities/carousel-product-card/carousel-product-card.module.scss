@@ -15,15 +15,8 @@
   }
 
   .img {
-    display: flex;
-    flex: 0 0 150px;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
     max-width: 150px;
     height: 150px;
-    margin: 0 auto 5px;
-    overflow: hidden;
     cursor: pointer;
 
     img {

@@ -9,10 +9,9 @@ import React, {
 } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./search.module.scss";
-import { useAppDispatch } from "@/shared/hooks/use-app-dispatch";
+import { useAppDispatch, useOnClickOutside } from "@/shared/hooks";
 import debounce from "lodash.debounce";
 import { searchProductApi, searchState } from "@/entities/product";
-import { useOnClickOutside } from "@/shared/hooks/use-click-outside";
 import { useSelector } from "react-redux";
 import { SearchModal } from "./search-modal/search-modal";
 import { SearchButton } from "./search-button/search-button";
@@ -57,7 +56,6 @@ export const Search = () => {
       debouncedSearch();
     }
 
-    // Очищайте debounce при размонтировании компонента
     return () => {
       debouncedSearch.cancel();
     };

@@ -9,19 +9,20 @@
   box-shadow: 0 0 96px 0 rgb(0 0 0 / 16%), 0 0 2px 0 rgb(0 0 0 / 12%);
 
   & .header {
-    padding: 15px 0;
+    //padding: 15px 0;
     color: inherit;
     font-weight: 500;
     font-size: 22px;
     line-height: normal;
     letter-spacing: 0.352px;
     text-align: center;
-    border-bottom: 1px solid var(--steel-gray-80);
+    //border-bottom: 1px solid var(--steel-gray-80);
   }
 
   & .body {
     display: flex;
     justify-content: center;
+    flex-direction: column;
     padding: 32px 40px;
   }
 }

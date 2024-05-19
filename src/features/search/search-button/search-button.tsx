@@ -1,7 +1,7 @@
 import { UiButton } from "@/shared/ui/ui-button";
 import styles from "./search-button.module.scss";
-import { SearchIcon } from "@/shared/assets/icons";
 import React from "react";
+import { GoSearch } from "react-icons/go";
 
 type SearchButtonProps = {
   onClick: () => void;
@@ -16,7 +16,7 @@ export const SearchButton = ({ onClick, disabled }: SearchButtonProps) => {
       className={styles["search-btn"]}
       onClick={onClick}
       // disabled={disabled}
-      after={<SearchIcon className={styles["search-icon"]} />}
+      after={<GoSearch className={styles["search-icon"]} />}
     >
       Поиск
     </UiButton>

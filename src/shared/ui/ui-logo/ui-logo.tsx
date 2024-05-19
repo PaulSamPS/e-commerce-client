@@ -18,7 +18,10 @@ export const UiLogo: FC<UiLogoProps> = ({
   className,
   ...restProps
 }) => (
-  <div className={clsx(styles.logo, className)} {...restProps}>
+  <div
+    className={clsx(styles.logo, logoSrc && styles["with-icon"], className)}
+    {...restProps}
+  >
     {logoSrc && <Image src={logoSrc} alt={"logo"} width={40} height={40} />}
     <div className={styles.slogan}>
       <div className={styles["company-name"]}>

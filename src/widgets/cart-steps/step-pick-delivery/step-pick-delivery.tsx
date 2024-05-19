@@ -1,6 +1,4 @@
-import { cartState, DeliveryMethod, NextStep, Total } from "@/entities/cart";
-import { useStrictContext } from "@/shared/lib/react";
-import { CartStepsContext } from "@/widgets/cart-steps";
+import { DeliveryMethod, NextStep, Total } from "@/entities/cart";
 import { useSelector } from "react-redux";
 import { useCallback, useEffect } from "react";
 import { apiCdekLogin } from "@/entities/cdek";
@@ -18,12 +16,12 @@ import { ProfileFormProps } from "@/entities/profile";
 import { useAppDispatch } from "@/shared/hooks";
 import styles from "./step-pick-delivery.module.scss";
 import { $api } from "@/shared/api";
-import { cdekDeliveryPrices } from "@/shared/api/cdek";
+import { useCartState } from "../useCartState";
+import { useCartSteps } from "../useCartSteps";
 
 export const StepPickDelivery = () => {
-  const { nextStep, deliveryMethod, setDeliveryMethod, step } =
-    useStrictContext(CartStepsContext);
-  const { cart } = useSelector(cartState);
+  const { products, totalPrice, discount } = useCartState();
+  const { deliveryMethod, nextStep, setDeliveryMethod, step } = useCartSteps();
   const { data } = useSelector(profileState);
   const dispatch = useAppDispatch();
 
@@ -93,10 +91,10 @@ export const StepPickDelivery = () => {
       <DeliveryMethod
         total={
           <Total
-            productsLength={cart?.products.length}
-            totalPrice={cart?.total_price!}
+            productsLength={products?.length}
+            totalPrice={totalPrice!}
             title={"Итого"}
-            discount={cart?.discount!}
+            discount={discount!}
             nextStep={<NextStep text={"Продолжить"} nextStep={nextStep} />}
             delivery={deliveryMethod}
             step={step}

@@ -15,7 +15,11 @@ export interface CarouselProps {
   className?: string;
 }
 
-const CarouselWithPreview = ({ product, imageWidth, className }: CarouselProps) => {
+const CarouselWithPreview = ({
+  product,
+  imageWidth,
+  className,
+}: CarouselProps) => {
   const { scrollRef, next, prev, activePageIndex, goTo } = useSnapCarousel();
 
   return (
@@ -39,24 +43,24 @@ const CarouselWithPreview = ({ product, imageWidth, className }: CarouselProps) 
         offsetPreview={59.5}
         currentSlideIndex={activePageIndex}
       />
-      {product.discount > 0 && (
-        <UiBadge
-          text={"скидка"}
-          discount={product.discount}
-          color={"red"}
-          side={"left"}
-        />
-      )}
-      {product.isNew && (
-        <UiBadge
-          text={"новинка"}
-          color={"orange"}
-          secondBadge={product.isNew && product.discount > 0}
-          side={"left"}
-        />
-      )}
+      <div className={styles.badges}>
+        {product.discount > 0 && (
+          <UiBadge
+            text={"скидка"}
+            discount={product.discount}
+            color={"red"}
+            side={"left"}
+          />
+        )}
+        {product.isNew && (
+          <UiBadge text={"новинка"} color={"green"} side={"left"} />
+        )}
+        {product.rating > 4.7 && (
+          <UiBadge text={"хит"} color={"yellow"} side={"left"} />
+        )}
+      </div>
     </div>
   );
 };
 
-export default CarouselWithPreview
+export default CarouselWithPreview;

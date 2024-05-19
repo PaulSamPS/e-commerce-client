@@ -4,11 +4,11 @@ import React, { AllHTMLAttributes, useEffect, useState } from "react";
 import clsx from "clsx";
 import styles from "./favourite-button.module.scss";
 import { UiButton } from "@/shared/ui/ui-button";
-import { FavoriteIcon, FavoriteFilledIcon } from "@/shared/assets/icons";
 import { IProduct } from "@/shared/api/types";
 import { useSelector } from "react-redux";
 import { favoriteActions, favoriteState } from "@/entities/favorite";
 import { useAppDispatch } from "@/shared/hooks";
+import { MdFavorite } from "react-icons/md";
 
 interface IFavouriteProps extends AllHTMLAttributes<HTMLButtonElement> {
   product: IProduct;
@@ -68,17 +68,7 @@ export const FavouriteButton = ({
       onKeyDown={onPressEnter}
       className={clsx(styles.favourite, className)}
     >
-      {isFavourite ? (
-        <>
-          <FavoriteFilledIcon className={styles["icon-filled"]} />
-          {withText && "В избранном"}
-        </>
-      ) : (
-        <>
-          <FavoriteIcon />
-          {withText && "В избранное"}
-        </>
-      )}
+      <MdFavorite className={clsx(isFavourite && styles["icon-filled"])} />
     </UiButton>
   );
 };

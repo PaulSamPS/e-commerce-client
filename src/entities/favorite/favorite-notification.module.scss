@@ -1,5 +1,9 @@
 .favorite {
   color: var(--blue-themed);
+  svg {
+    width: 24px;
+    height: 24px;
+  }
 }
 
 .count {

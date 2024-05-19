@@ -6,9 +6,13 @@ import { Auth } from "@/features/auth";
 import { Search } from "@/features/search";
 import { UiCartButton } from "@/shared/ui/ui-cart-button/ui-cart-button";
 import { useSelector } from "react-redux";
-import { cartState } from "@/entities/cart";
+import {
+  cartProductsState,
+  cartStateLoading,
+  cartTotalPricesState,
+} from "@/entities/cart";
 import { useAppDispatch } from "@/shared/hooks";
-import { useEffect } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { getCartApi } from "@/entities/cart";
 import Link from "next/link";
 import {
@@ -16,30 +20,49 @@ import {
   favoriteState,
   FavouriteNotification,
 } from "@/entities/favorite";
+import { checkAuthApi } from "@/entities/user";
 
 export const Header = () => {
-  const { loading, cart } = useSelector(cartState);
+  const products = useSelector(cartProductsState);
+  const totalPrice = useSelector(cartTotalPricesState);
+  const loading = useSelector(cartStateLoading);
   const dispatch = useAppDispatch();
   const favorite = useSelector(favoriteState);
+  const [isAuth, setIsAuth] = useState<boolean>(false);
+
+  const checkAuth = useCallback(async () => {
+    dispatch(checkAuthApi());
+  }, [dispatch]);
 
   useEffect(() => {
-    dispatch(getCartApi()).finally(() => dispatch(getCartApi()));
+    checkAuth().then(() => setIsAuth(true));
+    if (isAuth) {
+      dispatch(getCartApi());
+    }
     dispatch(favoriteActions.getFavorites());
-  }, [dispatch]);
+  }, [checkAuth, dispatch, isAuth]);
+
+  const totalCount = useMemo(() => {
+    return products?.reduce((acc, { count }) => acc + count, 0) || 0;
+  }, [products]);
 
   return (
     <div className={styles.header}>
       <div className={styles["header-content"]}>
         <Link href={"/"}>
-          <UiLogo companyName="Мебель-Стильно" slogan="Мебель со вкусом" />
+          <UiLogo
+            companyName="Мебель-Стильно"
+            slogan="Мебель со вкусом"
+            className={styles.logo}
+          />
         </Link>
         <Search />
         <FavouriteNotification favoritesCount={favorite.favorites.length} />
         <Auth />
         <UiCartButton
-          productsCount={cart?.products.length!}
+          productsCount={totalCount}
           isLoading={loading}
-          totalPrice={cart?.total_price!}
+          totalPrice={totalPrice}
         />
       </div>
     </div>

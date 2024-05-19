@@ -2,24 +2,26 @@ import React from "react";
 import styles from "./ui-badge.module.scss";
 import clsx from "clsx";
 
-type Colors = "orange" | "red" | "blue";
+type Colors = "yellow" | "red" | "green";
 
 type Side = "left" | "right";
+
+type Position = "relative" | "absolute";
 
 export type UiBadgeProps = {
   discount?: number;
   text: string;
   color?: Colors;
   side?: Side;
-  secondBadge?: boolean;
+  position?: Position;
 };
 
 export const UiBadge = ({
   discount,
   text,
-  color = "blue",
+  color = "green",
   side = "right",
-  secondBadge,
+  position = "relative",
 }: UiBadgeProps) => {
   return (
     <div
@@ -27,7 +29,7 @@ export const UiBadge = ({
         styles.badge,
         color && styles[color],
         side && styles[side],
-        secondBadge && styles["second-badge"],
+        position && styles[position],
       )}
     >
       {discount && (

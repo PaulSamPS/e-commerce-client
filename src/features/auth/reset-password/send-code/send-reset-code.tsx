@@ -1,4 +1,4 @@
-import { useAppDispatch } from "@/shared/hooks/use-app-dispatch";
+import { useAppDispatch } from "@/shared/hooks";
 import { UiFormWithInputs } from "@/shared/ui/ui-form-with-inputs/ui-from-with-inputs";
 import { UiButtonGroup } from "@/shared/ui/ui-button-group/ui-button-group";
 import { ButtonProps } from "@/shared/ui/ui-button";
@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 import { UiSubhead } from "@/shared/ui/ui-subhead";
 import { FC } from "react";
 import { resetPasswordState, sendResetPasswordCode } from "@/entities/user";
-import { ResetPasswordFormProps } from "@/shared/api/types/auth";
+import { sendCodeSchema, SendCodeFormProps } from "./send-code.schema";
 
 interface ResetPasswordProps {
   onSignIn: () => void;
@@ -18,7 +18,7 @@ export const SendResetCode: FC<ResetPasswordProps> = ({ onSignIn }) => {
   const dispatch = useAppDispatch();
   const state = useSelector(resetPasswordState);
 
-  const onSubmit = async (formData: ResetPasswordFormProps) => {
+  const onSubmit = async (formData: SendCodeFormProps) => {
     dispatch(sendResetPasswordCode(formData));
   };
 
@@ -51,6 +51,7 @@ export const SendResetCode: FC<ResetPasswordProps> = ({ onSignIn }) => {
     <div className={styles.wrapper}>
       {renderSuccessMessage()}
       <UiFormWithInputs
+        schema={sendCodeSchema}
         isLoading={state?.loading!}
         inputs={inputFields}
         onSubmit={onSubmit}

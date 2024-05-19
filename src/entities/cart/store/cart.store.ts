@@ -9,7 +9,7 @@ import { apiRemoveProduct } from "../api/api-remove-product";
 
 const initialState: CartSchema = {
   cart: null,
-  loading: true,
+  loading: false,
   error: undefined,
 };
 

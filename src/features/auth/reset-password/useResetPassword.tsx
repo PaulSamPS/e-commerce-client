@@ -1,7 +1,7 @@
 import { ReactElement, useMemo } from "react";
-import { SendResetCode } from "@/features/auth/reset-password/send-code/send-reset-code";
-import { EnterResetCode } from "@/features/auth/reset-password/enter-code/enter-reset-code";
-import { NewPassword } from "@/features/auth/reset-password/new-password/new-passrod";
+import { SendResetCode } from "./send-code/send-reset-code";
+import { EnterResetCode } from "./enter-code/enter-reset-code";
+import { NewPassword } from "./new-password/new-passrod";
 
 enum ResetActions {
   sendCode = "Сброс Пароля",
@@ -20,8 +20,8 @@ export const useResetPassword = ({
   isNewPassword,
   isEnterCode,
 }: UseResetPasswordProps) => {
-  const resetAction = useMemo(() => {
-    if (isEnterCode && isNewPassword) {
+  const resetAction = useMemo<ResetActions>(() => {
+    if (isNewPassword) {
       return ResetActions.newPassword;
     } else if (isEnterCode) {
       return ResetActions.enterCode;
@@ -29,13 +29,19 @@ export const useResetPassword = ({
     return ResetActions.sendCode;
   }, [isEnterCode, isNewPassword]);
 
-  const currentActionMapper: Record<ResetActions, () => ReactElement> = {
-    [ResetActions.sendCode]: () => <SendResetCode onSignIn={onSignIn!} />,
-    [ResetActions.enterCode]: () => <EnterResetCode />,
-    [ResetActions.newPassword]: () => <NewPassword />,
-  };
+  const currentActionMapper = useMemo<Record<ResetActions, () => ReactElement>>(
+    () => ({
+      [ResetActions.sendCode]: () => <SendResetCode onSignIn={onSignIn!} />,
+      [ResetActions.enterCode]: () => <EnterResetCode />,
+      [ResetActions.newPassword]: () => <NewPassword />,
+    }),
+    [onSignIn],
+  );
 
-  const CurrentActionComponent = currentActionMapper[resetAction];
+  const CurrentActionComponent = useMemo(
+    () => currentActionMapper[resetAction],
+    [currentActionMapper, resetAction],
+  );
 
   return {
     currentAction: <CurrentActionComponent />,

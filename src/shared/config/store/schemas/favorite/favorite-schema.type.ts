@@ -6,4 +6,6 @@ export type IFavoriteItem = {
 
 export interface FavoriteSchema {
   favorites: IFavoriteItem[];
+  loading: boolean;
+  error: string | undefined;
 }

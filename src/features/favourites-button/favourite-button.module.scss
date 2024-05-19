@@ -5,6 +5,11 @@
   background: none;
   border: none;
   color: var(--gray-350);
+
+  svg {
+    height: 24px;
+    width: 24px;
+  }
 }
 
 .icon-filled {

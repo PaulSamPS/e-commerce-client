@@ -1,7 +1,7 @@
-import { ProfileIcon } from "@/shared/assets/icons";
 import styles from "./auth-button.module.scss";
 import { ButtonHTMLAttributes } from "react";
 import { UiButton } from "@/shared/ui/ui-button";
+import { VscAccount } from "react-icons/vsc";
 
 export interface UiAuthButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -13,7 +13,7 @@ export const UiAuthButton = ({ loading, ...props }: UiAuthButtonProps) => {
       isLoading={loading}
       appearance={"clear"}
       className={styles.login}
-      before={<ProfileIcon />}
+      before={<VscAccount />}
       {...props}
     >
       Вход или регистрация

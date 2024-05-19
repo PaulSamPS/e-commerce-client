@@ -1,22 +1,18 @@
 "use client";
 
-import React, { useEffect } from "react";
-import { useForm } from "react-hook-form";
-import { useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import styles from "./step-order-confirmation.module.scss";
 import { UiTitle } from "@/shared/ui/ui-title";
 import { useAppDispatch } from "@/shared/hooks";
-import { useStrictContext } from "@/shared/lib/react";
-import { CartStepsContext } from "@/widgets/cart-steps/cart-steps-context";
-import { cartState, Total } from "@/entities/cart";
+import { Total } from "@/entities/cart";
 import { UiButton } from "@/shared/ui/ui-button";
-import { PersonalData } from "@/entities/user";
+import { useCartState } from "../useCartState";
+import { useCartSteps } from "../useCartSteps";
 
 export const StepOrderConfirmation = () => {
   const dispatch = useAppDispatch();
-  const { cart } = useSelector(cartState);
-  const { deliveryMethod, step } = useStrictContext(CartStepsContext);
+  const { products, discount, totalPrice } = useCartState();
+  const { deliveryMethod, step } = useCartSteps();
   const { push } = useRouter();
   // const {
   //   control,
@@ -71,9 +67,9 @@ export const StepOrderConfirmation = () => {
         {/*/>*/}
         <Total
           delivery={deliveryMethod}
-          productsLength={cart?.products.length!}
-          discount={cart?.discount!}
-          totalPrice={cart?.total_price!}
+          productsLength={products?.length}
+          discount={discount!}
+          totalPrice={totalPrice!}
           step={step}
           nextStep={
             <UiButton

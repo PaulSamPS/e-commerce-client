@@ -1,5 +1,4 @@
 import axios, { AxiosError, AxiosRequestConfig } from "axios";
-import { loadFromLocalStorage } from "@/shared/lib/localstorage";
 
 export const apiInstance = axios.create({
   baseURL: "/api",

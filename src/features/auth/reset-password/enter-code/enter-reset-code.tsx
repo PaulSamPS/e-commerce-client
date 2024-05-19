@@ -1,18 +1,20 @@
 "use client";
 
-import { ChangeEvent, useCallback, useMemo, useState } from "react";
+import { ChangeEvent, useCallback, useEffect, useRef, useState } from "react";
 import clsx from "clsx";
 import styles from "./enter-reset-code.module.scss";
 import { UiButton } from "@/shared/ui/ui-button";
 import { UiText } from "@/shared/ui/ui-text";
-import { useAppDispatch } from "@/shared/hooks/use-app-dispatch";
+import { useAppDispatch } from "@/shared/hooks";
 import { useSelector } from "react-redux";
 import { enterResetPasswordCode, resetPasswordState } from "@/entities/user";
 
 export const EnterResetCode = () => {
   const [codes, setCodes] = useState<string[]>(Array(4).fill(""));
+  const [isFormValid, setIsFormValid] = useState<boolean>(false);
   const dispatch = useAppDispatch();
   const state = useSelector(resetPasswordState);
+  const inputsRef = useRef<(HTMLInputElement | null)[]>([]);
 
   const handleInputCode = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
@@ -22,18 +24,39 @@ export const EnterResetCode = () => {
 
       setCodes((prevCodes) => {
         const newCodes = [...prevCodes];
-        newCodes[index] = sanitizedValue;
+        newCodes[index] = sanitizedValue.slice(0, 1); // Ограничиваем ввод одним символом
         return newCodes;
       });
 
-      const sibling =
-        value.length === 1
-          ? event.target.nextSibling
-          : event.target.previousSibling;
-      sibling && (sibling as HTMLInputElement).focus();
+      if (sanitizedValue.length === 1 && inputsRef.current[index + 1]) {
+        inputsRef.current[index + 1]?.focus();
+      } else if (sanitizedValue.length === 0 && inputsRef.current[index - 1]) {
+        inputsRef.current[index - 1]?.focus();
+      }
     },
     [],
   );
+
+  const handleKeyDown = useCallback(
+    (event: React.KeyboardEvent<HTMLInputElement>) => {
+      const { id, value } = event.currentTarget;
+      const index = Number(id);
+
+      if (event.key === "Backspace" && !value && inputsRef.current[index - 1]) {
+        setCodes((prevCodes) => {
+          const newCodes = [...prevCodes];
+          newCodes[index - 1] = "";
+          return newCodes;
+        });
+        inputsRef.current[index - 1]?.focus();
+      }
+    },
+    [],
+  );
+
+  useEffect(() => {
+    inputsRef.current[0]?.focus();
+  }, []);
 
   const onSubmit = () => {
     dispatch(
@@ -41,7 +64,14 @@ export const EnterResetCode = () => {
     );
   };
 
-  const isFormValid = () => codes.every((code) => code.length === 1);
+  useEffect(() => {
+    const valid = () => codes.every((code) => code.length === 1);
+
+    if (valid()) {
+      return setIsFormValid(true);
+    }
+    return setIsFormValid(false);
+  }, [codes]);
 
   return (
     <div className={styles["enter-code"]}>
@@ -57,10 +87,14 @@ export const EnterResetCode = () => {
             key={index}
             maxLength={1}
             id={String(index)}
+            onChange={handleInputCode}
+            onKeyDown={handleKeyDown}
             value={code}
+            ref={(el) => {
+              inputsRef.current[index] = el;
+            }}
             placeholder="X"
             autoComplete="off"
-            onChange={handleInputCode}
           />
         ))}
       </div>

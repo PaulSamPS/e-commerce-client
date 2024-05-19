@@ -9,7 +9,7 @@ export const signInApi = createAsyncThunk<
   SignInResult,
   SignInFormProps,
   ThunkConfig<string>
->("signIn", async ({ email, password }, { dispatch, rejectWithValue }) => {
+>("sign-in", async ({ email, password }, { dispatch, rejectWithValue }) => {
   try {
     const data = await apiAuth.login({ email, password });
 

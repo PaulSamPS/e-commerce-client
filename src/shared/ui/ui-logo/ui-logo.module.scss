@@ -1,8 +1,5 @@
 .logo {
-  display: flex;
-  align-items: center;
   column-gap: 10px;
-  cursor: pointer;
   text-align: center;
 
   h1 {
@@ -16,9 +13,15 @@
   .slogan {
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
 
   & .title-color {
     color: var(--blue-themed) !important;
+  }
+
+  .with-icon {
+    display: flex;
+    align-items: center;
   }
 }

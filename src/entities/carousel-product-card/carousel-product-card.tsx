@@ -13,6 +13,7 @@ import { UiAppLink } from "@/shared/ui/ui-app-link";
 
 const config = {
   baseUrl: "http://localhost:5500",
+  // baseUrl: process.env.API_URL,
 };
 
 interface RecentlyViewedCardProps {
@@ -38,7 +39,6 @@ export const CarouselProductCard: React.FC<RecentlyViewedCardProps> = ({
 
   return (
     <div className={clsx(styles.wrapper, className)}>
-      {product.isNew && <UiBadge text={"новинка"} color={"orange"} />}
       <div className={styles.img}>
         <UiAppLink
           to={`/product/${product.name}`}
@@ -54,9 +54,24 @@ export const CarouselProductCard: React.FC<RecentlyViewedCardProps> = ({
           />
         </UiAppLink>
       </div>
-      {product.discount > 0 && (
-        <UiBadge text={"скидка"} discount={product.discount} color={"red"} />
-      )}
+      <div className={styles.badges}>
+        {product.isNew && (
+          <UiBadge
+            text={"новинка"}
+            color={"green"}
+            position={"absolute"}
+            side={"right"}
+          />
+        )}
+        {product.rating > 4.7 && (
+          <UiBadge
+            text={"Хит"}
+            color={"yellow"}
+            position={"absolute"}
+            side={"right"}
+          />
+        )}
+      </div>
       <div className={styles.rating}>
         {product.rating > 0 && <UiRating rating={product.rating} />}
         <UiReview reviews={product.reviewCount || 0} />
@@ -66,7 +81,7 @@ export const CarouselProductCard: React.FC<RecentlyViewedCardProps> = ({
         className={styles.name}
         onClick={handleAddToRecentlyViewed}
       >
-        <span>{product.name}</span>
+        {product.name}
       </UiAppLink>
       <UiPriceDisplay
         price={product.price}

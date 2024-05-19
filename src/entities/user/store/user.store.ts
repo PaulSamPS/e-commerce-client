@@ -8,7 +8,7 @@ import { logoutApi } from "@/entities/user";
 
 const initialState: UserSchema = {
   userData: undefined,
-  loading: true,
+  loading: false,
   error: undefined,
 };
 
